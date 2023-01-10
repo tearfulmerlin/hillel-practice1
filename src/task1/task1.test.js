@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const isNumberArray = require('./task1');
 
 
@@ -20,11 +21,11 @@ describe('false', () => {
   test('empty array', () => {
     expect(isNumberArray([])).toBe(false);
   });
-  
+
   test('string', () => {
     expect(isNumberArray(null)).toBe(false);
   });
-    
+
   test('number strings', () => {
     expect(isNumberArray([1, 2, '2'])).toBe(false);
   });

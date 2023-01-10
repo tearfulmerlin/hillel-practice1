@@ -27,7 +27,7 @@
 */
 
 function plusOneArray(arr) {
-  // write code here
+  
 }
 
 module.exports = plusOneArray;
