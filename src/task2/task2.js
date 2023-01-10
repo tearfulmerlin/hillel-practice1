@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /**
  *
  * Given an array of integers of any length, return an array
@@ -26,7 +27,30 @@
 */
 
 function plusOneArray(arr) {
-  
+  if (!Array.isArray(arr) || !arr.length) {
+    return null;
+  }
+  for (let i = arr.length - 1; i > -1; i -= 1) {
+    if (arr[i] < 0 || Number.isNaN(arr[i]) || typeof (arr[i]) !== typeof (1)) {
+      return null;
+    }
+    if (i === arr.length - 1) {
+      arr[i] += 1;
+      do {
+        if (i === 0 && arr[i] > 9) {
+          arr[i] = 1;
+          arr.push(0);
+        }
+        if (arr[i] > 9) {
+          arr[i] = 0;
+          arr[i - 1] += 1;
+        }
+        i -= 1;
+      } while (arr[i] > 9);
+    }
+  }
+
+  return arr;
 }
 
 module.exports = plusOneArray;
