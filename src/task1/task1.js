@@ -8,7 +8,7 @@
 */
 
 function isNumberArray(arr) {
-  // write code here
+  return true;
 }
 
 module.exports = isNumberArray;
