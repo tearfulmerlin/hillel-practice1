@@ -26,7 +26,39 @@
 */
 
 function plusOneArray(arr) {
-  // write code here
+  if (!arr) return null;
+  if (typeof arr === 'string') return null;
+  if (!arr.length) return null;
+  if (arr.some((item) => item < 0 || typeof item === 'string')) return null;
+
+  let result = [];
+  const lastIndex = arr.length - 1;
+  const lastValue = arr[lastIndex] + 1;
+  let extraValue = 1;
+
+  if (lastValue > 9) {
+    result.push(lastValue % 10);
+
+    for (let i = lastIndex - 1; i >= 0; i--) {
+      const newValue = arr[i] + extraValue;
+
+      if (newValue > 9) {
+        result.unshift(newValue % 10);
+      } else {
+        result.unshift(newValue);
+        extraValue = 0;
+      }
+    }
+
+    if (extraValue) {
+      result.unshift(extraValue);
+    }
+  } else {
+    result = [...arr];
+    result[lastIndex] = lastValue;
+  }
+
+  return result;
 }
 
 module.exports = plusOneArray;
