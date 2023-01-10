@@ -7,6 +7,7 @@
     "test": "jest",
     "test1": "jest src/task1/",
     "test2": "jest src/task2/",
+    "test3": "jest src/task3/",
     "lint5": "npx eslint src/**",
     "#prepare": "husky install",
     "prepare": "npx eslint src/**"
