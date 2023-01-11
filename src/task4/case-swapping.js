@@ -15,7 +15,17 @@
  * @return {string}
  */
 function swapCase(phrase) {
-  // write code here
+  let result = '';
+
+  // eslint-disable-next-line no-restricted-syntax
+  for (const letter of phrase) {
+    const changedLetter = letter === letter.toUpperCase()
+      ? letter.toLowerCase()
+      : letter.toUpperCase();
+    result += changedLetter;
+  }
+
+  return result;
 }
 
 module.exports = swapCase;

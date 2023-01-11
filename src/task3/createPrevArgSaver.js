@@ -20,7 +20,7 @@ function createPrevArgSaver() {
     params = newParams;
 
     return previewParams;
-  }
+  };
 }
 
 module.exports = createPrevArgSaver;
