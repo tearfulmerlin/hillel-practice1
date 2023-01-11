@@ -20,8 +20,6 @@ function createPrevArgSaver() {
     if (number || []) {
       return (arr[arr.length - 2] || arr[[arr.length - 2][0]]);
     }
-
-    return undefined;
   };
 }
 
