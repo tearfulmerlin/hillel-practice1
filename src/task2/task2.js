@@ -26,8 +26,45 @@
  * @return {Array}
 */
 
+function isNumberArray(arr) {
+  // write code here
+  if (!Array.isArray(arr)) {
+    return false;
+  }
+  if (arr.length === 0) {
+    return false;
+  }
+  function isNumber(element) {
+    if (!Number.isNaN(+element) && typeof element === 'number') {
+      return true;
+    }
+
+    return false;
+  }
+
+  return arr.every(isNumber);
+}
+
 function plusOneArray(arr) {
   // write code here
+  if (!isNumberArray(arr)) {
+    return null;
+  }
+  if (!arr.every((elem) => (elem >= 0 && elem < 10))) {
+    return null;
+  }
+
+  let stringArr = arr.join('');
+
+  stringArr = +stringArr + 1;
+
+  const newArr = Array.from(String(stringArr), (elem) => Number(elem));
+
+  if (arr.length > newArr.length) {
+    newArr.unshift(0);
+  }
+
+  return (newArr);
 }
 
 module.exports = plusOneArray;
