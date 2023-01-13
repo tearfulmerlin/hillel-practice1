@@ -14,6 +14,16 @@
  */
 function createPrevArgSaver() {
   // write code here
+  const history = [];
+
+  return function madeSav(arg) {
+    history.push(arg);
+    if (history.length > 2) history.shift();
+
+    return history[history.length - 2];
+  };
 }
+
+const argSaver = createPrevArgSaver();
 
 module.exports = createPrevArgSaver;
