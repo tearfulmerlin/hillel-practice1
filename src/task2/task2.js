@@ -24,10 +24,32 @@
  * @param {Array} arr
  *
  * @return {Array}
-*/
-
+ */
 function plusOneArray(arr) {
-  // write code here
+  if (!Array.isArray(arr) || !arr.length) {
+    return null;
+  }
+
+  if (arr.every((el) => typeof el === 'number' && !Number.isNaN(el) && el >= 0 && el <= 9)) {
+    const newArr = [...arr];
+    let add = true;
+
+    for (let i = newArr.length - 1; i >= 0 && add; i--) {
+      newArr[i] += 1;
+
+      if (newArr[i] === 10) {
+        newArr[i] = 0;
+      } else {
+        add = false;
+      }
+
+      if (i === 0 && add) newArr.unshift(1);
+    }
+
+    return newArr;
+  }
+
+  return null;
 }
 
 module.exports = plusOneArray;
