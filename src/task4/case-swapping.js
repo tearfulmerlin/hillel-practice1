@@ -1,5 +1,6 @@
 'use strict';
 
+/* eslint-disable no-restricted-syntax */
 /**
  * Implement swapCase function:
  *
@@ -16,6 +17,15 @@
  */
 function swapCase(phrase) {
   // write code here
-}
+  let swapPhrase = '';
+  for (const letter of phrase) {
+    if (letter === letter.toLowerCase()) {
+      swapPhrase += letter.toUpperCase();
+    } else {
+      swapPhrase += letter.toLowerCase();
+    }
+  }
 
+  return swapPhrase;
+}
 module.exports = swapCase;
