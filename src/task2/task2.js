@@ -13,11 +13,10 @@
  * [1, 2, 3, 9] would return [1, 2, 4, 0]
  * [9, 9, 9, 9] would return [1, 0, 0, 0, 0]
  * [0, 1, 3, 7] would return [0, 1, 3, 8]
- * [0, 1, -3, 7] would return null
- * [] would return null
  *
  * Invalid arrays
- *
+ * [0, 1, -3, 7] would return null
+ * [] would return null
  * [1, -9] is invalid because -9 is not a non-negative integer
  * [1, 2, 33] is invalid because 33 is not a single-digit integer
  *
