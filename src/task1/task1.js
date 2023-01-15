@@ -9,10 +9,7 @@
 
 function isNumberArray(arr) {
   // write code here
-  if (!Array.isArray(arr)) {
-    return false;
-  }
-  if (arr.length === 0) {
+  if ((!Array.isArray(arr)) && (arr.length === 0)) {
     return false;
   }
   function isNumber(element) {
