@@ -12,7 +12,7 @@
  * argSaver() // return 456
  * argSaver(789) // return undefined
  */
-function createPrevArgSaver() {
+/* function createPrevArgSaver() {
   // write code here
   const history = [];
 
@@ -22,8 +22,18 @@ function createPrevArgSaver() {
 
     return history[history.length - 2];
   };
-}
+} */
 
+function createPrevArgSaver() {
+  let histVal;
+
+  return function madeSav(arg) {
+    const tempVal = histVal;
+    histVal = arg;
+
+    return tempVal;
+  };
+}
 const argSaver = createPrevArgSaver();
 
 module.exports = createPrevArgSaver;
