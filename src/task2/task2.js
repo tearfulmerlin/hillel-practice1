@@ -27,47 +27,7 @@
  */
 
 function plusOneArray(arr) {
-  /*if (!isInputIsNonEmptyArray(arr)) {
-    return null;
-  }
-
-  const isNumber = num => typeof num === 'number';
-  const isIntSingleDigit = num => Number.isInteger(num) && num >= 0 && num < 10;
-
-  let resultArr = [];
-  let i = arr.length;
-  let num;
-  while (i-- > 0) {
-    num = arr[i];
-    if (!isNumber(num) || !isIntSingleDigit(num)) {
-      return null;
-    }
-
-    if (num === 9) {
-      resultArr[i] = 0;
-      if (i === 0) {
-        resultArr.unshift(1);
-        break;
-      }
-    } else {
-      resultArr[i] = num + 1;
-      while (--i > -1) {
-        num = arr[i];
-        if (!isNumber(num) || !isIntSingleDigit(num)) {
-          return null;
-        }
-        resultArr[i] = arr[i];
-      }
-      break;
-    }
-  }
-
-  return resultArr;
-
-  function isInputIsNonEmptyArray(arr) {
-    return Array.isArray(arr) && arr.length > 0;
-  }
-}*/
+  
   if (!Array.isArray(arr) || arr.length === 0 || arr.some(el => typeof el === 'string' || el < 0 || el > 9)) {
     return null;
   }
