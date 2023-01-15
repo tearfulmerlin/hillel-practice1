@@ -23,10 +23,30 @@
  * @param {Array} arr
  *
  * @return {Array}
-*/
+ */
 
 function plusOneArray(arr) {
-  // write code here
+  if (!Array.isArray(arr) || arr.length === 0 || arr.some(el => typeof el === 'string' || el < 0 || el > 9)) {
+    return null;
+  }
+  const result = [];
+  let num = 1;
+  for (let i = 1; i <= arr.length; i++) {
+    const element = arr[arr.length - i];
+    if (element === 9) {
+      if (i === arr.length) {
+        result.unshift(0);
+        result.unshift(1);
+      } else {
+        num = 1;
+        result.unshift(0);
+      }
+    } else {
+      result.unshift(element + num);
+      num = 0;
+    }
+  }
+  return result;
 }
 
 module.exports = plusOneArray;
