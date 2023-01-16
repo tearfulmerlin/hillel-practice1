@@ -1,5 +1,7 @@
 'use strict';
 
+/* eslint-disable no-restricted-syntax */
+
 /**
  * Implement isPalindrome function:
  *
@@ -20,6 +22,15 @@
  */
 function isPalindrome(str) {
   // write code here
+  const punctuation = [' ', '-', '_', '\'', ',', '.', ':', ';', '!', '?'];
+  const clearedStr = [];
+  for (const letter of str) {
+    if (!punctuation.some((i) => i === letter)) {
+      clearedStr.push(letter.toLowerCase());
+    }
+  }
+
+  return (clearedStr.join('') === clearedStr.reverse().join(''));
 }
 
 module.exports = isPalindrome;
