@@ -1,5 +1,6 @@
 'use strict';
 
+/* eslint-disable no-restricted-syntax */
 /**
  * Implement rleCompress function:
  *
@@ -19,6 +20,21 @@
  */
 function rleCompress(source) {
   // write code here
+  let comprString = '';
+  let quantity = 1;
+  for (let symbol = 0; symbol < source.length; symbol++) {
+    if (source[symbol] === source[symbol + 1]) {
+      quantity += 1;
+    } else if (quantity > 1) {
+      comprString += source[symbol] + quantity;
+      quantity = 1;
+    } else {
+      comprString += source[symbol];
+      quantity = 1;
+    }
+  }
+
+  return comprString;
 }
 
 module.exports = rleCompress;
