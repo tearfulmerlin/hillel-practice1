@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+
 'use strict';
 
 /**
@@ -18,7 +20,28 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  let prevChr = source[0];
+  let count = 1;
+  const result = [];
+
+  for (let i = 1; i <= source.length; i++) {
+    const chr = source[i];
+
+    if (chr === prevChr) {
+      count++;
+    } else {
+      result.push(prevChr);
+
+      if (count > 1) {
+        result.push(count);
+      }
+
+      prevChr = chr;
+      count = 1;
+    }
+  }
+
+  return result.join('');
 }
 
 module.exports = rleCompress;
