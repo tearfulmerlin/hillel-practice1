@@ -27,7 +27,25 @@
 */
 
 function plusOneArray(arr) {
-  // write code here
+  if (!Array.isArray(arr) || arr.length === 0) {
+    return null;
+  }
+  const lastIndex = arr.length;
+  for (let i = 0; i < lastIndex; i++) {
+    if (typeof arr[i] === 'string'
+         || Number.isNaN(arr[i])
+         || arr[i] < 0
+         || arr[i] >= 10) {
+      return null;
+    }
+  }
+  if (arr[0] !== 0) {
+    const newArr = +arr.join('') + 1;
+
+    return Array.from(String(newArr), Number);
+  }
+
+  return arr;
 }
 
 module.exports = plusOneArray;
