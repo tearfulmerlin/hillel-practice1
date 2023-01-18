@@ -44,6 +44,14 @@ function plusOneArray(arr) {
 
     return Array.from(String(newArr), Number);
   }
+  // не могу придумать как реализовать чтоб этот проходил [0, 1, 3, 7]
+  // const newArr = [];
+  // arr.forEach((element, index) => {
+  //   if (index === lastIndex - 1) {
+  //     element += 1;
+  //   }
+  //   newArr.push(element);
+  // }); так не нравится
 
   return arr;
 }
