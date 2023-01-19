@@ -21,9 +21,6 @@
 
 function isPalindrome(str) {
   const arr = [];
-  if (!str) {
-    return true;
-  }
   for (let i = 0; i < str.length; i += 1) {
     if (str.toLowerCase().charCodeAt(i) > 96 && str.toLowerCase().charCodeAt(i) < 123) {
       arr.push(str[i].toLowerCase());
@@ -32,39 +29,5 @@ function isPalindrome(str) {
 
   return arr.join() === arr.reverse().join();
 }
-
-//
-// function isPalindrome(str) {
-//   const findLetter = /[\W_]/g;
-//   const lowLetters = str.toLowerCase().replace(findLetter, '');
-//   const reverseStr = lowLetters.split('').reverse().join('');
-
-//   return reverseStr === lowRegStr;
-// }
-
-
-// function isPalindrome(str) {
-//   const arrAlfa = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
-//     'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-//   const arrStr = [];
-//   for (let i = 0, a = 0; i < str.length; i += 1) {
-//     for (let j = 0; j < arrAlfa.length; j += 1) {
-//       if (arrAlfa[j] === str[i].toLowerCase()) {
-//         arrStr[a] = arrAlfa[j];
-//         a += 1;
-//         break;
-//       }
-//     }
-//   }
-//   for (let i = 0, k = arrStr.length - 1; (arrStr.length % 2 === 0
-//     ? i < arrStr.length / 2 : i < (arrStr.length - 1) / 2); i += 1, k -= 1) {
-//     if (arrStr[i] !== arrStr[k]) {
-//       return false;
-//     }
-//     console.log(arrStr[i]);
-//   }
-
-//   return true;
-// }
 
 module.exports = isPalindrome;
