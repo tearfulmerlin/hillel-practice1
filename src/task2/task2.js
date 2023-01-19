@@ -31,7 +31,7 @@ function plusOneArray(arr) {
     return null;
   }
   for (let i = arr.length - 1; i > -1; i -= 1) {
-    if (arr[i] < 0 || Number.isNaN(arr[i]) || typeof (arr[i]) !== typeof (1)) {
+    if (arr[i] < 0 || Number.isNaN(arr[i]) || typeof (arr[i]) !== 'number') {
       return null;
     }
     if (i === arr.length - 1) {

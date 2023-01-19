@@ -13,13 +13,13 @@
  * argSaver(789) // return undefined
  */
 function createPrevArgSaver() {
-  const arr = [];
+  let a;
+  const arr = [a];
 
   return function returnVal(number) {
     arr.push(number);
-    if (number || []) {
-      return (arr[arr.length - 2] || arr[[arr.length - 2][0]]);
-    }
+
+    return arr.shift();
   };
 }
 

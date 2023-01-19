@@ -9,11 +9,11 @@
 
 // eslint-disable-next-line consistent-return
 function isNumberArray(arr) {
-  if ((Array.isArray(arr) && !arr.length) || !arr) {
+  if (!Array.isArray(arr) || arr.length === 0) {
     return false;
   }
   for (let i = 0; i < arr.length; i += 1) {
-    if (typeof (arr[i]) !== typeof (NaN) || Number.isNaN(arr[i])) {
+    if (typeof (arr[i]) !== 'number' || Number.isNaN(arr[i])) {
       return false;
     }
   }

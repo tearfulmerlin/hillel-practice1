@@ -16,8 +16,8 @@
  */
 function swapCase(phrase) {
   let phraseCh = '';
-  if (phrase === '' || phrase.trim() === '') {
-    return '' || phrase;
+  if (phrase.trim() === '') {
+    return phrase;
   }
   for (let i = 0; i < phrase.length; i += 1) {
     if (phrase[i].toUpperCase() === phrase[i]) {

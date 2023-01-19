@@ -17,7 +17,7 @@ test('race a e-car', () => {
     .toBe(true);
 });
 
-test(`Madam, I'm Adam`, () => {
+test('Madam, I\'m Adam', () => {
   expect(isPalindrome(`Madam, I'm Adam`))
     .toBe(true);
 });
