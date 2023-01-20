@@ -1,0 +1,37 @@
+{
+  "name": "hillel-lessons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "jest",
+    "test1": "jest src/task1/",
+    "test2": "jest src/task2/",
+    "test3": "jest src/task3/",
+    "test4": "jest src/task4/",
+    "test5": "jest src/task5/",
+    "test6": "jest src/task6/",
+    "test7": "jest src/task7/",
+    "lint5": "npx eslint src/**",
+    "#prepare": "husky install",
+    "prepare": "npx eslint src/**"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tearfulmerlin/hillel-lessons.git"
+  },
+  "author": "tmerlin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tearfulmerlin/hillel-lessons/issues"
+  },
+  "homepage": "https://github.com/tearfulmerlin/hillel-lessons#readme",
+  "devDependencies": {
+    "eslint": "^8.30.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^27.2.0",
+    "husky": "^8.0.3",
+    "jest": "^29.3.1"
+  }
+}
