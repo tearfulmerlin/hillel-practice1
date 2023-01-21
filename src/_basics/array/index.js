@@ -235,59 +235,122 @@ import people from './people.js';
 
 
 
-/** to be continued... */
+/** Part 2 */
 // Array.at();
+// console.log(people[people.length - 1]);
+// console.log(people.at(-1));
+
 // Array.find();
-// Array.findIndex();
+// console.log(people.find((person, index) => {
+//   console.log({ sex: person.sex, index });
+
+//   return person.sex === 'f';
+// }));
 // Array.findLast();
+// console.log(people.findLast((person, index) => {
+//   // console.log({ sex: person.sex, index });
+
+//   return person.sex === 'f';
+// }));
+
+
+// Array.findIndex();
+// console.log(people.findIndex((person, index) => {
+//     console.log({ sex: person.sex, index });
+
+//     return person.sex === 'f';
+//   }));
 // Array.findLastIndex();
+// console.log(people.findLastIndex((person, index) => {
+//   // console.log({ sex: person.sex, index });
+
+//   return person.sex === 's';
+// }));
 
 // Array.indexOf();
+// const arr = [1,2,3,4,56,7, 4,2,5];
+// console.log(arr.indexOf(7, -4));
+// console.log(people.indexOf());
 // Array.lastIndexOf();
+// const arr = [1,2,3,4,56,7, 4,2,5];
+// console.log(arr.lastIndexOf(4));
 
 // Array.includes();
+// const person = people[55];
+// console.log(people.includes(person));
+
+// const isIncludes = !!people.find((person) => person.sex === 'f');
+// console.log({isIncludes})
+
 
 // Array.some();
+// console.log(people.some((person, index, arr) => {
+//   console.log({person, index, arr})
+
+//   return person.mother === null;
+// }))
 // Array.every();
+// console.log(people.every((person, index, arr) => {
+//   console.log({person, index, arr});
+
+//   return person.sex !== 't';
+// }))
+
 
 
 // Array.forEach();
+// const result = people.forEach((person, index, arr) => {
+//   console.log(person.name, index)
+
+//   return person.name
+// });
+
+// console.log({result})
+
 // Array.map();
+// const result = people.map((person, index, arr) => {
+//     // console.log(person.name, index)
+
+//     return person.name;
+//   });
+
+//   console.log(result);
+//   console.log(people);
+
+
 // Array.reduce();
 // Array.reduceRight();
+// const reudeced = people.reduceRight((acc, person, index, arr) => {
+//   // console.log({acc, person, index, arr})
+
+//   acc[person.sex].push(person);
+
+//   return acc;
+// }, {
+//   m: [],
+//   f: [],
+// })
+
+// console.log({reudeced});
 
 
 // Array.join();
-// Array.toLocaleString();
+// console.log(people.join())
 // Array.toString();
+// console.log([1,2,3,4,5, NaN, undefined, null, 'test'].toString(': '));
+// Array.toLocaleString();
+// console.log([new Date(),2000000,3,4,5].toLocaleString());
+
 
 
 // Array.values();
 // Array.entries();
 // Array.keys();
+// console.log(Array.from([1,2,3,4,5].values()));
+// console.log(Array.from([1,2,3,4,5].keys()));
+// console.log(Array.from([1,2,3,4,5].entries()));
 
 // Array.copyWithin();
 // Array.flatMap();
-
-
-// String.prototype.charAt();
-// String.prototype.charCodeAt();
-// String.prototype.codePointAt();
-// String.prototype.concat();
-// String.prototype.endsWith();
-// String.fromCharCode();
-// String.fromCodePoint();
-// String.prototype.includes();
-// String.prototype.indexOf();
-// String.prototype.lastIndexOf();
-// String.prototype.localeCompare();
-// String.prototype.match();
-// String.prototype.matchAll();
-// String.prototype.normalize();
-// String.prototype.padEnd();
-// String.prototype.padStart();
-// String.prototype.repeat();
-// String.prototype.replace();
-// String.prototype.replaceAll();
-// String.prototype.search();
-// String.prototype.slice();
+// console.log(people.map(()=> [[123]]).flat(2));
+// console.log(people.flatMap(()=> [[123]]));
