@@ -11,14 +11,28 @@
  * rle('A') === 'A'
  * rle('ABC') === 'ABC'
  * rle('AABDE') === 'A2BDE'
+ *      012345789
  * rle('ABGGGDKKKUKKF') === 'ABG3DK3UK2F'
  *
  * @param {string} source
  *
  * @return {string}
  */
+
+
 function rleCompress(source) {
-  // write code here
+  let resString = '';
+  for (let i = 0; i < source.length; i++) {
+    for (let j = 0; j + i <= source.length; j++) {
+      if (source[j + i] !== source[i]) {
+        i += j - 1;
+        resString += `${source[i]}${j === 1 ? '' : j}`;
+        break;
+      }
+    }
+  }
+
+  return resString;
 }
 
 module.exports = rleCompress;
