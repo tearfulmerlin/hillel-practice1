@@ -61,6 +61,7 @@ function calculateMenAverageAge(people, century) {
 function isMother(person, people) {
   return people.find((el) => person.name === el.mother);
 }
+
 function calculateWomenAverageAge(people, withChildren) {
   let womanArray = people.filter((el) => el.sex === 'f');
   if (withChildren === true) {
