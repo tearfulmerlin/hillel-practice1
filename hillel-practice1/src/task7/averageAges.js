@@ -35,7 +35,7 @@ function calculateMenAverageAge(people, century) {
  * her as mother.
  *
  * @param {object[]} people
- * @param {boolean} withChildren - optional
+ * @param {boolean} withChildren - optionall
  *
  * @return {number}
  */
