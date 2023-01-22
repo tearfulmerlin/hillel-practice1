@@ -30,8 +30,11 @@ function calculateMenAverageAge(people, century) {
   if (!manArray.length) {
     return 0;
   }
-  let meanVal = manArray.reduce((resVal, el) => resVal + (el.died - el.born), 0) / manArray.length;
-  // console.log(manArray);
+  const meanVal = manArray.reduce((resVal, el) => {
+    const age = el.died - el.born;
+
+    return resVal + age;
+  }, 0) / manArray.length;
 
   return +meanVal.toFixed(2);
   // write code here
@@ -58,14 +61,16 @@ function calculateMenAverageAge(people, century) {
 function isMother(person, people) {
   return people.find((el) => person.name === el.mother);
 }
-
 function calculateWomenAverageAge(people, withChildren) {
   let womanArray = people.filter((el) => el.sex === 'f');
   if (withChildren === true) {
     womanArray = womanArray.filter((el) => isMother(el, people));
   }
-  const returnAnswer = womanArray.reduce((sum, el) => sum + (el.died - el.born), 0) /
-    womanArray.length;
+  const returnAnswer = womanArray.reduce((sum, el) => {
+    const age = el.died - el.born;
+
+    return sum + age;
+  }, 0) / womanArray.length;
 
   return +returnAnswer.toFixed(2);
 }
