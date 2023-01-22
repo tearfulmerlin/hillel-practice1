@@ -13,8 +13,8 @@
     "test6": "jest src/task6/",
     "test7": "jest src/task7/",
     "test:hw14-filter": "jest src/homework/hw-lesson14/filterPeople",
-    "test:hw14-sort": "jest src//homework/hw-lesson14/sortPeople",
-    "test:hw14-reverse": "jest src//homework/hw-lesson14/reverseString",
+    "test:hw14-sort": "jest src/homework/hw-lesson14/sortPeople",
+    "test:hw14-reverse": "jest src/homework/hw-lesson14/reverseString",
     "lint5": "npx eslint src/**",
     "#prepare": "husky install",
     "prepare": "npx eslint src/**"
