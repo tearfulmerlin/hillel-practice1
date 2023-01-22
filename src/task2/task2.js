@@ -23,7 +23,7 @@
  * @param {Array} arr
  *
  * @return {Array}
-*/
+ */
 
 function plusOneArray(arr) {
   if (!Array.isArray(arr) || arr.length === 0 || arr.some((el) => typeof el === 'string' || el < 0 || el > 9)) {
