@@ -11,22 +11,32 @@
 
 /** Find doughters with parrent */
 function findDoughters(arr) {
-  // write code here
+  return arr.filter((person) => person.sex === 'f' && (person.father !== null || person.mother !== null));
 }
 
 /** Find people who lived over 60 years */
 function findAllPeopleWhoLivedOver60(arr) {
-  // write code here
+  return arr.filter((person) => ((person.died - person.born) > 60));
 }
 
 /** Find people with both parrents */
 function findAllPeopleWithoutBothParrent(arr) {
-  // write code here
+  return arr.filter((person) => person.father === null && person.mother === null);
 }
 
 /** Find people with 3 children */
 function findPeopleWithTreeChildren(arr) {
-  // write code here
+  return arr.filter((person) => {
+    const children = arr.filter((child) => {
+      if (person.sex === 'm') {
+        return child.father === person.name;
+      }
+
+      return child.mother === person.name;
+    });
+
+    return children.length === 3;
+  });
 }
 
 module.exports = {

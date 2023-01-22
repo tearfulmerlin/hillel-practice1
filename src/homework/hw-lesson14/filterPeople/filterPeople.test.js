@@ -7,7 +7,7 @@ const {
 } = require('./filterPeople');
 
 test('Name of person without parrents should be Lievijne Jans', () => {
-  expect(findAllPeopleWithoutBothParrent(people).name).toBe('Lievijne Jans');
+  expect(findAllPeopleWithoutBothParrent(people)?.[0]?.name).toBe('Lievijne Jans');
 });
 
 test('There should be 1 person without parents', () => {
