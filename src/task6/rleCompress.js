@@ -17,8 +17,27 @@
  *
  * @return {string}
  */
+
 function rleCompress(source) {
-  // write code here
+  let firstChar = source[0];
+  let num = 1;
+  const result = [];
+
+  for (let i = 1; i <= source.length; i++) {
+    if (source[i] === firstChar) {
+      // eslint-disable-next-line no-plusplus
+      num++;
+    } else {
+      result.push(firstChar);
+
+      if (num > 1) result.push(num);
+
+      firstChar = source[i];
+      num = 1;
+    }
+  }
+
+  return result.join('');
 }
 
 module.exports = rleCompress;
