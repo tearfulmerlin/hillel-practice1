@@ -37,6 +37,6 @@ describe('Sort by children quantity', () => {
   });
   
   test('29th person in a list should be Jacobus Bernardus van Brussel', () => {
-    expect(sorted?.[12]).toEqual(people?.[30]);
+    expect(sorted?.[30]).toEqual(people?.[38]);
   });
 });
