@@ -11,7 +11,7 @@ describe('Sort by age', () => {
   test('Initial array should not be changed', () => {
     expect(sorted).not.toBe(people);
   });
-  
+
   test('29th person in a list should be Jacobus Bernardus van Brussel', () => {
     expect(sorted?.[30]).toEqual(people?.[38]);
   });
@@ -23,7 +23,7 @@ describe('Sort by name', () => {
   test('Initial array should not be changed', () => {
     expect(sorted).not.toBe(people);
   });
-  
+
   test('11th person in a list should be Jacobus Bernardus van Brussel', () => {
     expect(sorted?.[12]).toEqual(people?.[38]);
   });
@@ -35,7 +35,7 @@ describe('Sort by children quantity', () => {
   test('Initial array should not be changed', () => {
     expect(sorted).not.toBe(people);
   });
-  
+
   test('29th person in a list should be Jacobus Bernardus van Brussel', () => {
     expect(sorted?.[30]).toEqual(people?.[38]);
   });
