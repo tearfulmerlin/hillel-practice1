@@ -19,7 +19,7 @@ function findAllPeopleWhoLivedOver60(arr) {
   // write code here
 }
 
-/** Find people with both parrents */
+/** Find people without both parrents */
 function findAllPeopleWithoutBothParrent(arr) {
   // write code here
 }
