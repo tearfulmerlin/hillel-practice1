@@ -38,12 +38,9 @@ function findPeopleWithTreeChildren(arr) {
   return arr.filter((person) => {
     const children = arr.filter((child) => {
       if (person.sex === 'm') {
-        return child.father === person.name;
+       return child.father === person.name || child.mother === person.name;
       }
-
-      return child.mother === person.name;
-    });
-
+     });
     return children.length === 3;
   });
 }
