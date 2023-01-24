@@ -11,17 +11,23 @@
 
 /** Find doughters with parrent */
 function findDoughters(arr) {
-  // write code here
+  const daughters = arr.filter((person) => person.sex === 'f' && (person.mother !== null || person.father !== null));
+
+  return daughters;
 }
 
 /** Find people who lived over 60 years */
 function findAllPeopleWhoLivedOver60(arr) {
-  // write code here
+  const livedOut60 = arr.filter((person) => person.died - person.born > 60);
+
+  return livedOut60;
 }
 
 /** Find people with both parrents */
 function findAllPeopleWithoutBothParrent(arr) {
-  // write code here
+  const kids = arr.filter((person) => person.father === null && person.mother === null);
+
+  return kids;
 }
 
 /** Find people with 3 children */

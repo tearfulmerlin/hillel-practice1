@@ -11,12 +11,18 @@
 
 /** Sort by age */
 function sortByAge(arr) {
-  // write code here
+  const newArr = [...arr];
+  const sortedAge = newArr.sort((a, b) => (a.died - a.born) - (b.died - b.born));
+
+  return sortedAge;
 }
 
 /** Sort by name */
 function sortByName(arr) {
-  // write code here
+  const newArr = [...arr];
+  const sortedName = newArr.sort((a, b) => a.name.localeCompare(b.name));
+
+  return sortedName;
 }
 
 /** Sort by children quantity */
