@@ -7,7 +7,7 @@
  */
 
 function isPangram(str) {
-  //
+  /* write code here */
 }
 
 module.exports = isPangram;
