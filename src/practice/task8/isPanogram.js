@@ -7,7 +7,7 @@
  */
 
 function isPangram(str) {
-  if (!str || typeof str !== 'string' || str.trim() === '') return false;
+  if (typeof str !== 'string') return false;
 
   const chars = 'abcdefghijklmnopqrstuvwxyz';
   const convertedStr = str.toLowerCase();
