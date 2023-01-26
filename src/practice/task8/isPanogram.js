@@ -9,7 +9,6 @@
 function isPangram(str) {
   if (typeof str !== 'string') return false;
   const testA = 'abcdefghijklmnopqrstuvwxyz'
-  if(str.length < 1) return false
   for(const ch of testA){
     if(str.toLowerCase().indexOf(ch) === -1) return false
   }
