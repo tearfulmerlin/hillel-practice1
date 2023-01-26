@@ -26,7 +26,7 @@ function sortByName(arr) {
 
 /** Sort by children quantity */
 function sortByChildrenQuantity(arr) {
-  const newArray = [...arr];
+  const newArray = [...arr];    
   return newArray.sort((a,b) => {
     const onechild = arr.filter((item) => item.father === a.name || item.mother === a.name)
     const moreChid = arr.filter((item) => item.father === b.name || item.mother === b.name)
