@@ -8,7 +8,19 @@
 */
 
 function isNumberArray(arr) {
-  // write code here
+  if (!Array.isArray(arr) || arr.length === 0) {
+    return false;
+  }
+
+  function isNumber(element) {
+    if (!Number.isNaN(+element) && typeof element === 'number') {
+      return true;
+    }
+
+    return false;
+  }
+
+  return arr.every(isNumber);
 }
 
 module.exports = isNumberArray;
