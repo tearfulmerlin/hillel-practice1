@@ -17,8 +17,20 @@
  *
  * @return {string}
  */
+
+//npm run test6
 function rleCompress(source) {
-  // write code here
+  let count = 0;
+  for (i = 0; i < source.length; i++) {
+    if (source[i].repeat) {
+      count++;
+      if (typeof source === 'string' || source > 0) {
+        const regExp = /[A-Z]/g;
+        const replased = source.replace(regExp, `${count}`); 
+        return replased;
+      }
+    }
+  }
 }
 
 module.exports = rleCompress;
