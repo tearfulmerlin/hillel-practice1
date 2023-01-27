@@ -23,7 +23,7 @@ function findAllPeopleWhoLivedOver60(arr) {
   return livedOut60;
 }
 
-/** Find people with both parrents */
+/** Find people without both parrents */
 function findAllPeopleWithoutBothParrent(arr) {
   const kids = arr.filter((person) => person.father === null && person.mother === null);
 
