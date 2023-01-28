@@ -15,11 +15,14 @@
  * @return {number}
  */
 function calculateMenAverageAge(people, century) {
-  // write code here
-  // learn how to use array methods like .filter .map .some .every .find .reduce
-  // avoid using loop and forEach
-  // replace `if ()` statement with &&, || or ?:
-  // without nesting
+  const getPeople = people.filter((person) => (century
+    ? person.sex === 'm' && century === Math.ceil(person.died / 100)
+    : person.sex === 'm'));
+
+  const ageSum = getPeople.map((person) => person.died - person.born)
+    .reduce((acc, value) => acc + value, 0);
+
+  return ageSum / getPeople.length;
 }
 
 /**
@@ -37,7 +40,13 @@ function calculateMenAverageAge(people, century) {
  * @return {number}
  */
 function calculateWomenAverageAge(people, withChildren) {
-  // write code here
+  const getPeople = withChildren
+    ? people.filter((person) => person.sex === 'f' && people.some((mother) => mother.mother === person.name))
+    : people.filter((person) => person.sex === 'f');
+  const ageSum = getPeople.map((person) => person.died - person.born)
+    .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
+  return ageSum / getPeople.length;
 }
 
 /**
@@ -55,7 +64,23 @@ function calculateWomenAverageAge(people, withChildren) {
  * @return {number}
  */
 function calculateAverageAgeDiff(people, onlyWithSon) {
-  // write code here
+  const mothers = onlyWithSon
+    ? people.filter((mother) => mother.sex === 'f' && people.some((person) => person.sex === 'm' && person.mother === mother.name))
+    : people.filter((mother) => mother.sex === 'f' && people.some((person) => person.mother === mother.name));
+
+  const age = mothers.map((mother) => {
+    const childs = onlyWithSon
+      ? people.filter((child) => child.mother === mother.name && child.sex === 'm')
+      : people.filter((child) => child.mother === mother.name);
+
+    return childs.map(({ born }) => born - mother.born);
+  });
+
+  const cloneAge = age.flat();
+
+  const sumAges = cloneAge.reduce((acc, value) => acc + value, 0);
+
+  return sumAges / cloneAge.length;
 }
 
 module.exports = {

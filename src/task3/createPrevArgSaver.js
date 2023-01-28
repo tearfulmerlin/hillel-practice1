@@ -13,7 +13,15 @@
  * argSaver(789) // return undefined
  */
 function createPrevArgSaver() {
-  // write code here
+  let result;
+
+  // eslint-disable-next-line func-names
+  return function (secondNum) {
+    const num = result;
+    result = secondNum;
+
+    return num;
+  };
 }
 
 module.exports = createPrevArgSaver;

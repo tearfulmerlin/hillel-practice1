@@ -20,13 +20,20 @@
  * [1, -9] is invalid because -9 is not a non-negative integer
  * [1, 2, 33] is invalid because 33 is not a single-digit integer
  *
- * @param {Array} arr
+ * @param {Array} _arr
  *
  * @return {Array}
 */
 
 function plusOneArray(arr) {
-  // write code here
+  if (!Array.isArray(arr) || !arr.length
+      || arr.some((num) => Number.isNaN(num) || typeof num !== 'number' || num < 0 || num > 9)) {
+    return null;
+  }
+  const arr2 = (+arr.join('') + 1).toString().split('').map((char) => +char);
+  if (arr.length > arr2.length) arr2.unshift(0);
+
+  return arr2;
 }
 
 module.exports = plusOneArray;

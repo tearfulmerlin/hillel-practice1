@@ -19,7 +19,13 @@
  * @return {boolean}
  */
 function isPalindrome(str) {
-  // write code here
+  // eslint-disable-next-line no-param-reassign
+  const сhars = str.toLowerCase().replace(/(\W)|(_)/g, '').split('');
+  for (let i = 0; i < сhars.length; i++) {
+    if (сhars[i] !== сhars[сhars.length - 1 - i]) return false;
+  }
+
+  return true;
 }
 
 module.exports = isPalindrome;
