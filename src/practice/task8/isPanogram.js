@@ -6,8 +6,11 @@
  * @returns {Boolean}
  */
 
-function isPangram(str) {
-  /* write code here */
-}
+/* function isPangram(str) {
+  //
+} */
+const str = 'The quick brown fox jumps over the layy dog';
+const myRegex = /[a-z]/gi;
+console.log(str.includes(myRegex));
 
 module.exports = isPangram;
