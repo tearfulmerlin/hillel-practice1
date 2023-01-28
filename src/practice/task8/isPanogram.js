@@ -7,16 +7,17 @@
  */
 
 function isPangram(str) {
+  if (typeof str !== 'string') return false;
+
   const alfabet = 'abcdefghijklmnopqrstuvwxyz';
   // eslint-disable-next-line no-restricted-syntax
   for (const symb of alfabet) {
-    if (str.includes(symb)) { /* empty */ } else {
+    if (str.toLowerCase().includes(symb)) { /* empty */ } else {
       return false;
     }
   }
 
   return true;
 }
-// only latin alphabet (number 97 - small letter 'a')
 
 module.exports = isPangram;
