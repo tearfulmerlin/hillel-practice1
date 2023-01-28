@@ -1,4 +1,5 @@
 'use strict';
+import people from '../people.js';
 
 /**
  *
@@ -11,7 +12,7 @@
 
 /** Find doughters with parrent */
 function findDoughters(arr) {
-  // write code here
+  const result = people.filter(people.name => sex: 'f')
 }
 
 /** Find people who lived over 60 years */
