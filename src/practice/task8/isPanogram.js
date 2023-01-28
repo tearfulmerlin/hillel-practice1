@@ -6,11 +6,17 @@
  * @returns {Boolean}
  */
 
-/* function isPangram(str) {
-  //
-} */
-const str = 'The quick brown fox jumps over the layy dog';
-const myRegex = /[a-z]/gi;
-console.log(str.includes(myRegex));
+function isPangram(str) {
+  const alfabet = 'abcdefghijklmnopqrstuvwxyz';
+  // eslint-disable-next-line no-restricted-syntax
+  for (const symb of alfabet) {
+    if (str.includes(symb)) { /* empty */ } else {
+      return false;
+    }
+  }
+
+  return true;
+}
+// only latin alphabet (number 97 - small letter 'a')
 
 module.exports = isPangram;
