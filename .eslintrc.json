@@ -1,23 +1,23 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": "airbnb-base",
-    "overrides": [
-    ],
-    "parserOptions": {
-        "ecmaVersion": "latest"
-    },
-    "plugins": ["jest"],
-    "rules": {
-        "linebreak-style": ["error", "unix"],
-        "no-console": "off",
-        "no-alert": "off",
-        "no-multiple-empty-lines": ["error", { "max": 4, "maxEOF": 1 }],
-        "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-        "indent": ["error", 2, { "SwitchCase": 1 }],
-        "strict": ["off", "global"],
-        "newline-before-return": "error"
-    }
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": "airbnb-base",
+  "overrides": [],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "plugins": ["jest"],
+  "rules": {
+    "linebreak-style": ["error", "unix"],
+    "no-console": "off",
+    "no-alert": "off",
+    "no-multiple-empty-lines": ["error", { "max": 4, "maxEOF": 1 }],
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "strict": ["off", "global"],
+    "newline-before-return": "error",
+    "max-len": ["error", { "code": 120, "ignoreComments": true }]
+  }
 }

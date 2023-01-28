@@ -8,7 +8,9 @@
 */
 
 function isNumberArray(arr) {
-  // write code here
+  const isArray = Array.isArray(arr) && !!arr.length;
+
+  return isArray && arr.every((item) => (!Number.isNaN(item) && typeof item === 'number'));
 }
 
 module.exports = isNumberArray;

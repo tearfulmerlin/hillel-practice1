@@ -11,26 +11,32 @@ describe('true', () => {
   });
 });
 
-
 describe('false', () => {
   test('empty array', () => {
     expect(plusOneArray([])).toBe(null);
   });
-  
+
   test('negtive numbers', () => {
     expect(plusOneArray([1, 2, 3, -9])).toBe(null);
   });
-  
+
   test('string', () => {
     expect(plusOneArray(null)).toBe(null);
   });
-  
+
   test('no lemon, no melon', () => {
     expect(plusOneArray('no lemon, no melon')).toBe(null);
   });
 
-  
   test('number strings', () => {
     expect(plusOneArray([1, 2, '2'])).toBe(null);
+  });
+
+  test('not a single-digit integer', () => {
+    expect(plusOneArray([1, 2, 32])).toBe(null);
+  });
+
+  test('NaN', () => {
+    expect(plusOneArray([1, 2, NaN])).toBe(null);
   });
 });
