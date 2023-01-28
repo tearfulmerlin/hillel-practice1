@@ -1,5 +1,8 @@
 'use strict';
 
+// eslint-disable-next-line no-unused-vars
+const people = require('../people');
+
 /**
  *
  * Write three functions
@@ -11,23 +14,32 @@
 
 /** Find doughters with parrent */
 function findDoughters(arr) {
-  // write code here
+  // eslint-disable-next-line no-mixed-operators, no-shadow
+  return arr.filter((person) => person.sex === 'f' && (person.father !== null || person.mother !== null));
 }
 
 /** Find people who lived over 60 years */
 function findAllPeopleWhoLivedOver60(arr) {
-  // write code here
+  // eslint-disable-next-line no-shadow
+  return arr.filter((person) => ((person.died - person.born) > 60));
 }
 
 /** Find people without both parrents */
 function findAllPeopleWithoutBothParrent(arr) {
-  // write code here
+  // eslint-disable-next-line no-shadow
+  return arr.filter((person) => person.father === null && person.mother === null);
 }
 
 /** Find people with 3 children */
 function findPeopleWithTreeChildren(arr) {
-  // write code here
+  return arr.filter((person) => {
+    // eslint-disable-next-line max-len
+    const children = arr.filter((child) => [child.father, child.mother].includes(person.name));
+
+    return children.length === 3;
+  });
 }
+
 
 module.exports = {
   findDoughters,
