@@ -31,7 +31,7 @@ function sortByAge(arr) {
 function sortByName(arr) {
   const temp = [...arr];
 
-  // вточнити
+  return temp.sort();
 }
 
 /** Sort by children quantity */
