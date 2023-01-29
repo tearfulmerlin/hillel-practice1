@@ -32,7 +32,22 @@ function findAllPeopleWithoutBothParrent(arr) {
 
 /** Find people with 3 children */
 function findPeopleWithTreeChildren(arr) {
-  // write code here
+  const namesMother = arr.filter((mothers) => mothers.mother !== null)
+    .map((names) => names.mother);
+  const namesFather = arr.filter((father) => father.father !== null)
+    .map((names) => names.father);
+  const parents = [].concat(namesMother, namesFather);
+  const countParents = {};
+
+  for (const item of parents) {
+    countParents[item] = countParents[item] ? countParents[item] + 1 : 1;
+  }
+
+  const parents3Kids = Object.keys(countParents).filter((item) => countParents[item] > 2);
+
+  const result = arr.filter((name) => parents3Kids.includes(name.name));
+
+  return result;
 }
 
 module.exports = {
