@@ -31,7 +31,11 @@ function sortByAge(arr) {
 function sortByName(arr) {
   const temp = [...arr];
 
-  return temp.sort();
+  return temp.sort((leftEl, rightEl) => {
+    if (leftEl.name < rightEl.name) return -1;
+
+    return 1;
+  });
 }
 
 /** Sort by children quantity */

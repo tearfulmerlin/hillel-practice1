@@ -7,7 +7,10 @@
  */
 
 function isPangram(str) {
-  /* write code here */
+  if (str.trim() === '' || typeof str !== 'string') return false;
+  if (str.match(/[a-z]/gi).length) return true;
+
+  return false;
 }
 
 module.exports = isPangram;
