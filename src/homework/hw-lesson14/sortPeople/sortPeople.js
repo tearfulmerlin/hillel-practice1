@@ -31,7 +31,12 @@ function sortByAge(arr) {
 function sortByName(arr) {
   const temp = [...arr];
 
-  return temp.sort();
+  return temp.sort((a, b) => {
+    const leftAge = a.died - a.born;
+    const rightAge = b.died - b.born;
+
+    return leftAge - rightAge;
+  });
 }
 
 /** Sort by children quantity */
