@@ -7,10 +7,15 @@
  */
 
 function isPangram(str) {
-  if (str.trim() === '' || typeof str !== 'string') return false;
-  if (str.match(/[a-z]/gi).length) return true;
+  if (typeof str !== 'string') return false;
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  const string = str.trim().toLowerCase().replace(/[^a-z]/gi, '');
 
-  return false;
+  for (let i = 0; i < alphabet.length; i++) {
+    if (!string.includes(alphabet[i])) return false;
+  }
+
+  return true;
 }
 
 module.exports = isPangram;
