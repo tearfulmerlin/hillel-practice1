@@ -14,14 +14,6 @@
  * @param {Array} arr
 */
 function sortByAge(arr) {
-  const temp = [...arr];
-
-  return temp.sort((a, b) => {
-    const leftAge = a.died - a.born;
-    const rightAge = b.died - b.born;
-
-    return leftAge - rightAge;
-  });
 }
 
 /** Sort by name */
