@@ -7,7 +7,7 @@
  */
 
 function isPangram(str) {
-  if (str === undefined || Array.isArray(str)) {
+  if (typeof str !== 'string' || str === undefined) {
     return false;
   }
   const abc = 'abcdefghijklmnopqrstuvwxyz';
