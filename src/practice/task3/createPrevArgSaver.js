@@ -14,6 +14,13 @@
  */
 function createPrevArgSaver() {
   // write code here
+  const prevResult = [];
+
+  return function savePrevArg(arg) {
+    prevResult.push(arg);
+
+    return prevResult[prevResult.length - 2];
+  };
 }
 
 module.exports = createPrevArgSaver;
