@@ -11,7 +11,9 @@ function isPangram(str) {
   const string = str.trim().toLowerCase().replace(/[^a-z]/gi, '');
 
   for (let i = 0; i < alphabet.length; i++) {
-    if (!string.includes(alphabet[i])) return false;
+    if (!string.includes(alphabet[i])) {
+      return false;
+    }
   }
 
   return true;
