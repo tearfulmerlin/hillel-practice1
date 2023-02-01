@@ -31,11 +31,7 @@ function sortByAge(arr) {
 function sortByName(arr) {
   const temp = [...arr];
 
-  return temp.sort((leftEl, RightEl) => {
-    if (leftEl.name < RightEl.name) return -1;
-
-    return 1;
-  });
+  return temp.sort((leftEl, rightEl) => leftEl.name.localeCompare(rightEl.name));
 }
 
 /** Sort by children quantity */
