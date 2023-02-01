@@ -26,7 +26,16 @@
 */
 
 function plusOneArray(arr) {
-  // write code here
+  if (arr === null || arr.length === 0) {
+    return null;
+  }
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] <= 0 || typeof arr[i] === 'string') {
+      return null;
+    }
+  }
+
+  return String(+arr.join('') + 1).split('').map((item) => Number(item));
 }
 
 module.exports = plusOneArray;
