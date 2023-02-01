@@ -13,6 +13,7 @@
     "test6": "jest src/practice/task6/",
     "test7": "jest src/practice/task7/",
     "test8": "jest src/practice/task8/",
+    "test9": "jest src/practice/task9/",
     "test:hw14-filter": "jest src/homework/hw-lesson14/filterPeople",
     "test:hw14-sort": "jest src/homework/hw-lesson14/sortPeople",
     "test:hw14-reverse": "jest src/homework/hw-lesson14/reverseString",
