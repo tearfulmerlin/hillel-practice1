@@ -5,7 +5,6 @@
  *
  * @returns {Boolean}
  */
-
 function isPangram(str) {
   if (typeof str !== 'string') return false;
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
