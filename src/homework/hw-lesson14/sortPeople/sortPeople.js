@@ -1,7 +1,5 @@
 'use strict';
 
-const people = require("../people");
-
 /**
  *
  * Write three functions
@@ -12,10 +10,6 @@ const people = require("../people");
 */
 
 /** Sort by age */
-
-// function sortNum(a, b) {
-//   return a - b;
-// }
 function sortByAge(arr) {
   const sorted = [...arr];
   sorted.sort((a, b) => (a.died - a.born) - (b.died - b.born));
