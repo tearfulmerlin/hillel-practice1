@@ -1,5 +1,7 @@
 'use strict';
 
+const people = require("../people");
+
 /**
  *
  * Write three functions
@@ -10,18 +12,35 @@
 */
 
 /** Sort by age */
+
+// function sortNum(a, b) {
+//   return a - b;
+// }
 function sortByAge(arr) {
-  // write code here
+  const sorted = [...arr];
+  sorted.sort((a, b) => (a.died - a.born) - (b.died - b.born));
+
+  return sorted;
 }
 
 /** Sort by name */
 function sortByName(arr) {
-  // write code here
+  const sortName = [...arr];
+  sortName.sort((a, b) => a.name.localeCompare(b.name));
+
+  return sortName;
 }
 
 /** Sort by children quantity */
 function sortByChildrenQuantity(arr) {
-  // write code here
+  const quantArr = [...arr];
+  quantArr.sort((a, b) => {
+    const personeA = quantArr.filter((child) => child.father === a.name || child.mother === a.name);
+    const personeB = quantArr.filter((child) => child.father === b.name || child.mother === b.name);
+
+    return personeA.length - personeB.length;
+  });
+  return quantArr;
 }
 
 module.exports = {
