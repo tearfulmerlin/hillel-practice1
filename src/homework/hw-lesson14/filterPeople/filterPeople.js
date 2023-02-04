@@ -1,5 +1,4 @@
 'use strict';
-
 /**
  *
  * Write three functions
@@ -11,22 +10,27 @@
 
 /** Find doughters with parrent */
 function findDoughters(arr) {
-  // write code here
+  return arr.filter((persone) => persone.sex === 'f' && (persone.father !== null || persone.mother !== null));
 }
 
 /** Find people who lived over 60 years */
 function findAllPeopleWhoLivedOver60(arr) {
-  // write code here
+  return arr.filter((persone) => (persone.died - persone.born) > 60);
 }
 
 /** Find people without both parrents */
 function findAllPeopleWithoutBothParrent(arr) {
-  // write code here
+  return arr.filter((persone) => persone.father === null && persone.mother === null);
 }
 
 /** Find people with 3 children */
 function findPeopleWithTreeChildren(arr) {
-  // write code here
+  return arr.filter((persone) => {
+    const child = arr.filter((children) => {
+      return children.father === persone.name || children.mother === persone.name;
+    });
+    return child.length === 3; 
+  });
 }
 
 module.exports = {

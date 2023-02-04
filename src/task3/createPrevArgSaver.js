@@ -12,8 +12,15 @@
  * argSaver() // return 456
  * argSaver(789) // return undefined
  */
+//npm run test3
 function createPrevArgSaver() {
-  // write code here
-}
+  let num;
 
+  return function returnNum(number) {
+    const num2 = num;
+    num = number;
+
+    return num2;
+  };
+}
 module.exports = createPrevArgSaver;
