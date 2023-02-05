@@ -66,7 +66,7 @@ function clickButtonOriginal(event) {
 function clickButton(event) {
   console.dir(event.target);
   // alert('button clicked');
-} 
+}
 function showMovement(event) {
   console.log(event);
 }
