@@ -12,7 +12,7 @@ function isPangram(str) {
   const alfabet = 'abcdefghijklmnopqrstuvwxyz';
   // eslint-disable-next-line no-restricted-syntax
   for (const symb of alfabet) {
-    if (str.toLowerCase().includes(symb)) { /* empty */ } else {
+    if (!str.toLowerCase().includes(symb)) {
       return false;
     }
   }
