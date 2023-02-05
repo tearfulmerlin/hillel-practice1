@@ -16,7 +16,7 @@
 
 /**
  * Task 3 (button-links)
- * Create 2 buttons on the page.
+ * Create 2 buttons on the page with js
  * When clicking on the first button ask user to enter in prompt a url.
  * When clicking on the second button redirect to the that url.
  * Add protocol (http/https) if entered url doesn't contain one.
