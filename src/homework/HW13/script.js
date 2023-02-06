@@ -57,7 +57,7 @@ const users = [{
 let sum = 0;
 for (const user of users) {
     // обираємо або знак долару, або кому
-    const balance = parseFloat(user.balance.replace(/[$$,]+/g, ''));
+    const balance = parseFloat(user.balance.replace(/[$,]/g, ''));
     sum += balance;
     if (balance >= 2000) console.log(user.phone, user.balance);
 }
