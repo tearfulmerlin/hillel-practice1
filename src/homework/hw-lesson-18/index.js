@@ -1,11 +1,22 @@
 /**
  * Task 1 (focused-input)
  * When focusing on input show
- * span under the input with text message "focused".
+ * span under the input with text message 'focused'.
  *
  * When input lose the focus status
  * hide the span with text message.
  */
+
+const nameInput = document.getElementById('nameInput');
+const focusMessage = document.getElementById('focusMessage');
+
+nameInput.addEventListener('focus', () => {
+  focusMessage.innerHTML = 'focused';
+});
+
+nameInput.addEventListener('blur', () => {
+  focusMessage.innerHTML = '';
+});
 
 
 /**
@@ -13,6 +24,20 @@
  * Generate table 10x10 filled with numbers from 1 to 100.
  * Table should generate dynamicly.
  */
+const tableContainer = document.getElementById('tableContainer');
+
+let tableH = '<table>';
+for (let i = 1; i <= 10; i++) {
+  tableH += '<tr>';
+  for (let j = 1; j <= 10; j++) {
+    const number = (i - 1) * 10 + j;
+    tableH += `<td>${number}</td>`;
+  }
+  tableH += '</tr>';
+}
+tableH += '</table>';
+
+tableContainer.innerHTML = tableH;
 
 /**
  * Task 3 (button-links)
@@ -21,12 +46,42 @@
  * When clicking on the second button redirect to the that url.
  * Add protocol (http/https) if entered url doesn't contain one.
  * If user click on the second button before clicking on the first one
- * show message: "Please click on the first button"
+ * show message: 'Please click on the first button'
  */
+const button1 = document.getElementById('button1');
+const button2 = document.getElementById('button2');
+const message = document.getElementById('message');
+let url = '';
 
+button1.addEventListener('click', () => {
+  url = prompt('Enter a URL:');
+});
+
+button2.addEventListener('click', () => {
+  if (url === '') {
+    message.innerHTML = 'Please click on the first button';
+  } else {
+    if (!/^https?:\/\//i.test(url)) {
+      url = `http://${url}`;
+    }
+    window.location.href = url;
+  }
+});
 
 /**
  * Task 4 (random-pics)
- * Display pictures from "images" folder in a random order
+ * Display pictures from 'images' folder in a random order
  * (using Math.random)
  */
+
+const imagesContainer = document.getElementById('imagesContainer');
+
+// Function to display a random image from the given folder
+function displayRandomImage() {
+  const images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg'];
+  const randomIndex = Math.floor(Math.random() * images.length);
+  const image = images[randomIndex];
+  imagesContainer.innerHTML = `<img src='./images/${image}'>`;
+}
+
+displayRandomImage();
