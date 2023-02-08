@@ -6,7 +6,15 @@
  * @returns {Array}
  */
 
+function mapArr(arr, callback) {
+  const result = [];
 
-function mapArr(arr, callback) {}
+  // eslint-disable-next-line no-restricted-syntax
+  for (const elem of arr) {
+    result.push(callback(elem));
+  }
+
+  return result;
+}
 
 module.exports = mapArr;
