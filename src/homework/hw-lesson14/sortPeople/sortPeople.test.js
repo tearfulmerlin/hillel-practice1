@@ -32,7 +32,7 @@ describe('Sort by name', () => {
 describe('Sort by children quantity', () => {
   const sorted = sortByChildrenQuantity(people);
 
-  test('Initial array should not be changed', () => {
+  test('Initial array test:hw14-sort not be changed', () => {
     expect(sorted).not.toBe(people);
   });
   
