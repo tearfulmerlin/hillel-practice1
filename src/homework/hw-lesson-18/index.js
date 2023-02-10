@@ -6,6 +6,23 @@
  * When input lose the focus status
  * hide the span with text message.
  */
+const divInput = document.querySelector('.focused-input');
+const input = document.getElementById('nameInput');
+
+function insertFocus() {
+  const span = document.createElement('span');
+  span.innerText = 'focused';
+  divInput.appendChild(document.createElement('br'));
+  divInput.appendChild(span);
+}
+
+function remFocus() {
+  divInput.removeChild(document.querySelector('.focused-input').children[4]);
+  divInput.removeChild(document.querySelector('div.focused-input span'));
+}
+
+input.addEventListener('focus', insertFocus);
+input.addEventListener('blur', remFocus);
 
 
 /**
@@ -13,6 +30,28 @@
  * Generate table 10x10 filled with numbers from 1 to 100.
  * Table should generate dynamicly.
  */
+const divTabel = document.querySelector('.table');
+for (let i = 1; i <=100; i++) {
+  const cell = document.createElement('div');
+  cell.innerText = i;
+  divTabel.appendChild(cell);
+  cell.style.cssText = `
+  border: #000 solid 1px;
+  text-align: center;
+  font-size: 30px;
+`;
+}
+divTabel.style.cssText = `
+  display: grid;
+  grid-template-columns:auto auto auto auto auto auto auto auto auto auto;
+  grid-gap: 0px;
+`;
+
+document.querySelector('div.table p').style.cssText = `
+  grid-column: 1 / span 10;
+`;
+
+
 
 /**
  * Task 3 (button-links)
