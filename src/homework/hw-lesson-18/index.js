@@ -6,7 +6,24 @@
  * When input lose the focus status
  * hide the span with text message.
  */
+const divClass = document.querySelector('.focused-input');
+const br = document.createElement('br');
+divClass.appendChild(br);
+const span = document.createElement('span');
+span.innerHTML = 'focused';
+const input = document.querySelector('input');
+span.style.color = "red";
 
+function clickInput() {
+    divClass.appendChild(span);
+}
+
+function bluring() {
+    divClass.removeChild(span);
+}
+
+input.onclick = clickInput;
+input.onblur = bluring;
 
 /**
  * Task 2 (table)
