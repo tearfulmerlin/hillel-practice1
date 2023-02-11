@@ -34,31 +34,28 @@ const formName = 'sampleForm';
 
 
 const form = forms.sampleForm;
-console.dir([...new FormData(form).entries()]);
+
 form.username.value = 'John';
-// console.dir(form.username.value);
+
+// const formData = new FormData(form);
+
+// console.dir(formData.get('username'));
+// console.dir(formData.get('pwd'));
+// console.dir(formData.getAll('city'));
+// console.dir(formData.get('fav_lang'));
+// console.dir(formData.getAll('vehicle'));
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-  console.dir(event.target.username.value);
-  console.dir(event.target.pwd.value);
-  console.dir(event.target.favcolor.value);
+
+  const submitData = new FormData(event.target);
+
+  // console.dir(event.target.username.value);
+  // console.dir(event.target.pwd.value);
+  // console.dir(event.target.favcolor.value);
+  console.log(submitData.get('username'));
+  console.log(submitData.get('favcolor'));
+  console.log(submitData.getAll('city'));
+  console.log(submitData.get('fav_lang'));
+  console.log(submitData.getAll('vehicle'));
 });
-
-
-
-
-
-/** Створити форму для реєстрації
- * Поля:
- * User name
- * Date of birth
- * Sex(m/f)
- * City
- * Email
- * Password
- * Languages (en, ru, ua ...)
- * Button "save"
- *
- * При кілку на кнопку "save", вивести таблицю з даними під формою
- */
