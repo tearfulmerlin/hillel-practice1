@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="index.js" defer></script>
+  <title>Form elements</title>
+  <style>
+    .container {
+      width: 30%;
+      margin: 5% auto;
+      border-radius: 10px;
+      background-color: #2196f3;
+    }
+    form {
+      padding: 2em;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      color: #ffffff;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    label {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-size: 1.1em;
+      line-height: 2em;
+    }
+
+    .save{
+      display: block;
+      margin: 0 auto;
+      font-weight: 700;
+      font-size: 1.5em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <form id="regForm" action="#" method="post">
+      <h1>Registration Form</h1>
+      <label for="userName">User Name:</label>
+      <input type="text" name="username" id="username" placeholder="You name" /><br>
+      <label for="dateOfBirth">Date of Birth:</label>
+      <input type="date" name="dateOfBirth" id="dateOfBirth" /><br>
+      <label for="sex">Sex:</label>
+      <input type="radio" name="sex" value="m" id="sexM" />
+      <label for="sexM">Male</label>
+      <input type="radio" name="sex" value="f" id="sexF" />
+      <label for="sexF">Female</label>
+       <br>
+      <label for="city">City:</label>
+      <select name="city" id="city">
+        <option value="kyiv" selected>Kiyv city</option>
+        <option value="london"selected>London city</option>
+        <option value="ny">NY city</option>
+      </select>
+      <br>
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" /><br>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" /><br>
+      <label>Language:</label><br>
+      <input type="checkbox" id="english" name="english" value="en">
+      <label for="english">English</label><br>
+      <input type="checkbox" id="ukrainian" name="ukrainian" value="ua">
+      <label for="ukrainian">Ukrainian</label><br>
+      <input type="checkbox" id="russian" name="russian" value="ru">
+      <label for="russian">Russian</label><br>
+      <br><br>
+      <input class="save" type="submit" name="save" value="Save" />
+
+    </form>
+  </div>
+</body>
+
+</html>
