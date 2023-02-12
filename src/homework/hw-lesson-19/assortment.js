@@ -6,16 +6,25 @@ const assortment = [
         type: 'trade mark',
         title: 'iphone',
         children: [
-          { title: 'x' },
-          { title: '11' },
-          { title: '11 pro' },
+          {
+            type: 'model',
+            title: 'x',
+          },
+          {
+            type: 'model',
+            title: '11',
+          },
+          {
+            type: 'model',
+            title: '11 pro',
+          },
         ],
       },
       {
         type: 'trade mark',
         title: 'huawei',
         children: [
-          { 
+          {
             type: 'model',
             title: 'p20',
           },
