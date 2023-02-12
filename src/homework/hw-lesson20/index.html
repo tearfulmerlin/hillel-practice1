@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input forms</title>
+  <link rel="stylesheet" href="src/css/nice-select.css">
+  <link rel="stylesheet" href="src/css/style.css">
+
+  <script src="src/js/jquery.js"></script>
+  <script src="src/js/jquery.nice-select.min.js"></script>
+  <script src="src/js/script.js" defer></script>
+</head>
+
+<body>
+  <form action="#">
+    <h1>Hello! <p>Tell me about yourself!</p>
+    </h1>
+
+    <input type="text" id="userName" placeholder="Enter your name">
+    <div class="tip-pop-up birth-date">
+      <input type="date" id="userBirth" placeholder="Enter your name">
+    </div>
+
+    <div class="radio">
+      <input type="radio" name="sex" id="male" checked>
+      <label for="male">Male</label>
+
+      <input type="radio" name="sex" id="female">
+      <label for="female">Female</label>
+    </div>
+
+    <select name="city" id="userCity"></select>
+
+    <input type="email" placeholder="Input your email">
+    <input type="password" placeholder="Enter your password">
+
+    <div class="checkboxes">
+    </div>
+
+    <button type="submit" class="save-btn">Save!</button>
+    <button type="reset"></button>
+  </form>
+
+  <div class="table">
+    <table>
+      <thead>
+        <td>Name</td>
+        <td>Birth Date</td>
+        <td>Sex</td>
+        <td>City</td>
+        <td>Email</td>
+        <td>Password</td>
+        <td>Languages</td>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
+</html>
