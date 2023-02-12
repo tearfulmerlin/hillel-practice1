@@ -3,9 +3,11 @@ $(document).ready(() => {
   document.querySelector('tbody').innerHTML = '';
 });
 
+const users = [];
+
 function renderTable() {
   const tableBody = document.querySelector('tbody');
-  const lastUser = users[users.length - 1];
+  const lastUser = users.at(-1);
   const template = `<tr>
     <td>${lastUser.name}</td>
     <td>${lastUser.birthDate}</td>
@@ -13,18 +15,51 @@ function renderTable() {
     <td>${lastUser.city}</td>
     <td>${lastUser.email}</td>
     <td>${lastUser.password}</td>
-    <td>${lastUser.lang}</td>
+    <td>${lastUser.langs.join(', ')}</td>
   </tr>`;
   tableBody.innerHTML += template;
 }
-function CreateUser(name, birthDate, sex, city, email, password, lang) {
+function CreateUser({
+  name,
+  birthDate,
+  sex,
+  city,
+  email,
+  password,
+  langs,
+}) {
   this.name = name;
   this.birthDate = birthDate;
   this.sex = sex;
   this.city = city;
   this.email = email;
   this.password = password;
-  this.lang = lang;
+  this.langs = langs;
+}
+function validation(form, langs) {
+  let isCorrect = true;
+
+  for (const el of form) {
+    if (el.type === 'checkbox') {
+      el.checked ? langs.push(el.id) : null;
+    }
+
+    if (el.type !== 'radio' && el.type !== 'checkbox' && el.localName !== 'button') {
+      if (el.value === '') {
+        isCorrect = false;
+        el.classList.add('error');
+        console.log('error:', el);
+      }
+
+      if (el.type === 'email' && !el.value.includes('@')) {
+        isCorrect = false;
+        el.classList.add('error');
+        console.log('error:', el);
+      }
+    }
+  }
+
+  return isCorrect;
 }
 
 const cities = ['Kharkiv', 'Kyiv', 'Lviv', 'Nikolaev', 'Ternopyl', 'Dnipro'];
@@ -55,44 +90,32 @@ for (const el of langsDefault) {
   langArea.appendChild(label);
 }
 
-const users = [];
-
 document.querySelector('.save-btn').addEventListener('click', (e) => {
   e.preventDefault();
-  const forms = document.forms[0];
-  let isCorrect = true;
+  const form = document.forms[0];
   const langs = [];
 
-  for (const el of forms) {
-    if (el.type === 'checkbox') {
-      el.checked ? langs.push(el.id) : null;
-    }
-
-    if (el.type !== 'radio' && el.type !== 'checkbox' && el.localName !== 'button') {
-      if (el.value === '') {
-        isCorrect = false;
-        el.classList.add('error');
-        console.log('error:', el);
-      }
-
-      if (el.type === 'email' && !el.value.includes('@')) {
-        isCorrect = false;
-        el.classList.add('error');
-        console.log('error:', el);
-      }
-    }
-  }
-
-  if (isCorrect) {
-    const name = forms[0].value;
-    const birthDate = forms[1].value;
-    const sex = forms[2].checked ? 'Male' : 'Female';
-    const city = forms[4].value;
-    const email = forms[5].value;
-    const password = forms[6].value;
+  if (validation(form, langs)) {
+    const name = form[0].value;
+    const birthDate = form[1].value;
+    const sex = form[2].checked ? 'Male' : 'Female';
+    const city = form[4].value;
+    const email = form[5].value;
+    const password = form[6].value;
     document.querySelector('[type="reset"]').click();
 
-    const user = new CreateUser(name, birthDate, sex, city, email, password, langs.join(', '));
+    console.log(langs);
+    const user = new CreateUser({
+      name,
+      birthDate,
+      sex,
+      city,
+      email,
+      password,
+      langs,
+    });
+    console.log(user);
+
     users.push(user);
     renderTable();
   }
