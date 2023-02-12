@@ -1,22 +1,46 @@
-$(document).ready(function () {
+$(document).ready(() => {
   $('select').niceSelect();
   document.querySelector('tbody').innerHTML = '';
 });
 
+function renderTable() {
+  const tableBody = document.querySelector('tbody');
+  const lastUser = users[users.length - 1];
+  const template = `<tr>
+    <td>${lastUser.name}</td>
+    <td>${lastUser.birthDate}</td>
+    <td>${lastUser.sex}</td>
+    <td>${lastUser.city}</td>
+    <td>${lastUser.email}</td>
+    <td>${lastUser.password}</td>
+    <td>${lastUser.lang}</td>
+  </tr>`;
+  tableBody.innerHTML += template;
+}
+function CreateUser(name, birthDate, sex, city, email, password, lang) {
+  this.name = name;
+  this.birthDate = birthDate;
+  this.sex = sex;
+  this.city = city;
+  this.email = email;
+  this.password = password;
+  this.lang = lang;
+}
+
 const cities = ['Kharkiv', 'Kyiv', 'Lviv', 'Nikolaev', 'Ternopyl', 'Dnipro'];
 
-const city = document.querySelector('#userCity');
+const cityField = document.querySelector('#userCity');
 for (const el of cities) {
   const option = document.createElement('option');
   option.value = el.toLowerCase();
   option.innerText = el;
-  city.appendChild(option);
+  cityField.appendChild(option);
 }
 
-const langs = ['ru', 'en', 'ua', 'fr', 'deu'];
+const langsDefault = ['ru', 'en', 'ua', 'fr', 'deu'];
 
 const langArea = document.querySelector('.checkboxes');
-for (const el of langs) {
+for (const el of langsDefault) {
   const label = document.createElement('label');
   label.setAttribute('for', el);
   label.innerText = el.toUpperCase();
@@ -52,7 +76,7 @@ document.querySelector('.save-btn').addEventListener('click', (e) => {
       }
 
       if (el.type === 'email' && !el.value.includes('@')) {
-        isCorrect = false
+        isCorrect = false;
         el.classList.add('error');
         console.log('error:', el);
       }
@@ -68,33 +92,8 @@ document.querySelector('.save-btn').addEventListener('click', (e) => {
     const password = forms[6].value;
     document.querySelector('[type="reset"]').click();
 
-    const user = new createUser(name, birthDate, sex, city, email, password, langs.join(', '));
+    const user = new CreateUser(name, birthDate, sex, city, email, password, langs.join(', '));
     users.push(user);
     renderTable();
   }
 });
-
-function renderTable() {
-  const tableBody = document.querySelector('tbody');
-  const lastUser = users[users.length - 1];
-  const template = `<tr>
-    <td>${lastUser.name}</td>
-    <td>${lastUser.birthDate}</td>
-    <td>${lastUser.sex}</td>
-    <td>${lastUser.city}</td>
-    <td>${lastUser.email}</td>
-    <td>${lastUser.password}</td>
-    <td>${lastUser.lang}</td>
-  </tr>`;
-  tableBody.innerHTML += template;
-}
-
-function createUser(name, birthDate, sex, city, email, password, lang) {
-  this.name = name;
-  this.birthDate = birthDate;
-  this.sex = sex;
-  this.city = city;
-  this.email = email;
-  this.password = password;
-  this.lang = lang;
-}
