@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="index.js" defer></script>
+  <style>
+    div {
+      margin-top: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <form name="sampleForm" action="#part2" id="sampleForm">
+    <div>
+      <!-- * User name -->
+      <label for="username">User name:</label><br>
+      <input type="text" id="username" name="username">
+    </div>
+    <div>
+      <!-- * Date of birth -->
+      <label for="birthday">Date of birth:</label><br>
+      <input type="date" id="birthday" name="birthday">
+    </div>
+    <div>
+      <!-- * Sex(m/f) -->
+      Sex:<br>
+      <input type="radio" id="sex-male" name="sex" value="m" checked>
+      <label for="sex-male">male</label><br>
+      <input type="radio" id="sex-female" name="sex" value="f">
+      <label for="sex-female">female</label>
+    </div>
+    <div>
+      <!-- * City -->
+      <label for="city">City:</label><br>
+      <select name="city" id="city">
+        <option value="kyiv" selected>Kiyv</option>
+        <option value="donetsk">Donetsk</option>
+        <option value="kharkiv">Kharkiv</option>
+        <option value="herson">Kherson</option>
+        <option value="odesa">Odesa</option>
+        <option value="dnipro">Dnipro</option>
+        <option value="luhansk">Luhansk</option>
+        <option value="lviv">Lviv</option>
+      </select>
+    </div>
+    <div>
+      <!-- * Email -->
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email">
+    </div>
+    <div>
+      <!-- * Password -->
+      <label for="pwd">Password:</label><br>
+      <input type="password" id="pwd" name="pwd">
+      <input type='button' id="show-pwd" value='Show password'>
+    </div>
+    <div>
+      <!-- * Languages (en, ru, ua ...) -->
+      Languages:<br>
+      <input type="checkbox" id="language_ua" name="language" value="ua">
+      <label for="language_ua">Ukrainian</label><br>
+      <input type="checkbox" id="language_en" name="language" value="en">
+      <label for="language_en">English</label><br>
+      <input type="checkbox" id="language_ru" name="language" value="ru">
+      <label for="language_ru">Russian</label>
+    </div>
+    <div>
+      <hr>
+      <input type="submit" value="Save">
+    </div>
+  </form>
+  <br>
+  <div class="form-result"></div>
+</body>
+
+</html>
