@@ -52,7 +52,8 @@ function renderColumn(col, list) {
         product.addEventListener('click', function() {
           const marks = document.querySelector('.trade-mark .active');
           alert(`You bought ${marks.textContent} ${this.textContent}!`);
-          clearAllNeighbours(document.querySelector('.col').nextElementSibling);  
+          clearAllNeighbours(document.querySelector('.col').nextElementSibling);
+          removeActiveClasses(document.querySelector('.products'));
         });
       }
     }
