@@ -12,39 +12,6 @@
  * При кліку на кнопку "save", вивести таблицю з даними під формою
  */
 
-/** Створити форму для реєстрації
- * Поля:
- * User name
- * Date of birth
- * Sex(m/f)
- * City
- * Email
- * Password
- * Languages (en, ru, ua ...)
- * Button "save"
- *
- * При кілку на кнопку "save", вивести таблицю з даними під формою
- */
-// const user = document.querySelector('input.user');
-// const city = document.querySelector('input.city');
-// const email = document.querySelector('input.email');
-// const date = document.querySelector('input.date');
-// // const sex = document.querySelector('input.sex');
-// // const password = document.querySelector('input.password');
-// const languages = document.querySelector('input.languages');
-//
-// const button = document.querySelector('button');
-// const arr = [];
-//
-// button.addEventListener('click', () => {
-//   arr.push(user.value, city.value, email.value, date.value, languages.value);
-//   console.log(arr);
-//   const userInfo = document.createElement('p');
-//   document.body.appendChild(userInfo);
-//   userInfo.textContent = arr;
-// });
-
-
 const formElement = document.getElementById('form');
 
 
