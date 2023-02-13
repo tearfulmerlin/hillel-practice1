@@ -14,6 +14,7 @@
       border-radius: 10px;
       background-color: #2196f3;
     }
+
     form {
       padding: 2em;
     }
@@ -31,11 +32,23 @@
       line-height: 2em;
     }
 
-    .save{
+    .save {
       display: block;
       margin: 0 auto;
       font-weight: 700;
       font-size: 1.5em;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-gap: 3px;
+      padding: 2em;
+    }
+
+    .cell {
+      border: #000 solid 1px;
+      padding: 5px;
     }
   </style>
 </head>
@@ -45,19 +58,19 @@
     <form id="regForm" action="#" method="post">
       <h1>Registration Form</h1>
       <label for="userName">User Name:</label>
-      <input type="text" name="username" id="username" placeholder="You name" /><br>
+      <input type="text" name="userName" id="userName" placeholder="You name" /><br>
       <label for="dateOfBirth">Date of Birth:</label>
       <input type="date" name="dateOfBirth" id="dateOfBirth" /><br>
       <label for="sex">Sex:</label>
-      <input type="radio" name="sex" value="m" id="sexM" />
+      <input type="radio" name="sex" value="male" id="sexM" />
       <label for="sexM">Male</label>
-      <input type="radio" name="sex" value="f" id="sexF" />
+      <input type="radio" name="sex" value="female" id="sexF" />
       <label for="sexF">Female</label>
-       <br>
+      <br>
       <label for="city">City:</label>
       <select name="city" id="city">
         <option value="kyiv" selected>Kiyv city</option>
-        <option value="london"selected>London city</option>
+        <option value="london" selected>London city</option>
         <option value="ny">NY city</option>
       </select>
       <br>
@@ -65,15 +78,17 @@
       <input type="email" name="email" id="email" /><br>
       <label for="password">Password:</label>
       <input type="password" name="password" id="password" /><br>
-      <label>Language:</label><br>
-      <input type="checkbox" id="english" name="english" value="en">
-      <label for="english">English</label><br>
-      <input type="checkbox" id="ukrainian" name="ukrainian" value="ua">
-      <label for="ukrainian">Ukrainian</label><br>
-      <input type="checkbox" id="russian" name="russian" value="ru">
-      <label for="russian">Russian</label><br>
+      <fieldset>
+        <legend>Language:</legend>
+        <input type="checkbox" id="english" name="english" value="yes">
+        <label for="english">English</label><br>
+        <input type="checkbox" id="ukrainian" name="ukrainian" value="yes">
+        <label for="ukrainian">Ukrainian</label><br>
+        <input type="checkbox" id="russian" name="russian" value="yes">
+        <label for="russian">Russian</label>
+      </fieldset>
       <br><br>
-      <input class="save" type="submit" name="save" value="Save" />
+      <input class="save" type="submit" name="save" value="Save" id="save"/>
 
     </form>
   </div>
