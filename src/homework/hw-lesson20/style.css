@@ -1,0 +1,81 @@
+* {box-sizing: border-box}
+
+body {
+
+  font-family: sans-serif;
+  background-color:#141e30 ;
+}
+
+.container {
+  color: #dddddd;
+  padding: 50px;
+  width: 50%;
+
+}
+
+input[type=text],
+input[type=date],
+input[type=email],
+select,
+input[type=password] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  background: #f1f1f1;
+  opacity: 0.5;
+}
+
+input[type=text]:focus,
+input[type=date]:focus,
+input[type=email]:focus,
+input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+  opacity: 1.0;
+}
+
+.select {
+  font-size: 15px;
+
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+
+}
+
+.button {
+  background-color: #243B55FF;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 20px;
+  opacity: 0.5;
+}
+
+.button:hover {
+  background-color: chartreuse;
+}
+
+table{
+  background-color: #f1f1f1;
+  opacity: 0.5;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-radius: 10px;
+  margin-left: 50px;
+  width: 520px;
+}
+th, td{
+  padding: 10px 20px;
+  border: 1px solid #000;
+}
