@@ -1,9 +1,11 @@
-* {box-sizing: border-box}
+* {
+  box-sizing: border-box
+}
 
 body {
 
   font-family: sans-serif;
-  background-color:#141e30 ;
+  background-color: #141e30;
 }
 
 .container {
@@ -66,7 +68,7 @@ hr {
   background-color: chartreuse;
 }
 
-table{
+table {
   background-color: #f1f1f1;
   opacity: 0.5;
   border-collapse: collapse;
@@ -75,7 +77,8 @@ table{
   margin-left: 50px;
   width: 520px;
 }
-th, td{
+
+th, td {
   padding: 10px 20px;
   border: 1px solid #000;
 }
