@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todoist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="tasks">
+      <div class="progress-bar">
+        <div class="slider"></div>
+      </div>
+      <div class="slider-counter">0/0</div>
+      <ul>
+      </ul>
+    </div>
+    <div class="creator">
+      <textarea class="input" placeholder="Type task here..."></textarea>
+      <button class="add-task">+ Add task!</button>
+      <div class="control-panel">
+        <button id="showAll" class="selected">Show All</button>
+        <button id="showCompl">Show Complete</button>
+        <button id="showIncompl">Show Incomplete</button>
+        <button id="deleteCompl" class="disable">Delete All Completed</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

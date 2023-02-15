@@ -1,0 +1,193 @@
+:root {
+    --main-blue-color: #11111d;
+    --secondary-blue-color: #191933;
+    --light-blue-color: #3d3da8;
+    --lighter-blue-color: #5d5dfa;
+    --white-color: #fff;
+    --purple-color: #ab47bc;
+    --light-purple-color: #df78ef;
+    --red-color: rgb(168, 33, 33);
+
+    --font-family: 'Inconsolata';
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--white-color);
+    font-family: var(--font-family);
+}
+
+body {
+    min-height: 98vh;
+    background: var(--main-blue-color);
+}
+
+.container {
+    padding: 30px 20px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+}
+
+.tasks {
+    width: 60%;
+    margin-right: 20px;
+    font-size: 25px;
+    position: relative;
+}
+
+.tasks ul {
+    list-style-type: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.tasks ul li {
+    width: 100%;
+    padding: 15px 40px;
+    background: var(--secondary-blue-color);
+    margin-top: 20px;
+    border-radius: 10px;
+    user-select: none;
+    position: relative;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"] + label {
+    cursor: pointer;
+}
+
+input[type="checkbox"] + label::before {
+    content: "✓";
+    width: 20px;
+    color: #ffffff00;
+    height: 20px;
+    border: 2px solid var(--light-blue-color);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    left: 8px;
+    top: 50%;
+    transform: translate(0, -50%);
+    transition: .3s;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked + label::before {
+    color: var(--white-color);
+}
+
+input[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+}
+
+.trash {
+    position: absolute;
+    opacity: 1;
+    transition: .3s;
+    top: 50%;
+    right: 8px;
+    transform: translate(0, -50%);
+    width: 25px;
+    height: 25px;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.0001 2C19.3546 2 18.0001 3.35455 18.0001 5V7H10.1544C10.0982 6.99061 10.0414 6.98604 9.98446 6.98633C9.93601 6.98738 9.88771 6.99195 9.83993 7H8.00008C7.86757 6.99813 7.73601 7.02261 7.61304 7.07202C7.49007 7.12143 7.37815 7.1948 7.28378 7.28784C7.18941 7.38088 7.11447 7.49176 7.06333 7.61401C7.01218 7.73627 6.98584 7.86747 6.98584 8C6.98584 8.13253 7.01218 8.26373 7.06333 8.38599C7.11447 8.50824 7.18941 8.61912 7.28378 8.71216C7.37815 8.8052 7.49007 8.87857 7.61304 8.92798C7.73601 8.97739 7.86757 9.00187 8.00008 9H9.00008V45C9.00008 46.6455 10.3546 48 12.0001 48H38.0001C39.6455 48 41.0001 46.6455 41.0001 45V9H42.0001C42.1326 9.00187 42.2642 8.97739 42.3871 8.92798C42.5101 8.87857 42.622 8.8052 42.7164 8.71216C42.8108 8.61912 42.8857 8.50824 42.9368 8.38599C42.988 8.26373 43.0143 8.13253 43.0143 8C43.0143 7.86747 42.988 7.73627 42.9368 7.61401C42.8857 7.49176 42.8108 7.38088 42.7164 7.28784C42.622 7.1948 42.5101 7.12143 42.3871 7.07202C42.2642 7.02261 42.1326 6.99813 42.0001 7H40.1681C40.0601 6.98215 39.9499 6.98215 39.8419 7H32.0001V5C32.0001 3.35455 30.6455 2 29.0001 2H21.0001ZM21.0001 4H29.0001C29.5546 4 30.0001 4.44545 30.0001 5V7H20.0001V5C20.0001 4.44545 20.4455 4 21.0001 4ZM11.0001 9H18.8321C18.9401 9.01785 19.0503 9.01785 19.1583 9H30.8321C30.9401 9.01785 31.0503 9.01785 31.1583 9H39.0001V45C39.0001 45.5545 38.5546 46 38.0001 46H12.0001C11.4455 46 11.0001 45.5545 11.0001 45V9ZM18.9845 13.9863C18.7196 13.9905 18.4672 14.0995 18.2826 14.2896C18.0981 14.4796 17.9965 14.7351 18.0001 15V40C17.9982 40.1325 18.0227 40.2641 18.0721 40.387C18.1215 40.51 18.1949 40.6219 18.2879 40.7163C18.381 40.8107 18.4918 40.8856 18.6141 40.9368C18.7364 40.9879 18.8676 41.0142 19.0001 41.0142C19.1326 41.0142 19.2638 40.9879 19.3861 40.9368C19.5083 40.8856 19.6192 40.8107 19.7122 40.7163C19.8053 40.6219 19.8786 40.51 19.9281 40.387C19.9775 40.2641 20.002 40.1325 20.0001 40V15C20.0019 14.8662 19.9769 14.7334 19.9265 14.6095C19.8761 14.4855 19.8013 14.373 19.7066 14.2784C19.6119 14.1839 19.4992 14.1094 19.3751 14.0592C19.2511 14.009 19.1182 13.9842 18.9845 13.9863ZM24.9845 13.9863C24.7196 13.9905 24.4672 14.0995 24.2826 14.2896C24.0981 14.4796 23.9965 14.7351 24.0001 15V40C23.9982 40.1325 24.0227 40.2641 24.0721 40.387C24.1215 40.51 24.1949 40.6219 24.2879 40.7163C24.381 40.8107 24.4918 40.8856 24.6141 40.9368C24.7364 40.9879 24.8676 41.0142 25.0001 41.0142C25.1326 41.0142 25.2638 40.9879 25.3861 40.9368C25.5083 40.8856 25.6192 40.8107 25.7122 40.7163C25.8053 40.6219 25.8786 40.51 25.9281 40.387C25.9775 40.2641 26.002 40.1325 26.0001 40V15C26.0019 14.8662 25.9769 14.7334 25.9265 14.6095C25.8761 14.4855 25.8013 14.373 25.7066 14.2784C25.6119 14.1839 25.4992 14.1094 25.3751 14.0592C25.2511 14.009 25.1182 13.9842 24.9845 13.9863ZM30.9845 13.9863C30.7196 13.9905 30.4672 14.0995 30.2826 14.2896C30.0981 14.4796 29.9965 14.7351 30.0001 15V40C29.9982 40.1325 30.0227 40.2641 30.0721 40.387C30.1215 40.51 30.1949 40.6219 30.2879 40.7163C30.381 40.8107 30.4918 40.8856 30.6141 40.9368C30.7364 40.9879 30.8676 41.0142 31.0001 41.0142C31.1326 41.0142 31.2638 40.9879 31.3861 40.9368C31.5083 40.8856 31.6192 40.8107 31.7122 40.7163C31.8053 40.6219 31.8786 40.51 31.9281 40.387C31.9775 40.2641 32.002 40.1325 32.0001 40V15C32.0019 14.8662 31.9769 14.7334 31.9265 14.6095C31.8761 14.4855 31.8013 14.373 31.7066 14.2784C31.6119 14.1839 31.4992 14.1094 31.3751 14.0592C31.2511 14.009 31.1182 13.9842 30.9845 13.9863Z' fill='%233D3DA8'/%3E%3C/svg%3E");
+}
+
+.progress-bar {
+    border-radius: 5px;
+    width: 100%;
+    height: 8px;
+    position: relative;
+    overflow: hidden;
+    background: var(--secondary-blue-color);
+}
+
+.slider {
+    transition: .3s;
+    height: 100%;
+    width: 0;
+    background: var(--light-blue-color);
+}
+
+.slider-counter {
+    position: absolute;
+    transition: .5s;
+    opacity: 1;
+    left: 0;
+    top: -20px;
+    font-size: 20px;
+}
+
+.creator {
+    width: 40%;
+    padding: 15px;
+    border-radius: 10px;
+    background: var(--secondary-blue-color);
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.input {
+    resize: none;
+    background: none;
+    border: 4px solid var(--light-blue-color);
+    border-radius: 5px;
+    width: 100%;
+    padding: 5px 10px;
+    transition: .3s;
+    margin-bottom: 5px;
+}
+
+.input.error,
+.input.error:focus {
+    border-color: var(--red-color);
+}
+
+.input:focus {
+    outline: none;
+    border: 4px solid var(--lighter-blue-color);
+}
+
+.add-task,
+.control-panel button {
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    background: var(--light-blue-color);
+    padding: 5px 10px;
+    font-size: 15px;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.add-task:hover,
+.control-panel button:hover,
+.control-panel .selected {
+    background: var(--lighter-blue-color);
+}
+
+.control-panel {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.control-panel .disable {
+    cursor: not-allowed;
+}
