@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,6 +20,7 @@
       border: 1px solid;
       padding: 0 5px;
     }
+
     .col h3 {
       margin: 0;
     }
@@ -33,12 +35,45 @@
     .products div,
     .trade-mark div,
     .model div {
-      padding:5px 0;
+      padding: 5px 0;
     }
 
+    .result-buy {
+      width: 400px;
+      margin-top: 150px;
+      margin-left: 300px;
+      border: 1px solid gray;
+      text-align: center;
+      font-size: 25px;
+      font-weight: 400;
+    }
+
+    .prod {
+      color: rgb(24, 255, 24);
+      text-shadow: 0px 0px 0px 10px black;
+      font-size: 30px;
+    }
+
+    .delete {
+      width: 80px;
+      height: 40px;
+      background-color: transparent;
+      color: red;
+      margin-top: 20px;
+      border-radius: 20px;
+      text-align: center;
+      transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    }
+
+    .delete:hover {
+      color: white;
+      box-shadow: 0 0 40px 40px #e74c3c inset;
+    }
   </style>
 </head>
+
 <body>
+
   <h1>Tech shop</h1>
   <div class="shop">
     <div class="col">
@@ -49,13 +84,23 @@
     <div class="col">
       <h3>Trade marks</h3>
       <div class="trade-mark">
+      </div>
     </div>
-  </div>
     <div class="col">
       <h3>Models</h3>
       <div class="model"></div>
     </div>
   </div>
+
+  <div class="result-buy">
+    <p>Your purchase
+    <p>
+      <hr>
+    <div class="prod" id="res"></div>
+    <button class="delete">Cancel !!!</button>
+  </div>
+
   <script type="module" src="./index.js"></script>
 </body>
+
 </html>
