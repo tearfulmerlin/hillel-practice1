@@ -39,15 +39,12 @@ function sortByName(arr) {
 
 /** Sort by children quantity */
 function sortByChildrenQuantity(arr) {
-  const parents = arr.filter((parent) => {
-    const children = arr.filter((child) => parent.name === child.father
-    || parent.name === child.mother);
-    console.log(children.sort((a, b) => a.length - b.length));
+  return [...arr].sort((a, b) => {
+    const childA = arr.filter((parent) => parent.father === a.name || parent.mother === a.name);
+    const childB = arr.filter((parent) => parent.father === b.name || parent.mother === b.name);
 
-    return children.sort((a, b) => b.length - a.length);
+    return childA.length - childB.length;
   });
-
-  return parents;
 }
 
 module.exports = {
