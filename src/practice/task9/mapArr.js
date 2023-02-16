@@ -7,6 +7,11 @@
  */
 
 
-function mapArr(arr, callback) {}
+function mapArr(arr, callback) {
+  const mapedArr = [];
+  arr.forEach((element) => mapedArr.push(callback(element)));
+
+  return mapedArr;
+}
 
 module.exports = mapArr;
