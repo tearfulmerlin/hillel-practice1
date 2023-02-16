@@ -7,7 +7,14 @@
  */
 
 function isPangram(str) {
-  /* write code here */
+  if (typeof str !== 'string') return false;
+  const testA = 'abcdefghijklmnopqrstuvwxyz'
+  for(const ch of testA){
+    if(str.toLowerCase().indexOf(ch) === -1) return false
+  }
+  return true
 }
-
 module.exports = isPangram;
+
+
+
