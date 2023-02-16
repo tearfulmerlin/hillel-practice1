@@ -7,7 +7,14 @@
  */
 
 function isPangram(str) {
-  /* write code here */
+  if (typeof str === 'string' && str.length !== 0) {
+    const strArr = Array.from(new Set(str.toLowerCase().replace(/[^a-zA-Z]/g, '').split('')));
+    if (strArr.length === 26) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 module.exports = isPangram;
