@@ -7,7 +7,23 @@
  */
 
 function isPangram(str) {
-  /* write code here */
+
+  if (typeof str !== 'string') {
+
+    return false;
+  };
+
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const lowercase = str.toLowerCase();
+
+  for (let i = 0; i < alphabet.length; i++) {
+    if (lowercase.indexOf(alphabet[i]) === -1) {
+
+      return false;
+    }
+  }
+
+  return true;
 }
 
 module.exports = isPangram;
