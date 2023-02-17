@@ -1,11 +1,18 @@
-let store = [
-  { title: 'todo', id: 1, done: true },
-  { title: 'remove', id: 2, done: false },
-];
+// let store = [
+//   { title: 'todo', id: 1, done: true },
+//   { title: 'remove', id: 2, done: false },
+// ];
 
+let store = [];
 
 const input = document.querySelector('input');
 const list = document.querySelector('ul');
+
+function showCounter() {
+  const uncompleted = store.filter((item) => !item.done).length;
+  const counter = document.getElementById('counter');
+  counter.textContent = `${uncompleted} task left`;
+}
 
 function renderItems(data) {
   list.innerHTML = '';
@@ -18,9 +25,9 @@ function renderItems(data) {
       </li>
     `;
   });
+  showCounter();
 }
 
-// intial load
 renderItems(store);
 
 function generateId() {
@@ -58,12 +65,12 @@ document.querySelector('#controls').addEventListener('click', (event) => {
     renderItems(store);
   }
   if (event.target.id === 'active') {
-    const filtred = store.filter((item) => !item.done);
-    renderItems(filtred);
+    const filtered = store.filter((item) => !item.done);
+    renderItems(filtered);
   }
   if (event.target.id === 'completed') {
-    const filtred = store.filter((item) => item.done);
-    renderItems(filtred);
+    const filtered = store.filter((item) => item.done);
+    renderItems(filtered);
   }
   if (event.target.id === 'clear') {
     store = store.filter((item) => !item.done);
