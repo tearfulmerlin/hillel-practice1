@@ -1,6 +1,5 @@
 const list = [];
 
-
 const input = document.querySelector('.input');
 const addTaskBtn = document.querySelector('.add-task');
 const taskList = document.querySelector('.tasks ul');
