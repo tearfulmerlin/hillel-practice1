@@ -7,6 +7,15 @@ let store = [
 const input = document.querySelector('input');
 const list = document.querySelector('ul');
 
+// HW tasks counter
+
+function updateCounter(store) {
+  const uncompleted = store.filter((item) => !item.done).length;
+  const counter = document.getElementById('counter');
+  counter.textContent = `${uncompleted} task left`;
+}
+
+
 function renderItems(data) {
   list.innerHTML = '';
 
@@ -18,6 +27,7 @@ function renderItems(data) {
       </li>
     `;
   });
+  updateCounter(data);
 }
 
 // intial load
