@@ -1,37 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lesson 21 - Todo App</title>
-  <style>
-    body {
-      font-size: 1.3em;
-    }
-    input {
-      font-size: 1.4rem;
-    }
-    .done {
-      text-decoration: line-through;
-    }
-  </style>
+
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./style.css">
+	<title>
+		ToDo
+	</title>
+
 </head>
 <body>
-  <h1>Lesson 21 - Todo App</h1>
-  <div id="todo-body">
-    <label for="todo">TODO</label>
-    <br>
-    <input type="text" id="todo">
-    <ul>
-    </ul>
-    <div id="controls">
-      <button id="all">All</button>
-      <button id="active">Active</button>
-      <button id="completed">Completed</button>
-      <button id="clear">Clear completed</button>
-    </div>
-  </div>
-  <script src="./index.js" type="module"></script>
+	
+	<header>
+		<h1>
+			ToDo List
+		</h1>
+	</header>
+
+	<form action="#">
+
+		<input type="text" class="todo-input" />
+		<button class="todo-button">
+			<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+				<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+				<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+			  </svg>
+		</button>
+
+	</form>
+
+	<div class="todo-container">
+		<ul class="todo-list"></ul>
+	</div>
+
+	<div class="select">
+
+		<select name="todos" class="filter-todo">
+            <option value="all">All</option>
+			<option value="completed">Completed</option>
+			<option value="uncompleted">Uncompleted</option>
+		</select>
+
+	</div>
+
+	<div class="count"></div>
+	
+	<script src="./index.js">
+	</script>
+
 </body>
 </html>
