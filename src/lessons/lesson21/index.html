@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lesson 21 - Todo App</title>
-  <style>
-    body {
-      font-size: 1.3em;
-    }
-    input {
-      font-size: 1.4rem;
-    }
-    .done {
-      text-decoration: line-through;
-    }
-  </style>
+  <link rel="stylesheet" href="src/style.css">
 </head>
+
 <body>
   <h1>Lesson 21 - Todo App</h1>
+  <h2 class="title">todos</h2>
   <div id="todo-body">
-    <label for="todo">TODO</label>
-    <br>
-    <input type="text" id="todo">
-    <ul>
-    </ul>
+    <div class="todo-input">
+      <input type="text" id="todo" maxlength="50" placeholder="What needs to be done?">
+      <div class="todo-list">
+        <ul></ul>
+      </div>
+    </div>
     <div id="controls">
-      <button id="all">All</button>
-      <button id="active">Active</button>
-      <button id="completed">Completed</button>
-      <button id="clear">Clear completed</button>
+      <div>
+        <span id="counter"></span>
+      </div>
+      <div>
+        <button id="all" class="active" disabled>All</button>
+        <button id="active">Active</button>
+        <button id="completed">Completed</button>
+      </div>
+      <div>
+        <button id="clear">Clear completed</button>
+      </div>
     </div>
   </div>
-  <script src="./index.js" type="module"></script>
+  <script src="src/index.js" type="module"></script>
 </body>
+
 </html>
