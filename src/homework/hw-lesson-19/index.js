@@ -11,3 +11,31 @@ import assortment from './assortment.js';
  * і повернення в початковий стан (коли відображється тільки список категорій)
  *
  */
+
+
+const products = document.querySelector('.products');
+let tradeMark = document.querySelector('.trade-mark');
+let model = document.querySelector('.model');
+
+function showContent(list, container) {
+  list.forEach((item) => {
+    const categoryElement = document.createElement('div');
+    categoryElement.innerText = item.title;
+    categoryElement.addEventListener('click', () => {
+      if (item.type === undefined) {
+        showContent(item.children, tradeMark);
+      }
+      if (item.type === 'trade mark') {
+        showContent(item.children, model);
+      }
+      if (item.type === 'model') {
+        alert(`${item.title} куплений`);
+        tradeMark.innerText = '';
+        model.innerText = '';
+      }
+    });
+    container.appendChild(categoryElement);
+  });
+}
+
+showContent(assortment, products);
