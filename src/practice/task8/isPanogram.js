@@ -7,7 +7,17 @@
  */
 
 function isPangram(str) {
-  /* write code here */
+  if (typeof str !== 'string') return false;
+
+  const alfabet = 'abcdefghijklmnopqrstuvwxyz';
+  // eslint-disable-next-line no-restricted-syntax
+  for (const symb of alfabet) {
+    if (!str.toLowerCase().includes(symb)) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 module.exports = isPangram;
