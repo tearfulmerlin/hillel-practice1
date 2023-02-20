@@ -17,6 +17,7 @@
     "test:hw14-filter": "jest src/homework/hw-lesson14/filterPeople",
     "test:hw14-sort": "jest src/homework/hw-lesson14/sortPeople",
     "test:hw14-reverse": "jest src/homework/hw-lesson14/reverseString",
+    "test:hw22": "jest src/homework/hw-lesson22",
     "lint5": "npx eslint src/**",
     "#prepare": "husky install",
     "prepare": "npx eslint src/**"
