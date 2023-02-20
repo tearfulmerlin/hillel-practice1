@@ -16,9 +16,6 @@ test('There should be 17 doughters with one of parrents', () => {
 });
 
 test('9th doughter\'s name should be Jacoba Lammens', () => {
-  console.log({a: 
-    people.filter((p) => p.sex === 'f' && (p.father || p.mother))?.[8]?.name
-  })
   expect(people.filter((p) => p.sex === 'f' && (p.father || p.mother))?.[8]?.name).toBe('Jacoba Lammens');
 });
 
