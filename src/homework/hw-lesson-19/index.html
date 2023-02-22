@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech shop</title>
+  <style>
+    .shop,
+    .products,
+    .trade-mark,
+    .model {
+      display: flex;
+    }
+
+    .col {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid;
+      padding: 0 5px;
+    }
+    .col h3 {
+      margin: 0;
+    }
+
+    .products,
+    .trade-mark,
+    .model {
+      flex-direction: column;
+      padding: 0px 10px;
+    }
+
+    .products div,
+    .trade-mark div,
+    .model div {
+      padding:5px 0;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Tech shop</h1>
+  <div class="shop">
+    <div class="col">
+      <h3>Products</h3>
+      <div class="products">
+      </div>
+    </div>
+    <div class="col">
+      <h3>Trade marks</h3>
+      <div class="trade-mark">
+    </div>
+  </div>
+    <div class="col">
+      <h3>Models</h3>
+      <div class="model"></div>
+    </div>
+  </div>
+  <script type="module" src="./index.js"></script>
+</body>
+</html>
