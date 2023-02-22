@@ -11,9 +11,7 @@
 function customFilter(callback) {
   const arr = [];
   for (let i = 0; i < this.length; i++) {
-    if (callback(this[i])) {
-      arr.push(this[i]);
-    }
+    callback(this[i]) ? arr.push(this[i]) : null;
   }
 
   return arr;
