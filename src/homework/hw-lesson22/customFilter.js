@@ -9,7 +9,14 @@
  */
 
 function customFilter(callback) {
-  /* write code here */
+  const arr = [];
+  for (let i = 0; i < this.length; i++) {
+    if (callback(this[i])) {
+      arr.push(this[i]);
+    }
+  }
+
+  return arr;
 }
 
 module.exports = customFilter;
