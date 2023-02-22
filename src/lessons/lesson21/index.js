@@ -6,9 +6,13 @@ let store = [
 
 const input = document.querySelector('input');
 const list = document.querySelector('ul');
+const counter = document.querySelector('#counter');
 
 function renderItems(data) {
   list.innerHTML = '';
+
+  const undoneItems = data.filter((item) => !item.done);
+  counter.innerHTML = `${undoneItems.length} item left`;
 
   data.forEach((item) => {
     list.innerHTML += `
