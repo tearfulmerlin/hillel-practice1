@@ -22,6 +22,32 @@ function renderItems(data) {
 
 // intial load
 renderItems(store);
+const buttonDiv = document.querySelector('#controls');
+const countNumber = document.createElement('div');
+countNumber.style.display = 'inline-block';
+let counter = 0;
+
+function countListItemsPre() {
+  const listItems = document.getElementsByTagName('LI').length;
+  const listItemsDone = list.getElementsByClassName('done').length;
+  counter = listItems - listItemsDone;
+  countNumber.innerText = `${counter} item left`;
+  buttonDiv.prepend(countNumber);
+}
+
+countListItemsPre();
+
+function countListItemsAfter() {
+  const listItems = document.getElementsByTagName('LI').length;
+  const listItemsDone = list.getElementsByClassName('done').length;
+  const countNumberNew = document.createElement('div');
+  counter = listItems - listItemsDone;
+  countNumberNew.innerText = `${counter} item left`;
+  buttonDiv.prepend(countNumber);
+  countNumber.replaceChildren(countNumberNew);
+}
+
+
 
 function generateId() {
   return Math.random(1000) + (new Date().getTime());
@@ -34,6 +60,7 @@ input.addEventListener('keypress', (event) => {
     event.target.value = '';
     store.push(item);
     renderItems(store);
+    countListItemsAfter();
   }
 });
 
@@ -50,23 +77,28 @@ list.addEventListener('click', (event) => {
       : item));
 
     renderItems(store);
+    countListItemsAfter();
   }
 });
 
 document.querySelector('#controls').addEventListener('click', (event) => {
   if (event.target.id === 'all') {
     renderItems(store);
+    countListItemsAfter();
   }
   if (event.target.id === 'active') {
     const filtred = store.filter((item) => !item.done);
     renderItems(filtred);
+    countListItemsAfter();
   }
   if (event.target.id === 'completed') {
     const filtred = store.filter((item) => item.done);
     renderItems(filtred);
+    countListItemsAfter();
   }
   if (event.target.id === 'clear') {
     store = store.filter((item) => !item.done);
     renderItems(store);
+    countListItemsAfter();
   }
 });
