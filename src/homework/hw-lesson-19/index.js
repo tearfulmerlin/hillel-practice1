@@ -12,3 +12,28 @@ import assortment from './assortment.js';
  *
  */
 
+const products = document.querySelector('.products');
+const mark = document.querySelector('.trade-mark');
+const model = document.querySelector('.model');
+
+function show(list, shop) {
+  list.forEach((item) => {
+    const div = document.createElement('div');
+    div.innerText = item.title;
+    div.addEventListener('click', () => {
+      if (item.type === undefined) {
+        show(item.children, mark);
+      }
+      if (item.type === 'trade mark') {
+        show(item.children, model);
+      }
+      if (item.type === 'model') {
+        alert(`${item.title} куплений`);
+        mark.innerText = '';
+        model.innerText = '';
+      }
+    });
+    shop.appendChild(div);
+  });
+}
+show(assortment, products);
