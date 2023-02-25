@@ -16,7 +16,6 @@ function findItem(store) {
         count++
       }
     })
-    itemLeft.innerHTML = '';
     itemLeft.innerHTML = `<mark>${count} item left</mark>`;
     document.body.appendChild(itemLeft)
 }
