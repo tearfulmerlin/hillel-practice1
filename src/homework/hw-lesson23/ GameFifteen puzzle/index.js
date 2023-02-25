@@ -10,15 +10,6 @@ function getEmptyTileIndex() {
   }
 }
 
-function checkWin() {
-  for (let i = 0; i < tiles.length; i++) {
-    if (tiles[i].innerHTML != i + 1) {
-      return false;
-    }
-  }
-  return true;
-}
-
 function moveTile(index) {
   const emptyIndex = getEmptyTileIndex();
   if (
@@ -44,9 +35,6 @@ function moveTile(index) {
       tiles.forEach((tile) => {
         tile.style.backgroundColor = 'green';
       });
-    }
-    if (checkWin()) {
-      alert("Вітаємо, ви перемогли!");
     }
   }
 }
