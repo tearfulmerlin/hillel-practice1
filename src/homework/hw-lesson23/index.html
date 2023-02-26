@@ -1,13 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HW 26</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./index.js" defer>
+    </script>
+    <title>
+        Practice
+    </title>
 </head>
+<style>
+
+    body {
+    margin: 0;
+    background-color: rgb(228, 228, 228);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    button {
+        min-width: 100px;
+        font-family: inherit;
+        appearance: none;
+        border: 0;
+        border-radius: 15px;
+        background: #4676d7;
+        color: #fff;
+        padding: 8px 16px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-right: 30px;
+    }
+
+    button:hover {
+        background: #1d49aa;
+    }
+
+    button:focus {
+        outline: none;
+        box-shadow: 0 0 0 4px #cbd6ee;
+    }
+
+</style>
+
 <body>
-  
-  <script src="./index.js"></script>
+
+    <div class="parent-canvas">
+        <canvas id="canvas" width="1200" height="600"></canvas>
+    </div>
+
+    <button>
+        <h2> Play !</h2>
+    </button>
+    
 </body>
+
 </html>
