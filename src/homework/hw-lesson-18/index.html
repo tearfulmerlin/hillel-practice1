@@ -6,6 +6,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Practice</title>
   <script src="index.js" defer></script>
+  <style>
+    .promptBtn, .redirectBtn {
+      outline: 0;
+      padding: 20px 40px;
+      border: 2px solid black;
+      border-radius: 10px;
+      margin-right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: .5s;
+    }
+    
+    .redirectBtn:hover {
+      transform: scale(.95);
+      background-color: rgb(64, 147, 235);
+    }
+
+    .promptBtn:hover {
+      transform: scale(.95);
+      background-color: rgb(249, 249, 123);
+    }
+
+    .random-pics {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+
+    .random-pics img {
+      max-width: 200px;
+    }
+
+    .rndBtn {
+      outline: 0;
+      padding: 20px 40px;
+      border: 2px solid black;
+      border-radius: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: .5s;
+      margin-bottom: 50px;
+    }
+
+    .rndBtn:hover {
+      transform: scale(.95);
+      background-color: rgb(102, 214, 102);
+    }
+  </style>
 </head>
 <body>
   <div class="focused-input">
@@ -15,8 +63,6 @@
     </label>
     <br>
     <input type="text" name="name" id="nameInput">
-    <!-- <br> -->
-    <!-- <span>focused</span> -->
   </div>
   <br>
   <hr>
