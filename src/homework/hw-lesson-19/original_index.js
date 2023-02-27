@@ -30,7 +30,6 @@ function deleteClassOnElements(element, className) {
   for (const liElement of liElements) {
     if (liElement.classList.contains(className)) {
       liElement.classList.remove(className);
-      break;
     }
   }
 }
@@ -39,30 +38,10 @@ function cleanChildrenDisplay(type, title) {
   const activeCategory = assortment.find((x) => x.isActive);
   if (!activeCategory) return;
 
-  if (type === undefined) {
-    if (activeCategory.title === title) {
-      activeCategory?.children.forEach((tradeMarkItem) => {
-        tradeMarkItem.isActive = false;
-        tradeMarkItem.children.forEach((modelItem) => { modelItem.isSelected = false; });
-      });
-    } else {
-      activeCategory.isActive = false;
-      activeCategory?.children.forEach((tradeMarkItem) => { tradeMarkItem.isActive = false; });
-    }
-  }
+  activeCategory.children.forEach((tradeMarkItem) => { tradeMarkItem.isActive = false; });
 
-  if (type === 'trade mark') {
-    const activeTradeMark = activeCategory.children.find((x) => x.isActive);
-    if (!activeTradeMark) return;
-
-    activeTradeMark.isActive = false;
-  }
-
-  if (type === 'model') {
-    const activeTradeMark = activeCategory.children.find((x) => x.isActive);
-    const activeModels = activeTradeMark.children
-      .filter((item) => item.isSelected && item.title === title);
-    activeModels?.forEach((item) => { item.isSelected = false; });
+  if ((type === undefined && activeCategory.title !== title) || type === 'model') {
+    activeCategory.isActive = false;
   }
 }
 
@@ -89,6 +68,7 @@ function render(data, columnIndex) {
   data.forEach((item) => {
     const li = document.createElement('li');
     li.textContent = item.title;
+    ul.append(li);
 
     if (Array.isArray(item?.children)) {
       li.addEventListener('click', (e) => {
@@ -107,25 +87,15 @@ function render(data, columnIndex) {
         processingItem.isActive = !isActive;
       });
     } else {
-      item.isSelected && li.classList.add('selected');
-
       li.addEventListener('click', (e) => {
-        const processingItem = item;
-        const { isSelected } = item;
+        alert(`"${e.target.innerText}" is purchased`);
 
-        if (processingItem.isSelected) {
-          e.target.classList.remove('selected');
-          cleanChildrenDisplay(processingItem.type, item.title);
-        } else {
-          addClass(e.target, 'selected');
-          alert(`"${e.target.innerText}" is purchased`);
-        }
-
-        processingItem.isSelected = !isSelected;
+        const activeCatigoryElement = document.querySelector('.products li.active');
+        cleanElementsWithChildren(activeCatigoryElement);
+        deleteClassOnElements(activeCatigoryElement, 'active');
+        cleanChildrenDisplay(item.type, item.title);
       });
     }
-
-    ul.append(li);
   });
 
   columns[columnIndex].innerHTML = '';
