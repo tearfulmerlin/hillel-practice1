@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 	<meta charset="UTF-8">
@@ -11,44 +12,36 @@
 	</title>
 
 </head>
+
 <body>
-	
-	<header>
-		<h1>
-			ToDo List
-		</h1>
-	</header>
 
-	<form action="#">
+	<div id="todo-body">
 
-		<input type="text" class="todo-input" />
-		<button class="todo-button">
-			<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-				<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-				<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-			  </svg>
-		</button>
+		<label for="todo">TODO</label>
 
-	</form>
+		<br>
 
-	<div class="todo-container">
-		<ul class="todo-list"></ul>
-	</div>
+		<input type="text" id="todo">
 
-	<div class="select">
+		<ul>
+		</ul>
 
-		<select name="todos" class="filter-todo">
-            <option value="all">All</option>
-			<option value="completed">Completed</option>
-			<option value="uncompleted">Uncompleted</option>
-		</select>
+		<div id="controls">
+
+			<button id="all">All</button>
+			<button id="active">Active</button>
+			<button id="completed">Completed</button>
+			<button id="clear">Clear completed</button>
+
+			<div id="counter"></div>
+
+		</div>
 
 	</div>
 
-	<div class="count"></div>
-	
 	<script src="./index.js">
 	</script>
 
 </body>
+
 </html>
