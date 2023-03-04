@@ -5,6 +5,7 @@ Create countdown timer
 - Button "Stop" should pause countdown
 - Button "Start" should resume countdown
 - Button "Reset" should set countdown the bening
+- The time of the countdown should be displayed on the page's tab title
 
 ### Editing the time
 When clicking on timer, it should change to input 
