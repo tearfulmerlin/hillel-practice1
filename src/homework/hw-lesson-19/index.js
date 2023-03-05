@@ -12,3 +12,32 @@ import assortment from './assortment.js';
  *
  */
 
+const products = document.querySelector('.products');
+const tradeMarks = document.querySelector('.trade-mark');
+const model = document.querySelector('.model');
+
+
+assortment.forEach((item) => {
+  const productsList = document.createElement('div');
+  productsList.innerText = item.title;
+  products.appendChild(productsList);
+  productsList.addEventListener('click', () => {
+    const arrIn = item.children;
+    arrIn.forEach((e) => {
+      const tradeMarksList = document.createElement('div');
+      tradeMarksList.innerText = e.title;
+      tradeMarks.appendChild(tradeMarksList);
+      tradeMarksList.addEventListener('click', () => {
+        const arrModels = e.children;
+        arrModels.forEach((i) => {
+          const modelList = document.createElement('div');
+          modelList.innerText = i.title;
+          model.appendChild(modelList);
+          modelList.addEventListener('click', () => {
+            if (!alert('SOLD OUT')) { window.location.reload(); }
+          });
+        });
+      }, { once: true });
+    });
+  }, { once: true });
+});
