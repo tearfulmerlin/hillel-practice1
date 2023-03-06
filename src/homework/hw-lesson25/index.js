@@ -30,9 +30,9 @@ function displayBackToHomeButton() {
 }
 
 function displayTitle(textContent) {
-  const h3 = document.createElement('h2');
-  containerSection.replaceChildren(h3);
-  h3.textContent = textContent;
+  const h2 = document.createElement('h2');
+  containerSection.replaceChildren(h2);
+  h2.textContent = textContent;
 }
 
 async function displayVehiclesSection(vehiclesURL, residentName) {
