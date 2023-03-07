@@ -21,20 +21,20 @@ function rendering() {
 
 rendering();
 
-function start() {
+function start1() {
   refreshInterval = setInterval(() => {
     seconds -= 1;
     rendering();
   }, 1000);
 }
 
-function stop() {
+function stop1() {
   clearInterval(refreshInterval);
 }
 
-function reset() {
+function reset1() {
   seconds = setSeconds;
-  stop();
+  stop1();
   rendering();
 }
 
@@ -42,14 +42,15 @@ function reset() {
 //
 const inpToArray = document.getElementById('inpToArray');
 
-let newInp = '';
+let newInp = '500';
+let arrInp = ['0', '0', 5];
+
+output.innerText = `${(arrInp[3] ? arrInp[3] : '  ') + (arrInp[2] ? arrInp[2] : '  ')}m ${(arrInp[1] ? arrInp[1] : '  ') + (arrInp[0] ? arrInp[0] : '  ')}s`;
 
 function updateArray(e) {
   newInp = e.target.value;
-  let arrInp = [0,0,0,0];
   arrInp = newInp.split('').reverse();
-  const minSec = setSeconds[setSeconds.length - 1];
-  output.innerText = arrInp[3] + arrInp[2] + 'm ' + arrInp[1] + arrInp[0] + 's';
+  output.innerText = `${(arrInp[3] ? arrInp[3] : '  ') + (arrInp[2] ? arrInp[2] : '  ')}m ${(arrInp[1] ? arrInp[1] : '  ') + (arrInp[0] ? arrInp[0] : '  ')}s`;
 }
 
 inpToArray.addEventListener('input', updateArray);
