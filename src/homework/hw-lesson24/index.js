@@ -1,57 +1,43 @@
-const countdonwn = document.getElementById('countdonwn');
 const output = document.getElementById('output');
 
+const input = document.getElementById('input');
 let refreshInterval = null;
-let seconds = 300;
+let seconds = '500';
+let arrInp = ['0', '0', 5];
 let setSeconds = seconds.toString();
 
-function updateValue(e) {
-  setSeconds = e.target.value;
-  const minSec = setSeconds[setSeconds.length - 1];
-  seconds = setSeconds;
-}
-
-countdonwn.addEventListener('input', updateValue);
-
 function rendering() {
-  const minSec = `${(seconds / 60).toFixed(0)}m ${(seconds % 60) ? (seconds % 60) : '00'}s`;
-  countdonwn.value = minSec;
-  document.title = minSec;
+  const countdonwn = `${(arrInp[3] ? arrInp[3] : '  ') + (arrInp[2] ? arrInp[2] : '  ')}m ${(arrInp[1] ? arrInp[1] : '  ') + (arrInp[0] ? arrInp[0] : '  ')}s`
+  input.value = seconds;
+  document.title = countdonwn;
+  output.innerText = countdonwn;
 }
-
 rendering();
 
-function start1() {
+function updateArray(e) {
+  setSeconds = e.target.value;
+  seconds = setSeconds;
+  arrInp = seconds.split('').reverse();
+  rendering();
+}
+
+input.addEventListener('input', updateArray);
+
+function start() {
   refreshInterval = setInterval(() => {
     seconds -= 1;
+    seconds = `${seconds}`;
+    arrInp = seconds.split('').reverse();
     rendering();
   }, 1000);
 }
 
-function stop1() {
+function stop() {
   clearInterval(refreshInterval);
 }
 
-function reset1() {
+function reset() {
   seconds = setSeconds;
-  stop1();
+  stop();
   rendering();
 }
-
-
-//
-const inpToArray = document.getElementById('inpToArray');
-
-let newInp = '500';
-let arrInp = ['0', '0', 5];
-
-output.innerText = `${(arrInp[3] ? arrInp[3] : '  ') + (arrInp[2] ? arrInp[2] : '  ')}m ${(arrInp[1] ? arrInp[1] : '  ') + (arrInp[0] ? arrInp[0] : '  ')}s`;
-
-function updateArray(e) {
-  newInp = e.target.value;
-  arrInp = newInp.split('').reverse();
-  output.innerText = `${(arrInp[3] ? arrInp[3] : '  ') + (arrInp[2] ? arrInp[2] : '  ')}m ${(arrInp[1] ? arrInp[1] : '  ') + (arrInp[0] ? arrInp[0] : '  ')}s`;
-}
-
-inpToArray.addEventListener('input', updateArray);
-
