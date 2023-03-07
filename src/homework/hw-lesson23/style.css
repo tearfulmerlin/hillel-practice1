@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+.field {
+  border: 1px solid #32cd32;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.square {
+  border: 1px solid #32cd32;
+  background-color: green;
+  width: calc(100% / 3);
+  height: calc(100% / 3);
+  text-align: center;
+  font-size: 40px;
+  padding-top: 25px;
+}
+
+.square.empty {
+  background-color: orange;
+}
+
+.win {
+  background-color: red;
+}
