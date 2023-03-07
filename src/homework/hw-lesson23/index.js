@@ -2,102 +2,109 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable lines-between-class-members */
 /* eslint-disable class-methods-use-this */
-
 class Hamburger {
-  _ingredients = [];
+  #ingredients = [];
 
-  static SIZE_BIG = {
-    type: 'size',
-    name: 'big',
-    price: 100,
-    calories: 40,
+  static SIZE = {
+    big: {
+      type: 'size',
+      name: 'big',
+      price: 100,
+      calories: 40,
+    },
+    small: {
+      type: 'size',
+      name: 'small',
+      price: 50,
+      calories: 20,
+    },
   };
-  static SIZE_SMALL = {
-    type: 'size',
-    name: 'small',
-    price: 50,
-    calories: 20,
+
+  static STUFFING = {
+    cheese: {
+      type: 'stuffing',
+      name: 'cheese',
+      price: 10,
+      calories: 20,
+    },
+    potato: {
+      type: 'stuffing',
+      name: 'potato',
+      price: 15,
+      calories: 10,
+    },
+    salat: {
+      type: 'stuffing',
+      name: 'salat',
+      price: 20,
+      calories: 5,
+    },
   };
-  static STUFFING_CHEESE = {
-    type: 'stuffing',
-    name: 'cheese',
-    price: 10,
-    calories: 20,
-  };
-  static STUFFING_POTATO = {
-    type: 'stuffing',
-    name: 'potato',
-    price: 15,
-    calories: 10,
-  };
-  static STUFFING_SALAT = {
-    type: 'stuffing',
-    name: 'salat',
-    price: 20,
-    calories: 5,
-  };
-  static TOPPING_KETCHUP = {
-    type: 'topping',
-    name: 'ketchup',
-    price: 25,
-    calories: 15,
-  };
-  static TOPPING_MAYO = {
-    type: 'topping',
-    name: 'mayo',
-    price: 20,
-    calories: 5,
-  };
-  static TOPPING_SAUCE = {
-    type: 'topping',
-    name: 'sauce',
-    price: 15,
-    calories: 0,
+
+  static TOPPING = {
+    ketchup: {
+      type: 'topping',
+      name: 'ketchup',
+      price: 25,
+      calories: 15,
+    },
+    mayo: {
+      type: 'topping',
+      name: 'mayo',
+      price: 20,
+      calories: 5,
+    },
+    sauce: {
+      type: 'topping',
+      name: 'sauce',
+      price: 15,
+      calories: 0,
+    },
   };
 
   constructor(size, stuffing) {
-    if (![Hamburger.SIZE_BIG, Hamburger.SIZE_SMALL].includes(size)) {
+    if (![Hamburger.SIZE.big, Hamburger.SIZE.small].includes(size)) {
       throw new Error('Invalid hambuger size');
     }
 
-    if (![Hamburger.STUFFING_CHEESE, Hamburger.STUFFING_POTATO, Hamburger.STUFFING_SALAT]
+    if (![Hamburger.STUFFING.cheese, Hamburger.STUFFING.potato, Hamburger.STUFFING.salat]
       .includes(stuffing)) {
       throw new Error('Invalid hambuger staffing');
     }
 
-    this._ingredients.push(...[size, stuffing]);
+    this.#ingredients.push(size, stuffing);
   }
 
   addTopping(topping) {
-    if (![Hamburger.TOPPING_KETCHUP, Hamburger.TOPPING_MAYO, Hamburger.TOPPING_SAUCE]
+    if (![Hamburger.TOPPING.ketchup, Hamburger.TOPPING.mayo, Hamburger.TOPPING.sauce]
       .includes(topping)) {
       throw new Error('Invalid hambuger topping');
     }
 
-    this._ingredients.push(topping);
+    this.#ingredients.push(topping);
   }
 
   deleteTopping(topping) {
-    this._ingredients = this._ingredients.filter((ingredient) => {
+    this.#ingredients = this.#ingredients.filter((ingredient) => {
       // return !(ingredient.type === topping.type && ingredient.name === topping.name);
       return ingredient !== topping;
     });
   }
 
   calculate() {
-    return this._ingredients.reduce((acc, item) => acc + item.calories, 0);
+    return this.#ingredients.reduce((acc, item) => acc + item.calories, 0);
   }
 
   calculatePrice() {
-    return this._ingredients.reduce((acc, item) => acc + item.price, 0);
+    return this.#ingredients.reduce((acc, item) => acc + item.price, 0);
   }
 
   #getIngredient(ingredientType) {
-    return this._ingredients.find((ingredient) => ingredient.type === ingredientType);
+    return this.#ingredients.find((ingredient) => ingredient.type === ingredientType);
   }
 
   #getIngredients(ingredientType) {
-    return this._ingredients.filter((ingredient) => ingredient.type === ingredientType);
+    return this.#ingredients.filter((ingredient) => ingredient.type === ingredientType);
   }
 
   printCompound() {
@@ -125,7 +132,7 @@ class Hamburger {
   }
 }
 
-const hamburger = new Hamburger(Hamburger.SIZE_SMALL, Hamburger.STUFFING_CHEESE);
+const hamburger = new Hamburger(Hamburger.SIZE.small, Hamburger.STUFFING.cheese);
 // запитаємо состав бургера
 console.log(hamburger.printCompound());
 // запитаємо скільки там калорій
@@ -134,7 +141,7 @@ console.log(`Calories: ${hamburger.calculate()}`);
 console.log(`Price: ${hamburger.calculatePrice()}`);
 
 // добавка з майонезу
-hamburger.addTopping(Hamburger.TOPPING_MAYO);
+hamburger.addTopping(Hamburger.TOPPING.mayo);
 console.log(hamburger.printCompound());
 
 // запитаємо скільки там калорій
@@ -144,7 +151,7 @@ console.log(`Calories with mayo topping: ${hamburger.calculate()}`);
 console.log(`Price with mayo topping: ${hamburger.calculatePrice()}`);
 
 // я тут передумав і вирішив додати ще приправу
-hamburger.addTopping(Hamburger.TOPPING_SAUCE);
+hamburger.addTopping(Hamburger.TOPPING.sauce);
 console.log(hamburger.printCompound());
 
 // запитаємо скільки там калорій тепер
@@ -153,7 +160,7 @@ console.log(`Calories with mayo and sauce toppings: ${hamburger.calculate()}`);
 console.log(`Price with mayo and sauce toppings: ${hamburger.calculatePrice()}`);
 
 // я тут передумав і вирішив видалити майонез
-hamburger.deleteTopping(Hamburger.TOPPING_MAYO);
+hamburger.deleteTopping(Hamburger.TOPPING.mayo);
 // console.log(hamburger);
 console.log(hamburger.printCompound());
 
@@ -163,7 +170,7 @@ console.log(`Calories with only sauce topping: ${hamburger.calculate()}`);
 console.log(`Price with with only sauce topping: ${hamburger.calculatePrice()}`);
 
 // зробимо великий з картоплею і з усіма добавками
-const hamburgerBig = new Hamburger(Hamburger.SIZE_BIG, Hamburger.STUFFING_POTATO);
+const hamburgerBig = new Hamburger(Hamburger.SIZE.big, Hamburger.STUFFING.potato);
 // запитаємо состав бургера
 console.log(hamburgerBig.printCompound());
 // запитаємо скільки там калорій
@@ -172,9 +179,9 @@ console.log(`Calories: ${hamburgerBig.calculate()}`);
 console.log(`Price: ${hamburgerBig.calculatePrice()}`);
 
 // добавимо усі добавки
-hamburgerBig.addTopping(Hamburger.TOPPING_KETCHUP);
-hamburgerBig.addTopping(Hamburger.TOPPING_MAYO);
-hamburgerBig.addTopping(Hamburger.TOPPING_SAUCE);
+hamburgerBig.addTopping(Hamburger.TOPPING.ketchup);
+hamburgerBig.addTopping(Hamburger.TOPPING.mayo);
+hamburgerBig.addTopping(Hamburger.TOPPING.sauce);
 
 // запитаємо состав бургера
 console.log(hamburgerBig.printCompound());
