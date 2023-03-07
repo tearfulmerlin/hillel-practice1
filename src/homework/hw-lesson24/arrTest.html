@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 50px;
+    }
+
+    h2 {
+      font-size: 60px;
+      margin-top: 50px;
+    }
+
+    input[type="number"] {
+      font-size: 60px;
+      text-align: center;
+      width: 150px;
+    }
+  </style>
+  <title>Countdown Timer</title>
+</head>
+
+<body>
+  <h1>Countdown Timer</h1>
+  <h2 id="countdown"></h2>
+  <button id="start">Start</button>
+  <button id="stop">Stop</button>
+  <button id="reset">Reset</button>
+
+  <Script>
+    // Set the initial countdown time to 5 minutes
+let countdownTime = 300;
+
+// Get DOM elements
+const countdownElem = document.getElementById("countdown");
+const startBtn = document.getElementById("start");
+const stopBtn = document.getElementById("stop");
+const resetBtn = document.getElementById("reset");
+
+// Update the page's tab title with the remaining time
+function updateTabTitle(time) {
+  document.title = `(${time}) Countdown Timer`;
+}
+
+// Update the countdown timer on the page and tab title
+function updateCountdown(time) {
+  countdownElem.textContent = formatTime(time);
+  updateTabTitle(formatTime(time));
+}
+
+// Format time as minutes:seconds
+function formatTime(time) {
+  const minutes = Math.floor(time / 60).toString().padStart(2, "0");
+  const seconds = (time % 60).toString().padStart(2, "0");
+  return `${minutes}:${seconds}`;
+}
+
+// Start the countdown timer
+let countdownInterval;
+function startCountdown() {
+  countdownInterval = setInterval(() => {
+    countdownTime--;
+    if (countdownTime < 0) {
+      clearInterval(countdownInterval);
+      updateCountdown(0);
+    } else {
+      updateCountdown(countdownTime);
+    }
+  }, 1000);
+}
+
+// Stop the countdown timer
+function stopCountdown() {
+  clearInterval(countdownInterval);
+}
+
+// Reset the countdown timer
+function resetCountdown() {
+  stopCountdown();
+  countdownTime = 300;
+  updateCountdown(countdownTime);
+}
+
+// Start the countdown timer on page load
+updateCountdown(countdownTime);
+startCountdown();
+
+// Add event listeners
+startBtn.addEventListener("click", startCountdown);
+stopBtn.addEventListener("click", stopCountdown);
+resetBtn.addEventListener("click", resetCountdown);
+countdownElem.addEventListener("click", () => {
+  // Create an input element for setting a new countdown time
+  const inputElem = document.createElement("input");
+  inputElem.type = "number";
+  inputElem.value = countdownTime / 60;
+  inputElem.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      countdownTime = inputElem.value * 60;
+      resetCountdown();
+    }
+  });
+  inputElem.addEventListener("blur", () => {
+    countdownTime = inputElem.value * 60;
+    updateCountdown(countdownTime);
+  });
+  countdownElem.textContent = "";
+  countdownElem.appendChild(inputElem);
+  inputElem.focus();
+});
+
+
+
+  </Script>
+</body>
+
+</html>
