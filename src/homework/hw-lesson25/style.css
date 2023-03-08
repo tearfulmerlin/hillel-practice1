@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body.lock {
+    overflow: hidden;
+}
+
+.main{
+  text-align: center;
+}
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0, 0, 0);
+    z-index: 999;
+}
+
+.preloader__loader,
+.preloader__percents {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.preloader__percents {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+
+@keyframes loads {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.load div {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 10px solid #695be1;
+    border-top-color: transparent;
+    border-radius: 50%;
+}
+
+.load div {
+    animation: loads 1s linear infinite;
+    top: 100px;
+    left: 100px
+}
+
+.loader {
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    overflow: hidden;
+    background: rgba(241, 242, 243, 0);
+}
+
+.load {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: translateZ(0) scale(1);
+    backface-visibility: hidden;
+    transform-origin: 0 0;
+}
+
+.load div {
+    box-sizing: content-box;
+}
+
+#preloader.hide-preloader {
+    animation: hidePreloader 2s;
+}
+
+#preloader.preloader-hidden {
+    display: none;
+}
+
+@keyframes hidePreloader {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .pagination a.active {
+    background-color: #c0c0c0;
+    color: white;
+  }
+  
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+  }
+
+  .list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .list li {
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #555;
+  }
