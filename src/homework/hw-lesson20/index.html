@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW22</title>
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <h1>Registration form</h1>
+    <form action="" name="formReg">
+        <label for="username">User name</label><br>
+        <input type="text" name="username"><br>
+        <label for="birthday">Date of birth</label><br>
+        <input type="date" name="birthday"><br>
+        <label for="Sex">Sex(m/f)</label>
+        <input type="radio" name="gender" id="genderM" value="m">
+        <label for="genderM">M</label>
+        <input type="radio" name="gender" id="genderF" value="f">
+        <label for="genderF">F</label><br>
+        <label for="city">City</label>
+        <select name="city" id="">
+            <option value="odesa">Odesa</option>
+            <option value="kyiv">Kyiv</option>
+            <option value="lviv">Lviv</option>
+        </select><br>
+        <label for="email">Email</label><br>
+        <input type="email" name="email"><br>
+        <label for="password">Password</label><br>
+        <input type="password" name="password">
+        <p>Languages 
+            <input type="checkbox" name="language" value="en">
+            <label for="language">en</label>
+            <input type="checkbox" name="language" value="ru">
+            <label for="language">ru</label>
+            <input type="checkbox" name="language" value="ua">
+            <label for="language">ua</label>
+        </p>
+        <input type="submit" value="Save" />
+    </form>
+</body>
+</html>
