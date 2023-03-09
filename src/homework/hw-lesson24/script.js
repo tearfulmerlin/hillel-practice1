@@ -1,35 +1,44 @@
-const watch = document.querySelector('#watch');
-let milliSeconds = 0;
-let timer;
+const start = document.getElementById('start');
+const reset = document.getElementById('reset');
 
-const startWatch = () => {
-    watch.classList.remove('paused');
-    clearInterval(timer);
-    timer = setInterval(() => {
-        milliSeconds += 10;
-        let dateTimer = new Date(milliSeconds);
-        watch.innerHTML =
-            ('0' + dateTimer.getUTCHours()).slice(-2) + ':' +
-            ('0' + dateTimer.getUTCMinutes()).slice(-2) + ':' +
-            ('0' + dateTimer.getUTCSeconds()).slice(-2) + ':' +
-            ('0' + dateTimer.getUTCMilliseconds()).slice(-3, -1);
-    }, 10);
-};
+let hour = document.getElementById("hour");
+let min = document.getElementById("minute");
+let sec = document.getElementById("sec");
 
-const pausedWatch = () => {
-    watch.classList.add('paused');
-    clearInterval(timer);
-};
 
-const resetWatch = () => {
-    watch.classList.remove('paused');
-    clearInterval(timer);
-    milliSeconds = 0;
-    watch.innerHTML = '00:00:00:00';
-};
+let startTimer = null;
 
-document.addEventListener('click', (e) => {
-    if (e.target.id === 'start') startWatch();
-    if (e.target.id === 'pause') pausedWatch();
-    if (e.target.id === 'reset') resetWatch();
+start.addEventListener('click', function () {
+
+    function startInterval() {
+        startTimer = setInterval(function () {
+            timer();
+        }, 1000);
+    }
+    startInterval();
 });
+
+reset.addEventListener('click', function () {
+    hour.value = 0;
+    min.value = 0;
+    sec.value = 0;
+
+    clearInterval(startTimer);
+});
+
+function timer() {
+    if (hour.value == 0 && min.value == 0 && sec.value == 0) {
+        hour.value = 0;
+        min.value = 0;
+        sec.value = 0;
+    } else if (sec.value != 0) {
+        sec.value--;
+    } else if (min.value != 0 && sec.value == 0) {
+        sec.value = 59;
+        min.value--;
+    } else if (hour.value != 0 && min.value == 0) {
+        min.value = 60;
+        hour.value--;
+    }
+    return;
+}
