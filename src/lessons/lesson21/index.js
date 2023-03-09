@@ -6,10 +6,23 @@ let store = [
 
 const input = document.querySelector('input');
 const list = document.querySelector('ul');
+const itemLeft = document.createElement('div');
+
+function findItem(store) {
+  let count = 0;
+
+    store.forEach((item) => {
+      if(!item.done){
+        count++
+      }
+    })
+    itemLeft.innerHTML = `<mark>${count} item left</mark>`;
+    document.body.appendChild(itemLeft)
+}
 
 function renderItems(data) {
   list.innerHTML = '';
-
+  findItem(store)
   data.forEach((item) => {
     list.innerHTML += `
       <li class="${item.done ? 'done' : ''}">
@@ -70,3 +83,4 @@ document.querySelector('#controls').addEventListener('click', (event) => {
     renderItems(store);
   }
 });
+
