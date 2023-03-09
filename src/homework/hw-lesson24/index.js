@@ -172,33 +172,35 @@ function updateStopWatch(displays) {
   displays[2].innerText = `${createMaskArray(secondsStopWatch)} sec`;
 }
 
-document.querySelector('#stopwatch-start').addEventListener('click', function() {
-  const displays = document.querySelectorAll('.input-container.stopwath div');
-  const btn = this;
-  if (btn.innerText === 'Старт') {
-    btn.innerText = 'Стоп';
-    stopwatchIntervalID = setInterval(() => {
-      if (secondsStopWatch === 59) {
-        minutesStopWatch += 1;
-        secondsStopWatch = 0;
-      }
-      if (minutesStopWatch === 59) {
-        hoursStopWatch += 1;
-        minutesStopWatch = 0;
-      }
-      if (hoursStopWatch === 59) {
-        minutesStopWatch = 0;
-        secondsStopWatch = 0;
-        hoursStopWatch = 0;
-      }
-      secondsStopWatch += 1;
-      updateStopWatch(displays);
-    }, 1000);
-  } else {
-    btn.innerText = 'Старт';
-    clearInterval(stopwatchIntervalID);
-  }
-});
+document
+  .querySelector('#stopwatch-start')
+  .addEventListener('click', function () {
+    const displays = document.querySelectorAll('.input-container.stopwath div');
+    const btn = this;
+    if (btn.innerText === 'Старт') {
+      btn.innerText = 'Стоп';
+      stopwatchIntervalID = setInterval(() => {
+        if (secondsStopWatch === 59) {
+          minutesStopWatch += 1;
+          secondsStopWatch = 0;
+        }
+        if (minutesStopWatch === 59) {
+          hoursStopWatch += 1;
+          minutesStopWatch = 0;
+        }
+        if (hoursStopWatch === 59) {
+          minutesStopWatch = 0;
+          secondsStopWatch = 0;
+          hoursStopWatch = 0;
+        }
+        secondsStopWatch += 1;
+        updateStopWatch(displays);
+      }, 1000);
+    } else {
+      btn.innerText = 'Старт';
+      clearInterval(stopwatchIntervalID);
+    }
+  });
 
 document.querySelector('#stopwatch-reset').addEventListener('click', () => {
   const displays = document.querySelectorAll('.input-container.stopwath div');
