@@ -51,6 +51,18 @@
         border-radius: 5px;
       }
 
+      button:disabled {
+        color:rgb(197, 197, 197);
+      }
+
+      button:disabled:hover {
+        color:rgb(197, 197, 197);
+        transform: none;
+        box-shadow: none;
+        background: white;
+        cursor: default;
+      }
+
       .tab-container {
         border: 2px solid black;
         border-radius: 10px;
@@ -121,11 +133,11 @@
         background: white;
       }
 
-      .input-container div {
+      .input-container .input-div {
         position: relative;
       }
 
-      .input-container div::after {
+      .input-container .input-div::after {
         content: "sec";
         position: absolute;
         left: 100%;
@@ -145,35 +157,47 @@
         margin-top: 10px;
         display: flex;
       }
+
+      .element .input-container.stopwath {
+        max-width: 40%;
+      }
     </style>
   </head>
   <body>
     <div class="tab-container">
       <div class="header">
-        <div class="page-title active" data-page="1">Таймер</div>
-        <div class="page-title" data-page="2">Секундомер</div>
+        <div class="page-title" data-page="1">Таймер</div>
+        <div class="page-title active" data-page="2">Секундомер</div>
       </div>
 
       <div class="body">
         <div data-page="1" class="element">
-          <div class="input-container">
-            <div class="input-hours">
+          <div class="input-container timer">
+            <div class="input-hours input-div">
               <input type="text" data-pos="3" class="only-num hours"/>
             </div>
-            <div class="input-minutes">
+            <div class="input-minutes input-div">
               <input type="text" data-pos="2" class="only-num minutes" />
             </div>
-            <div class="input-seconds">
+            <div class="input-seconds input-div">
               <input type="text" data-pos="1" class="only-num seconds"/>
             </div>
           </div>
           <div class="controls-container">
             <button id="timer-start">Старт</button>
-            <button id="timer-reset">Reset</button>
+            <button id="timer-reset">Сбросить</button>
           </div>
         </div>
         <div data-page="2" class="element">
-          <p>Hello im second page!</p>
+          <div class="input-container stopwath">
+            <div class="stopwatch-display">00 h</div>
+            <div class="stopwatch-display">00 min</div>
+            <div class="stopwatch-display">00 sec</div>
+          </div>
+          <div class="controls-container">
+            <button id="stopwatch-start">Старт</button>
+            <button id="stopwatch-reset">Сбросить</button>
+          </div>
         </div>
       </div>
     </div>
