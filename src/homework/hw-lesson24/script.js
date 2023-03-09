@@ -1,10 +1,9 @@
 const start = document.getElementById('start');
 const reset = document.getElementById('reset');
 
-let hour = document.getElementById("hour");
-let min = document.getElementById("minute");
-let sec = document.getElementById("sec");
-
+const hour = document.getElementById("hour");
+const min = document.getElementById("minute");
+const sec = document.getElementById("sec");
 
 let startTimer = null;
 
