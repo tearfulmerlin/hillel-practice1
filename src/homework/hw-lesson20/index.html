@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homework-20</title>
+  <script src="index.js" defer></script>
+</head>
+<body>
+  <form name="formPeople" id="formPeople" >
+    <lable for="username">Username:</lable>
+    <input type="text" id="username" name="username" placeholder="Your name">
+    <br>
+    <label for="birthday">Birthday:</label>
+    <input type="date" id="birthday" name="birthday" placeholder="Your data birthday">
+    <br>
+    <lable>Your sex:</lable><br>
+    <input type="radio" id="fem" name="sex" value="fem">
+    <label for="fem">F</label><br>
+    <input type="radio" id="men" name="sex" value="men">
+    <label for="men">M</label><br>
+    <br>
+    <label for="select">Сity:</label>
+    <select name="city" id="city" multiple>
+      <option value="kyiv">Kiyv</option>
+      <option value="kharkiv"selected>Kharkiv</option>
+      <option value="odessa">Odessa</option>
+    </select>
+    <br>
+    <lable for="mail">Email:</lable><br>
+      <input type="email" id="email" placeholder="Email">
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" placeholder="*****">
+    <br>
+    <lable>Your language:</lable><br>
+    <input type="radio" id="ua" name="language" value="ua">
+    <label for="ua">UA</label><br>
+    <input type="radio" id="uk" name="language" value="uk">
+    <label for="uk">UK</label><br>
+    <input type="radio" id="en" name="language" value="en">
+    <label for="en">EN</label>
+    <hr>
+    <button type="submit">Save</button>
+  </form>
+</body>
+</html>
