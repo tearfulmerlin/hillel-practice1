@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+
+body {
+  font-family: "Oswald", sans-serif;
+  background-color: #404040;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 35px;
+  color: #fff;
+  margin-bottom: 15px;
+  border-bottom: 3px solid #4caf50;
+}
+
+button {
+  font-family: "Oswald", sans-serif;
+  margin: 15px;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="number"] {
+  font-size: 22px;
+  padding: 20px;
+  border: none;
+  text-align: center;
+  background-color: #404040;
+  color: #fff;
+}
+
+input[type="number"]:focus,
+input[type="number"]:active, 
+input[type="number"]:focus-visible,
+input[type="number"]:visited,
+input[type="number"]:target {
+  border: none;
+}
