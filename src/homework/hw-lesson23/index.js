@@ -4,76 +4,89 @@ class Hamburger {
 
   #calories = 0;
 
+  #size = '';
+
+  #stuffing = '';
+
+  #topping = '';
+
   constructor(size, stuffing) {
-    this.#price += size.price + stuffing.price;
-    this.#calories += size.calories + stuffing.calories;
+    this.#price = size.price + stuffing.price;
+    this.#calories = size.calories + stuffing.calories;
+    this.#size = size.size;
+    this.#stuffing = stuffing.stuffing;
   }
 
-  static sizeSmall() {
-    return {
-      price: 50,
-      calories: 20,
-    };
-  }
+  static sizeSmall = {
+    price: 50,
+    calories: 20,
+    size: 'small',
+  };
 
-  static sizeBig() {
-    return {
-      price: 100,
-      calories: 40,
-    };
-  }
+  static sizeBig = {
+    price: 100,
+    calories: 40,
+    size: 'big',
+  };
 
-  static stuffingCheese() {
-    return {
-      price: 10,
-      calories: 20,
-    };
-  }
+  static stuffingCheese = {
+    price: 10,
+    calories: 20,
+    stuffing: 'cheese',
+  };
 
-  static stuffingSalad() {
-    return {
-      price: 20,
-      calories: 5,
-    };
-  }
+  static stuffingSalad = {
+    price: 20,
+    calories: 5,
+    stuffing: 'salad',
+  };
 
-  static stuffingFries() {
-    return {
-      price: 15,
-      calories: 10,
-    };
-  }
+  static stuffingFries = {
+    price: 15,
+    calories: 10,
+    stuffing: 'fries',
+  };
 
-  static addMayonnaise() {
-    return {
-      price: 20,
-      calories: 5,
-    };
-  }
+  static toppingMayonnaise = {
+    price: 20,
+    calories: 5,
+    topping: 'mayonnaise',
+  };
 
-  static addSeasoning() {
-    return {
-      price: 15,
-    };
-  }
+  static toppingSeasoning = {
+    price: 15,
+    calories: 0,
+    topping: 'seasoning',
+  };
 
   addTopping(topping) {
     this.#price += topping.price;
     this.#calories += topping.calories;
+    this.#topping = topping.topping;
   }
 
-  get price() {
+  calculatePrice() {
     return this.#price;
   }
 
-  get calories() {
+  calculate() {
     return this.#calories;
+  }
+
+  result() {
+    return `Size of hamburger: ${this.#size}
+Stuffing: ${this.#stuffing}
+Topping: ${this.#topping || 'nothing'}
+Price: ${this.calculatePrice()}
+Calories: ${this.calculate()}`;
   }
 }
 
-const hamburger = new Hamburger(Hamburger.sizeBig(), Hamburger.stuffingCheese());
-hamburger.addTopping(Hamburger.addMayonnaise());
-console.log(`Calories: ${hamburger.calories}`);
-console.log(`Price: ${hamburger.price}`);
-hamburger.addTopping(Hamburger.addSeasoning());
-console.log(`Price with sauce: ${hamburger.price}`);
+const hamburger = new Hamburger(Hamburger.sizeBig, Hamburger.stuffingCheese);
+hamburger.addTopping(Hamburger.toppingMayonnaise);
+console.log(`Calories: ${hamburger.calculate()}`);
+console.log(`Price: ${hamburger.calculatePrice()}`);
+hamburger.addTopping(Hamburger.toppingSeasoning);
+console.log(`Price with sauce: ${hamburger.calculatePrice()}`);
+
+console.log(hamburger.result());
