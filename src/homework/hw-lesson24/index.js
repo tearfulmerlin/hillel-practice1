@@ -3,6 +3,8 @@ const input = document.getElementById('input');
 const startBtn = document.getElementById('start');
 const stopBtn = document.getElementById('stop');
 const resetBtn = document.getElementById('reset');
+const cursorElement = document.createElement('span');
+cursorElement.innerText = 's';
 
 let refreshInterval = null;
 
@@ -31,7 +33,8 @@ function render(seconds, divider) {
     remainingSeconds = `0${remainingSeconds}`;
   }
 
-  output.innerText = `${minutes}m ${remainingSeconds}s`;
+  output.innerText = `${minutes}m ${remainingSeconds}`;
+  output.appendChild(cursorElement);
 }
 
 render(setSec(convStartTime(input.value)), 60);
@@ -63,14 +66,29 @@ function resetCountdown() {
 }
 
 input.addEventListener('input', () => {
+  input.value = input.value.replace(/\D+/g, '');
   render(input.value, 100);
   setSeconds = setSec(convStartTime(input.value));
   seconds = input.value;
 });
-// input.addEventListener('focusout', renderingCountdown);
+
+input.addEventListener('focus', function () {
+  this.select();
+  output.style.cssText = `color: #cccccc;`;
+  cursorElement.className = 'cursor';
+});
+
 input.addEventListener('keyup', ({ key }) => {
   if (key === 'Enter') startCountdown();
 });
 startBtn.addEventListener('click', startCountdown);
 stopBtn.addEventListener('click', stopCountdown);
 resetBtn.addEventListener('click', resetCountdown);
+output.addEventListener('click', () => {
+  input.focus();
+});
+
+input.addEventListener('blur', () => {
+  output.style.color = '#000';
+  cursorElement.classList.remove('cursor');
+});

@@ -10,8 +10,41 @@
     body {
       text-align: center;
     }
+
     input {
-      text-align: center;
+      width: 100%;
+      opacity: 0;
+      z-index: 1;
+      cursor: text;
+    }
+
+    #output {
+      position: absolute;
+    }
+
+    .cursor::before {
+      content: "|";
+      display: inline-block;
+      margin-left: 0px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+
+      from,
+      to {
+        color: transparent;
+      }
+
+      50% {
+        color: black;
+      }
+    }
+
+    #wrap {
+      position: relative;
+      margin: 0 auto;
+      width: 60px;
     }
   </style>
 
@@ -19,12 +52,13 @@
 </head>
 
 <body>
-  <input inputmode="numeric" oninput="this.value = this.value.replace(/\D+/g, '')"
-    maxlength="3"  onFocus="this.select()" id="input" value="500"/><br><br>
-  <div id="output"></div><br>
-    <button id="start">Start</button>
-    <button style="display: none;" id="stop">Stop</button>
-    <button id="reset">Reset</button>
+  <div id="wrap">
+    <div id="output"></div>
+    <input inputmode="numeric" maxlength="3" id="input" value="500" />
+  </div><br>
+  <button id="start">Start</button>
+  <button style="display: none;" id="stop">Stop</button>
+  <button id="reset">Reset</button>
   <script src="./index.js"></script>
 </body>
 
