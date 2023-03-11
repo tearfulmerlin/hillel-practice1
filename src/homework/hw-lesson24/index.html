@@ -46,6 +46,19 @@
       margin: 0 auto;
       width: 60px;
     }
+
+    #progress-bar-container {
+      width: 200px;
+      height: 10px;
+      background-color: #ddd;
+      margin: 10px auto;
+    }
+
+    #progress-bar {
+      width: 0%;
+      height: 100%;
+      background-color: #4CAF50;
+    }
   </style>
 
   <title>Document</title>
@@ -55,7 +68,11 @@
   <div id="wrap">
     <div id="output"></div>
     <input inputmode="numeric" maxlength="3" id="input" value="500" />
-  </div><br>
+  </div>
+  <div id="progress-bar-container">
+    <div id="progress-bar"></div>
+  </div>
+  <br>
   <button id="start">Start</button>
   <button style="display: none;" id="stop">Stop</button>
   <button id="reset">Reset</button>
