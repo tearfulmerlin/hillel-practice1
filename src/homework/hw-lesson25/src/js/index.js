@@ -12,23 +12,26 @@ const navigation = {
     if (this.data !== null) {
       this.url = this.data.next === null ? this.url : this.data.next;
     }
-    this.makeRequest();
+    this.makeRequest(this.url);
   },
   prev() {
     if (this.data.previous !== null) this.url = this.data.previous;
-    this.makeRequest();
+    this.makeRequest(this.url);
   },
-  makeRequest() {
-    fetch(this.url)
+  makeRequest(url) {
+    fetch(url)
       .then((res) => res.json())
       .then((d) => {
         this.data = d;
         this.showResults();
       });
   },
+  changePageCategory(str) {
+    this.url = `https://swapi.dev/api/${str}`;
+  },
 };
+navigation.changePageCategory('planets');
 navigation.showResults();
-// navigation.next().then(() => navigation.showResults());
 
 document.querySelectorAll('button').forEach((el) => {
   el.addEventListener('click', function () {
