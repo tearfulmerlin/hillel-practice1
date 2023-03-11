@@ -36,8 +36,8 @@ const stopwatch = {
 };
 
 let currInput = 1;
-// *TIMER
 
+// *TIMER
 // !find next input
 function focusOnNextEl() {
   const nextInput = document.querySelector(`input[data-pos='${currInput}']`);
