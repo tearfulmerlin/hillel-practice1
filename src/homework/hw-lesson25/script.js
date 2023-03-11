@@ -77,6 +77,7 @@ async function getVehicles(vehiclesUrls) {
 
 function showPlanets(limit = 10) {
   planetsContainer.innerHTML = '';
+  nav.style.display = 'flex';
   for (let i = 0; i < limit && i < planets.length; i++) {
     const planet = planets[i];
     const planetItem = document.createElement('li');
@@ -86,6 +87,7 @@ function showPlanets(limit = 10) {
     `;
     planetItem.addEventListener('click', () => {
       getResidents(planet.residents);
+      nav.style.display = 'none';
       document.getElementById('planetName').textContent = planet.name;
       document.getElementById('residents').style.display = 'block';
       document.getElementById('planets').style.display = 'none';
@@ -95,7 +97,6 @@ function showPlanets(limit = 10) {
 }
 
 async function showResidents(maxCount = Infinity) {
-  nav.style.display = 'none';
   residentsContainer.innerHTML = '';
   loader.style.display = 'block';
 
