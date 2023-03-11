@@ -22,16 +22,18 @@ document.querySelectorAll('.page-title').forEach((el) => {
   });
 });
 
-let timerIntervalID;
-let stopwatchIntervalID;
-
-let secondsTimer;
-let minutesTimer;
-let hoursTimer;
-
-let secondsStopWatch = 0;
-let minutesStopWatch = 0;
-let hoursStopWatch = 0;
+const timer = {
+  seconds: 0,
+  minutes: 0,
+  hours: 0,
+  interval: null,
+};
+const stopwatch = {
+  seconds: 0,
+  minutes: 0,
+  hours: 0,
+  interval: null,
+};
 
 let currInput = 1;
 // *TIMER
@@ -88,9 +90,9 @@ document.querySelectorAll('input.only-num').forEach((el) => {
 // !update dials
 function updateTimer(timeInput) {
   const temp = timeInput;
-  temp[0].value = createMaskArray(hoursTimer);
-  temp[1].value = createMaskArray(minutesTimer);
-  temp[2].value = createMaskArray(secondsTimer);
+  temp[0].value = createMaskArray(timer.hours);
+  temp[1].value = createMaskArray(timer.minutes);
+  temp[2].value = createMaskArray(timer.seconds);
 }
 
 // !block or unblock input fields
@@ -106,46 +108,47 @@ document.querySelector('#timer-start').addEventListener('click', function () {
   const btn = this;
   const timeInput = document.querySelectorAll('.input-container.timer input');
   if (btn.innerText === 'Старт') {
-    secondsTimer = +timeInput[2].value;
-    minutesTimer = +timeInput[1].value;
-    hoursTimer = +timeInput[0].value;
+    timer.seconds = +timeInput[2].value;
+    timer.minutes = +timeInput[1].value;
+    timer.hours = +timeInput[0].value;
 
-    if (hoursTimer || minutesTimer || secondsTimer) {
-      if (secondsTimer > 60) {
-        minutesTimer += Math.floor(secondsTimer / 60);
-        secondsTimer -= 60 * Math.floor(secondsTimer / 60);
+    if (timer.hours || timer.minutes || timer.seconds) {
+      if (timer.seconds > 60) {
+        timer.minutes += Math.floor(timer.seconds / 60);
+        timer.seconds -= 60 * Math.floor(timer.seconds / 60);
       }
-      if (minutesTimer >= 60) {
-        hoursTimer += Math.floor(minutesTimer / 60);
-        minutesTimer -= 60 * Math.floor(minutesTimer / 60);
+      if (timer.minutes >= 60) {
+        timer.hours += Math.floor(timer.minutes / 60);
+        timer.minutes -= 60 * Math.floor(timer.minutes / 60);
       }
-      if (hoursTimer >= 100) {
-        hoursTimer = 99;
+      if (timer.hours >= 100) {
+        timer.hours = 99;
       }
 
       btn.innerText = 'Стоп';
       blockInputs(true);
       updateTimer(timeInput);
-      timerIntervalID = setInterval(() => {
-        if (!hoursTimer && !minutesTimer && secondsTimer === 1) {
+      timer.interval = setInterval(() => {
+        if (!timer.hours && !timer.minutes && timer.seconds === 1) {
           document.querySelector('#timer-start').click();
-          clearInterval(timerIntervalID);
+          alert('Time out!');
+          clearInterval(timer.interval);
         }
-        if (secondsTimer === 0) {
-          secondsTimer = 60;
-          if (minutesTimer === 0) {
-            hoursTimer -= 1;
-            minutesTimer = 60;
+        if (timer.seconds === 0) {
+          timer.seconds = 60;
+          if (timer.minutes === 0) {
+            timer.hours -= 1;
+            timer.minutes = 60;
           }
-          minutesTimer -= 1;
+          timer.minutes -= 1;
         }
-        secondsTimer -= 1;
+        timer.seconds -= 1;
         updateTimer(timeInput);
       }, 1000);
     }
   } else {
     btn.innerText = 'Старт';
-    clearInterval(timerIntervalID);
+    clearInterval(timer.interval);
     blockInputs(false);
   }
 });
@@ -156,20 +159,20 @@ document.querySelector('#timer-reset').addEventListener('click', () => {
   allInputs.forEach((el) => {
     const element = el;
     element.value = '00';
-    secondsTimer = 0;
-    minutesTimer = 0;
-    hoursTimer = 0;
+    timer.seconds = 0;
+    timer.minutes = 0;
+    timer.hours = 0;
     document.querySelector('#timer-start').innerText = 'Старт';
     blockInputs(false);
-    clearInterval(timerIntervalID);
+    clearInterval(timer.interval);
   });
 });
 
 // *STOPWATCH
 function updateStopWatch(displays) {
-  displays[0].innerText = `${createMaskArray(hoursStopWatch)} h`;
-  displays[1].innerText = `${createMaskArray(minutesStopWatch)} min`;
-  displays[2].innerText = `${createMaskArray(secondsStopWatch)} sec`;
+  displays[0].innerText = `${createMaskArray(stopwatch.hours)} h`;
+  displays[1].innerText = `${createMaskArray(stopwatch.minutes)} min`;
+  displays[2].innerText = `${createMaskArray(stopwatch.seconds)} sec`;
 }
 
 document
@@ -179,26 +182,26 @@ document
     const btn = this;
     if (btn.innerText === 'Старт') {
       btn.innerText = 'Стоп';
-      stopwatchIntervalID = setInterval(() => {
-        if (secondsStopWatch === 59) {
-          minutesStopWatch += 1;
-          secondsStopWatch = 0;
+      stopwatch.interval = setInterval(() => {
+        if (stopwatch.seconds === 59) {
+          stopwatch.minutes += 1;
+          stopwatch.seconds = 0;
         }
-        if (minutesStopWatch === 59) {
-          hoursStopWatch += 1;
-          minutesStopWatch = 0;
+        if (stopwatch.minutes === 59) {
+          stopwatch.hours += 1;
+          stopwatch.minutes = 0;
         }
-        if (hoursStopWatch === 59) {
-          minutesStopWatch = 0;
-          secondsStopWatch = 0;
-          hoursStopWatch = 0;
+        if (stopwatch.hours === 59) {
+          stopwatch.minutes = 0;
+          stopwatch.seconds = 0;
+          stopwatch.hours = 0;
         }
-        secondsStopWatch += 1;
+        stopwatch.seconds += 1;
         updateStopWatch(displays);
       }, 1000);
     } else {
       btn.innerText = 'Старт';
-      clearInterval(stopwatchIntervalID);
+      clearInterval(stopwatch.interval);
     }
   });
 
@@ -208,10 +211,10 @@ document.querySelector('#stopwatch-reset').addEventListener('click', () => {
   displays[1].innerText = '00 min';
   displays[2].innerText = '00 sec';
 
-  secondsStopWatch = 0;
-  minutesStopWatch = 0;
-  hoursStopWatch = 0;
+  stopwatch.seconds = 0;
+  stopwatch.minutes = 0;
+  stopwatch.hours = 0;
 
   document.querySelector('#stopwatch-start').innerText = 'Старт';
-  clearInterval(stopwatchIntervalID);
+  clearInterval(stopwatch.interval);
 });
