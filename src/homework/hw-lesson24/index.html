@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Times</title>
+    <script src="index.js" defer></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+      }
+
+      input {
+        outline: 0;
+        border: 0;
+        text-align: right;
+        width: 17px;
+        margin-right: 5px;
+        transition: .3s;
+        border-bottom: 1px solid black;
+      }
+
+      input:disabled {
+        border: 0;
+        color: black;
+      }
+
+      input:focus {
+        background: lightblue;
+      }
+
+      button {
+        border: 0;
+        outline: 0;
+        background: white;
+        transition: 0.3s;
+        cursor: pointer;
+        user-select: none;
+        padding: 5px 10px;
+        margin-right: 20px;
+        border: 2px solid black;
+        border-radius: 5px;
+      }
+
+      button:disabled {
+        color:rgb(197, 197, 197);
+      }
+
+      button:disabled:hover {
+        color:rgb(197, 197, 197);
+        transform: none;
+        box-shadow: none;
+        background: white;
+        cursor: default;
+      }
+
+      .tab-container {
+        border: 2px solid black;
+        border-radius: 10px;
+        width: 500px;
+        padding: 10px 0;
+        margin: 0 auto;
+        margin-top: 50px;
+        box-shadow: 9px 7px 4px 0px rgba(0, 0, 0, 0.4);
+      }
+
+      .tab-container .header,
+      .tab-container .body {
+        padding: 0 10px;
+      }
+
+      .tab-container .header {
+        display: flex;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid black;
+      }
+
+      .page-title {
+        padding: 5px 10px;
+        border: 2px solid black;
+        border-radius: 5px;
+        cursor: pointer;
+        user-select: none;
+        transition: 0.3s;
+      }
+
+      .page-title.active {
+        background: grey;
+        color: white;
+      }
+
+      .page-title.active:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      .page-title:hover,
+      button:hover {
+        transform: translateY(-5px);
+        background: grey;
+        color: white;
+        box-shadow: 6px 4px 4px 0px rgba(0, 0, 0, 0.4);
+      }
+
+      .page-title:not(:last-child) {
+        margin-right: 30px;
+      }
+
+      .element.active {
+        display: flex;
+      }
+
+      .element {
+        display: none;
+        flex-direction: column;
+      }
+
+      .input-container {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+        background: white;
+      }
+
+      .input-container .input-div {
+        position: relative;
+      }
+
+      .input-container .input-div::after {
+        content: "sec";
+        position: absolute;
+        left: 100%;
+        background: white;
+        z-index: 3;
+      }
+
+      .input-container .input-minutes::after {
+        content: "min";
+      }
+
+      .input-container .input-hours::after {
+        content: "h";
+      }
+
+      .controls-container {
+        margin-top: 10px;
+        display: flex;
+      }
+
+      .element .input-container.stopwath {
+        max-width: 40%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tab-container">
+      <div class="header">
+        <div class="page-title active" data-page="1">Таймер</div>
+        <div class="page-title" data-page="2">Секундомер</div>
+      </div>
+
+      <div class="body">
+        <div data-page="1" class="element">
+          <div class="input-container timer">
+            <div class="input-hours input-div">
+              <input type="text" data-pos="3" class="only-num hours"/>
+            </div>
+            <div class="input-minutes input-div">
+              <input type="text" data-pos="2" class="only-num minutes" />
+            </div>
+            <div class="input-seconds input-div">
+              <input type="text" data-pos="1" class="only-num seconds"/>
+            </div>
+          </div>
+          <div class="controls-container">
+            <button id="timer-start">Старт</button>
+            <button id="timer-reset">Сбросить</button>
+          </div>
+        </div>
+        <div data-page="2" class="element">
+          <div class="input-container stopwath">
+            <div class="stopwatch-display">00 h</div>
+            <div class="stopwatch-display">00 min</div>
+            <div class="stopwatch-display">00 sec</div>
+          </div>
+          <div class="controls-container">
+            <button id="stopwatch-start">Старт</button>
+            <button id="stopwatch-reset">Сбросить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
