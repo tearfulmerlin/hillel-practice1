@@ -30,7 +30,6 @@ function setSec(arr) {
   return +arr[0] + +arr[1] * 10 + +arr[2] * 60 + +arr[3] * 60;
 }
 
-
 function render(second, divider) {
   const minutes = Math.floor(second / divider);
   let remainingSeconds = second % divider;
