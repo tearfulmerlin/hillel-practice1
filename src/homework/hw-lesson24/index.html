@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      opacity: 0;
+      z-index: 1;
+      cursor: text;
+    }
+
+    #output {
+      position: absolute;
+    }
+
+    .cursor::before {
+      content: "|";
+      display: inline-block;
+      margin-left: 0px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+
+      from,
+      to {
+        color: transparent;
+      }
+
+      50% {
+        color: black;
+      }
+    }
+
+    #wrap {
+      position: relative;
+      margin: 0 auto;
+      width: 60px;
+    }
+
+    #progress-bar-container {
+      width: 200px;
+      height: 10px;
+      background-color: #ddd;
+      margin: 10px auto;
+    }
+
+    #progress-bar {
+      width: 0%;
+      height: 100%;
+      background-color: #4CAF50;
+    }
+  </style>
+
+  <title>Countdown Timer</title>
+</head>
+
+<body>
+  <H1>Countdown Timer</H1>
+  <div id="wrap">
+
+    <div id="output"></div>
+    <input inputmode="numeric" maxlength="3" id="input" value="500" />
+  </div>
+  <div id="progress-bar-container">
+    <div id="progress-bar"></div>
+  </div>
+  <br>
+  <button id="start">Start</button>
+  <button style="display: none;" id="stop">Stop</button>
+  <button id="reset">Reset</button>
+  <script src="./index.js"></script>
+</body>
+
+</html>
