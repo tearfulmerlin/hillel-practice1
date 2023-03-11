@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./LogoStarWars.svg" type="image/x-icon">
+    <title>Star Wars</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <img src="./LogoStarWars.svg" alt="Logo">
+      <h1>Discovery</h1>
+    </header>
+    <nav>
+      <h2>Star Wars Planets</h2>
+      <img src="./planets.svg" alt="planets">
+    </nav>
+    <div class="container">
+      <div id="planets">
+        <ul id="planetsList"></ul>
+        <div class="pagination"></div>
+      </div>
+      <div id="residents">
+        <div class="img-box">
+          <h2>Residents of <span id="planetName"></span></h2>
+          <img src="./characters.svg" alt="characters">
+        </div>
+        <ul id="residentsList"></ul>
+        <button id="backToPlanets">Back to planets</button>
+      </div>
+      <div id="vehicles">
+        <div class="img-box">
+          <h2>Vehicles of <span id="residentName"></span></h2>
+          <img src="./vehicles.svg" alt="vehicles">
+        </div>
+        <ul id="vehiclesList"></ul>
+      </div>
+    </div>
+    <div class="loader"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>
