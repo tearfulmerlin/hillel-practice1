@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./index.js" defer></script>
+</head>
+<body>
+  <body>
+    <div class="page" style="margin: 30px; padding: 30px;
+				border: 3px solid grey; width:300px;">
+      <h2 style="text-align: center">User Form</h2>
+      <form id="form" method="" id="form">
+        <div>
+          <label> Name: 
+            <input type="text" name="name" placeholder="your name">
+          </label><br>
+        </div>
+        <div>
+          <label> Date of birth:
+            <input type="date" name="birthday">
+          </label><br>
+        </div>
+				<div>
+					<h4> Sex: </h4>
+        	<label> Male
+            <input type="radio" name="sex" value="male">
+          </label>
+        	<label> Female
+            <input type="radio" name="sex" value="female">
+          </label>
+				</div><br>
+      	<div>
+          <label> City:
+            <input type="text" name="city" placeholder="your city">
+          </label>
+        </div><br>
+      	<div>
+          <label> Mail:
+            <input type="mail" name="mail" size="30" required>
+          </label>  
+        </div><br>
+        <div>
+          <label for="password"> Password 
+            <input type="password" name="password" placeholder="min 4 max 8 symbols"
+              minlength="4" maxlength="8" required>
+          </label>
+        </div><br>
+				<div>
+					<h4> Language: </h4>
+          <label> 
+            Ukr 
+            <input type="checkbox" name="language" value="Ukr"/>
+            Eng
+            <input type="checkbox" name="language" value="Eng"/>
+            Deu
+            <input type="checkbox" name="language" value="Deu"/>
+          </label>	<br>
+				</div><br>
+				<div>
+          <button type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+		<div class="resultForm">
+		</div>
+    </body>
+</body>
+</html>
