@@ -114,3 +114,36 @@ body {
 .container li .residents-list:hover {
   text-decoration: none;
 }
+
+.controls {
+  max-width: 740px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.controls .pages {
+  display: flex;
+  list-style-type: none;
+  color: black;
+  width: 100%;
+  justify-content: space-between;
+  max-width: 400px;
+}
+
+.controls .pages li {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 100%;
+  background: rgba(255, 255, 255, 0.425);
+  border: 2px solid white;
+}
+
+.controls .pages li.active {
+  background: rgb(19, 181, 133);
+}

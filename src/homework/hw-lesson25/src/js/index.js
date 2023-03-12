@@ -60,6 +60,7 @@ const req = {
     });
   },
 };
+
 popupContent.parentElement.addEventListener('click', (e) => {
   if (e.target.classList.contains('popup')) {
     req.hideWindow('popup');
@@ -111,8 +112,10 @@ function renderResidents(residents, planet) {
   req.showWindow('popup');
   popupContent.innerHTML = '';
   if (!residents.length) {
-    popupContent.innerHTML = '<div class="not-found">There are no residents here!</div>';
+    popupContent.innerHTML =
+      '<div class="not-found">There are no residents here!</div>';
   }
+  console.log('residents:', residents);
   for (const resident of residents) {
     const div = document.createElement('div');
     div.classList.add('resident-container');
@@ -132,8 +135,10 @@ function renderResidents(residents, planet) {
 function renderVehicles(vehiclesList) {
   req.showWindow('popup');
   popupContent.innerHTML = '';
+  console.log('vehicles:', vehiclesList);
   if (!vehiclesList.length) {
-    popupContent.innerHTML = '<div class="not-found">There are no vehicles here!</div>';
+    popupContent.innerHTML =
+      '<div class="not-found">There are no vehicles here!</div>';
   }
   console.log(vehiclesList);
   for (const vehicle of vehiclesList) {
@@ -173,14 +178,59 @@ function residentsClick(residentList, residentCard) {
   });
 }
 
+function renderDots(elementsAmnt, elementsPerPageAmnt) {
+  const container = document.querySelector('.controls .pages');
+  for (let i = 1; i <= elementsAmnt / elementsPerPageAmnt; i++) {
+    const li = document.createElement('li');
+    if (i === 1) li.classList.add('active');
+    li.innerText = i;
+    container.insertAdjacentElement('beforeend', li);
+
+    li.addEventListener('click', function() {
+      const answer = req.request('planets', +this.innerText);
+      answer.then(() => {
+        renderPlanets(req.data.results);
+      });
+      container.querySelector('li.active').classList.remove('active');
+      this.classList.add('active');
+    });
+  }
+}
+
 req.request('planets').then(() => {
   renderPlanets(req.data.results);
+  renderDots(req.data.count, req.data.results.length);
 });
 
 document.querySelectorAll('button.navigation').forEach((el) => {
   el.addEventListener('click', function () {
     const className = this.classList.item(0);
     const answer = req[`${className}`]();
+    const activeElement = document.querySelector('.controls .pages li.active');
+
+    activeElement.classList.remove('active');
+    if (className === 'next') {
+      if (activeElement.nextElementSibling !== null) {
+        const nextEl = activeElement.nextElementSibling;
+        nextEl.classList.add('active');
+        nextEl.click();
+      } else {
+        const firstElem = document.querySelector('.controls .pages li');
+        firstElem.classList.add('active');
+        firstElem.click();
+      }
+    }
+    if (className === 'prev') {
+      if (activeElement.previousElementSibling !== null) {
+        const prevEl = activeElement.previousElementSibling;
+        prevEl.classList.add('active');
+        prevEl.click();
+      } else {
+        const lastEl = document.querySelector('.controls .pages li:last-child');
+        lastEl.classList.add('active');
+        lastEl.click();
+      }
+    }
 
     if (answer !== null) {
       answer.then(() => {
