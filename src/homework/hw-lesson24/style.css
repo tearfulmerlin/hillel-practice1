@@ -1,37 +1,36 @@
-body{
-    background-color: rgb(175, 119, 227);
-}
-/* button{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 100px;
-    font-size: 50px;
-    color: rgb(12, 13, 11);
-    background-color: rgb(80, 80, 231);
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), -2px -2px 4px rgba(255, 255, 255, 0.3);
-} */
-
-.time{
-    /* display: flex; */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 500px;
-    min-height: 300px;
-    font-size: 50px;
-    color: rgb(12, 13, 11);
-    background-color: rgb(96, 96, 144);
-    box-shadow: 2px 2px 4
-}
-.time__header{
+.timer {
     display: flex;
-    justify-content: space-around;
-}
-.time__footer{
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+  }
+  
+  #myInput {
+    font-size: 24px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  
+  .timer__func {
     display: flex;
-    justify-content: space-around;
-}
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  
+  .timer__func div {
+    font-size: 18px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+  
+  .timer__func div:hover {
+    background-color: #3e8e41;
+  }
+  
