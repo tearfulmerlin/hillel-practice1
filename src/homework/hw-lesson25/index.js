@@ -1,29 +1,46 @@
-const fetchPlanet = fetch('https://swapi.dev/api/planets/');
+const planetsUrl = 'https://swapi.dev/api/planets/';
+const spanPage = document.createElement('span');
 
-fetchPlanet
-  .then((data) => data.json())
-  .then((parsedData) => {
-    console.log(parsedData);
-    // throw new Error('error message');
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-  .finally(() => {
-    console.log('finally');
-  });
+const buttonNext = document.createElement('button');
+buttonNext.innerHTML = 'Next';
+document.body.appendChild(buttonNext);
 
-const fetchPeople = fetch('https://swapi.dev/api/people/10/');
+const buttonPrevious = document.createElement('button');
+buttonPrevious.innerHTML = 'Back';
+document.body.appendChild(buttonPrevious);
 
-fetchPeople
-  .then((data) => data.json())
-  .then((parsedData) => {
-    console.log(parsedData);
-    // throw new Error('error message');
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-  .finally(() => {
-    console.log('finally');
-  });
+const planets = document.getElementById('planets');
+
+
+function loadPlanets(url) {
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      planets.innerHTML = '';
+      data.results.forEach((obj) => {
+        planets.innerHTML += `${obj.name}<br>`;
+      });
+
+      planets.appendChild(spanPage);
+      spanPage.innerHTML = `${data.next}`;
+
+      if (data.previous) {
+        buttonPrevious.disabled = false;
+      } else { buttonPrevious.disabled = true; }
+
+      if (data.next) {
+        buttonNext.disabled = false;
+      } else { buttonNext.disabled = true; }
+
+
+      buttonNext.addEventListener('click', () => {
+        loadPlanets(data.next);
+      });
+      buttonPrevious.addEventListener('click', () => {
+        loadPlanets(data.previous);
+      });
+    });
+}
+
+loadPlanets(planetsUrl);
+
