@@ -1,13 +1,8 @@
 const planetsUrl = 'https://swapi.dev/api/planets/';
 const spanPage = document.createElement('span');
 
-const buttonNext = document.createElement('button');
-buttonNext.innerHTML = 'Next';
-document.body.appendChild(buttonNext);
-
-const buttonPrevious = document.createElement('button');
-buttonPrevious.innerHTML = 'Back';
-document.body.appendChild(buttonPrevious);
+const buttonNext = document.getElementById('buttonNext');
+const buttonPrevious = document.getElementById('buttonPrevious');
 
 const planets = document.getElementById('planets');
 
