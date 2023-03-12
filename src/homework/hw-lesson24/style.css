@@ -1,36 +1,55 @@
+body {
+  background-color: #1b262c;
+  color: #f0f0f0;
+  font-family: sans-serif;
+}
+
 .timer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 50px;
-  }
-  
-  #myInput {
-    font-size: 24px;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    text-align: center;
-  }
-  
-  .timer__func {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 16px;
-  }
-  
-  .timer__func div {
-    font-size: 18px;
-    padding: 8px 16px;
-    border-radius: 4px;
-    background-color: #4CAF50;
-    color: white;
-    margin-right: 8px;
-    cursor: pointer;
-  }
-  
-  .timer__func div:hover {
-    background-color: #3e8e41;
-  }
-  
+  text-align: center;
+  margin-top: 20px;
+}
+
+.time {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.timer__func {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.start, .stop, .reset {
+  font-size: 24px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.start {
+  background-color: #2b9348;
+  color: #f0f0f0;
+  border: none;
+}
+
+.stop {
+  background-color: #d90429;
+  color: #f0f0f0;
+  border: none;
+}
+
+.reset {
+  background-color: #ffba08;
+  color: #333;
+  border: none;
+}
+
+input { 
+  width: auto;
+  max-width: 100%;
+  border: none;
+  font-size: 2rem;   
+  text-align: center;
+  outline: none;
+}
