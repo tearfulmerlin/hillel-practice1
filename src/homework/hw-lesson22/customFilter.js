@@ -8,8 +8,19 @@
  * @returns {Array}
  */
 
+Array.prototype.filter = null
+
 function customFilter(callback) {
-  /* write code here */
+  const result = [];
+
+  for (let i = 0; i < this.length; i++) {
+    const item = this[i];
+
+    if (callback(item, i, this)) result.push(item);
+    
+  }
+
+  return result;
 }
 
 module.exports = customFilter;
