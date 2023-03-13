@@ -5,32 +5,55 @@ class Hamburgers {
 
   #additive;
 
-  static SIZE_BIG = {
-    title: 'Big', price: 100, calories: 40, category: 'size',
+  static SIZE = {
+    BIG: {
+      title: 'Big',
+      price: 100,
+      calories: 40,
+      category: 'size',
+    },
+    SMALL: {
+      title: 'Small',
+      price: 50,
+      calories: 20,
+      category: 'size',
+    },
   };
 
-  static SIZE_SMALL = {
-    title: 'Small', price: 50, calories: 20, category: 'size',
+  static TOPING = {
+    CHEESE: {
+      title: 'Cheese',
+      price: 10,
+      calories: 20,
+      category: 'toping',
+    },
+    SALAD: {
+      title: 'Salad',
+      price: 20,
+      calories: 5,
+      category: 'toping',
+    },
+    POTATO: {
+      title: 'Potato',
+      price: 15,
+      calories: 10,
+      category: 'toping',
+    },
   };
 
-  static CHEESE_TOPING = {
-    title: 'Cheese', price: 10, calories: 20, category: 'toping',
-  };
-
-  static SALAD_TOPING = {
-    title: 'Salad', price: 20, calories: 5, category: 'toping',
-  };
-
-  static POTATO_TOPING = {
-    title: 'Potato', price: 15, calories: 10, category: 'toping',
-  };
-
-  static SPICES_ADDITIVE = {
-    title: 'Spices', price: 15, calories: 0, category: 'additive',
-  };
-
-  static MAYO_ADDITIVE = {
-    title: 'Mayo', price: 20, calories: 0, category: 'additive',
+  static ADDITIVES = {
+    SPICES: {
+      title: 'Spices',
+      price: 15,
+      calories: 0,
+      category: 'additive',
+    },
+    MAYO: {
+      title: 'Mayo',
+      price: 20,
+      calories: 0,
+      category: 'additive',
+    },
   };
 
   constructor(size, toping) {
@@ -43,8 +66,11 @@ class Hamburgers {
   }
 
   get price() {
-    return this.#size.price + this.#toping.price
-    + (this.#additive === undefined ? 0 : this.#additive.price);
+    return (
+      this.#size.price +
+      this.#toping.price +
+      (this.#additive === undefined ? 0 : this.#additive.price)
+    );
   }
 
   set change_toping(toping) {
@@ -78,7 +104,11 @@ class Hamburgers {
   }
 
   get_bill() {
-    console.log(`You bought ${this.#size.title} hamburger with ${this.#toping.title} toping!`);
+    console.log(
+      `You bought ${this.#size.title} hamburger with ${
+        this.#toping.title
+      } toping!`,
+    );
     if (this.additive) {
       console.log(`Additive: ${this.#additive.title}`);
     }
@@ -86,8 +116,7 @@ class Hamburgers {
   }
 }
 
-const ham = new Hamburgers(Hamburgers.SIZE_BIG, Hamburgers.SALAD_TOPING);
+const ham = new Hamburgers(Hamburgers.SIZE.BIG, Hamburgers.TOPING.SALAD);
 ham.get_bill();
-ham.change_additivie = Hamburgers.MAYO_ADDITIVE;
+ham.change_additivie = Hamburgers.ADDITIVES.MAYO;
 ham.get_bill();
-
