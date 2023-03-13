@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-syntax */
 const popupContent = document.querySelector('.popup .content');
 
 const req = {
