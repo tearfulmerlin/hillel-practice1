@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0 15px;
+  background-color: #323232;
+  color: yellow;
+  text-align: center;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: yellow;
+}
+
+a:hover {
+  color: #ff7300;
+}
+
+h1 {
+  font-size: 72px;
+  background-color: black;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+  font-size: 24px;
+}
+
+ul li {
+  padding: 5px;
+}
+
+.pagination a {
+  background-color: black;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+button {
+  background-color: black;
+  color: yellow;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  border: none;
+}
