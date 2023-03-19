@@ -64,7 +64,6 @@ class Timer {
   start() {
     this.timerId = setInterval(() => {
       this.time -= 1;
-
     }, 1000);
   }
 
@@ -84,5 +83,3 @@ class Timer {
 }
 
 const timer = new Timer();
-
-timer
