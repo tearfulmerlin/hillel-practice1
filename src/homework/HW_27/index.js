@@ -1,11 +1,22 @@
-const timer = document.getElementById("timer");
-const startButton = document.getElementById("start");
-const stopButton = document.getElementById("stop");
-const resetButton = document.getElementById("reset");
+const timer = document.getElementById('timer');
+const startButton = document.getElementById('start');
+const stopButton = document.getElementById('stop');
+const resetButton = document.getElementById('reset');
 
-let countdownTime = 300; // 5 minutes in seconds
+let countdownTime = 300;
 let countdownIntervalId = null;
 let isPaused = false;
+
+function updateTimerDisplay() {
+  const minutes = Math.floor(countdownTime / 60);
+  const seconds = countdownTime % 60;
+  timer.innerText = `${minutes.toString().padStart(2, '0')}:${seconds
+    .toString()
+    .padStart(2, '0')}`;
+  document.title = `${minutes.toString().padStart(2, '0')}:${seconds
+    .toString()
+    .padStart(2, '0')} - Countdown Timer`;
+}
 
 function startCountdown() {
   countdownIntervalId = setInterval(() => {
@@ -18,6 +29,7 @@ function startCountdown() {
       alert("Time's up!");
     }
   }, 1000);
+  isPaused = false;
 }
 
 function pauseCountdown() {
@@ -27,48 +39,30 @@ function pauseCountdown() {
 
 function resumeCountdown() {
   startCountdown();
-  isPaused = false;
 }
 
 function resetCountdown() {
   clearInterval(countdownIntervalId);
   countdownTime = 300;
   updateTimerDisplay();
-  document.title = "Countdown Timer";
+  document.title = 'Countdown Timer';
   isPaused = false;
-}
-
-function updateTimerDisplay() {
-  const minutes = Math.floor(countdownTime / 60);
-  const seconds = countdownTime % 60;
-  timer.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-  document.title = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} - Countdown Timer`;
 }
 
 function setNewCountdownTime() {
   const currentTimerText = timer.innerText;
-  timer.innerHTML = `<input type="text" id="newTime" value="${currentTimerText}" />`;
-  const newTimeInput = document.getElementById("newTime");
-  newTimeInput.focus();
-  newTimeInput.select();
-
-  newTimeInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      countdownTime = parseInt(e.target.value.split(":")[0], 10) * 60 + parseInt(e.target.value.split(":")[1], 10);
-      updateTimerDisplay();
-      if (!isPaused) {
-        startCountdown();
-      }
-    }
-  });
-
-  newTimeInput.addEventListener("blur", (e) => {
-    countdownTime = parseInt(e.target.value.split(":")[0], 10) * 60 + parseInt(e.target.value.split(":")[1], 10);
+  const newTime = prompt('Enter new countdown time (mm:ss)', currentTimerText);
+  if (newTime !== null) {
+    countdownTime = parseInt(newTime.split(':')[0], 10) * 60
+      + parseInt(newTime.split(':')[1], 10);
     updateTimerDisplay();
-  });
+    if (!isPaused) {
+      startCountdown();
+    }
+  }
 }
 
-startButton.addEventListener("click", () => {
+startButton.addEventListener('click', () => {
   if (!isPaused) {
     startCountdown();
   } else {
@@ -76,9 +70,9 @@ startButton.addEventListener("click", () => {
   }
 });
 
-stopButton.addEventListener("click", pauseCountdown);
-resetButton.addEventListener("click", resetCountdown);
+stopButton.addEventListener('click', pauseCountdown);
+resetButton.addEventListener('click', resetCountdown);
 
-timer.addEventListener("click", setNewCountdownTime);
+timer.addEventListener('click', setNewCountdownTime);
 
 updateTimerDisplay();
