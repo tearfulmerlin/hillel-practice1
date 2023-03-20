@@ -106,26 +106,18 @@ promptBtns.style.cssText = 'border-radius: 5px; background: #4676d7; color: #fff
  * (using Math.random)
  */
 
-const parentImg = document.querySelector('.random-pics');
-const randomImgBtn = document.createElement('button');
-const img = document.createElement('img');
-const amnt = 10;
+const imgPlace = document.querySelector('.random-pics');
+const usedNumbers = [];
 
-randomImgBtn.classList.add('random-img');
-randomImgBtn.innerText = 'Случайная фотография';
+for (let i = 1; i <= 10; i++) {
+  let randomNumber;
+  
+  do {
+    randomNumber = Math.floor(Math.random() * 10) + 1;
 
-const randNum = (max, min) => Math.round(min + Math.random() * (max - min));
-
-parentImg.insertAdjacentElement('beforeend', randomImgBtn);
-parentImg.insertAdjacentElement('beforeend', img);
-
-img.alt = 'Picture';
-img.src = `images/${randNum(amnt, 1)}.jpg`;
-
-// eslint-disable-next-line func-names
-randomImgBtn.onclick = function () {
-  img.src = `images/${randNum(amnt, 1)}.jpg`;
-};
-
-img.style.cssText = 'height: 200px; width: 200px; border: solid 1px; margin-left: 50px';
-randomImgBtn.style.cssText = 'border-radius: 5px; background: #4676d7; color: #fff; padding: 8px 16px; font-size: 1rem;';
+  } while (usedNumbers.includes(randomNumber));
+  usedNumbers.push(randomNumber);
+  const img = document.createElement('img');
+  img.setAttribute('src', `images/${randomNumber}.jpg`);
+  imgPlace.appendChild(img);
+}
