@@ -8,7 +8,17 @@ document.querySelector('#button').onclick = function getForm(event) {
     const cityUser = document.querySelector('#city').value;
     const emailUser = document.querySelector('#email').value;
     const passwordUser = document.querySelector('#password').value;
-    const langUser = document.querySelector('input[name="language"]:checked').value;
+    const langInputs = document.querySelectorAll('input[name="language"]:checked');
+
+    let langUser = '';
+    if (langInputs.length > 0) {
+        langInputs.forEach(input => {
+            langUser += input.value + ', ';
+        });
+
+    } 
+
+    langUser = langUser.slice(0, -2);
 
     document.querySelector('#block-name').innerHTML = `Name: ${nameUser}`;
     document.querySelector('#block-date').innerHTML = `Date: ${dateUser}`;
