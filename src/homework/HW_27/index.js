@@ -50,16 +50,30 @@ function resetCountdown() {
 }
 
 function setNewCountdownTime() {
-  const currentTimerText = timer.innerText;
-  const newTime = prompt('Enter new countdown time (mm:ss)', currentTimerText);
-  if (newTime !== null) {
-    countdownTime = parseInt(newTime.split(':')[0], 10) * 60
-      + parseInt(newTime.split(':')[1], 10);
-    updateTimerDisplay();
-    if (!isPaused) {
-      startCountdown();
-    }
+  if (timer.querySelector('input')) {
+    return;
   }
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = timer.innerText;
+  input.style.width = '80px';
+  input.style.marginRight = '10px';
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      const newTime = input.value;
+      countdownTime = parseInt(newTime.split(':')[0], 10) * 60
+        + parseInt(newTime.split(':')[1], 10);
+      updateTimerDisplay();
+      if (!isPaused) {
+        startCountdown();
+      }
+      timer.removeChild(input);
+    } else if (event.key === 'Escape') {
+      timer.removeChild(input);
+    }
+  });
+  timer.appendChild(input);
+  input.focus();
 }
 
 startButton.addEventListener('click', () => {
