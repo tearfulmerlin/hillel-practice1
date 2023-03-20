@@ -98,8 +98,11 @@ secondButton.addEventListener('click', () => {
  */
 
 const divRandPics = document.querySelector('.random-pics');
-const image = new Image();
-const random = Math.floor(Math.random() * 10) + 1;
-image.src = `images/${random}.jpg`;
-divRandPics.appendChild(image);
-document.body.appendChild(image);
+
+const randomArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].sort(() => Math.round(Math.random() * 100) - 50);
+
+for (let i = 0; i < randomArr.length; i++) {
+  const image = new Image();
+  image.src = `images/${randomArr[i]}.jpg`;
+  divRandPics.appendChild(image);
+}
