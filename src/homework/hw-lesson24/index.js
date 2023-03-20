@@ -10,9 +10,15 @@ let stopButton;
 let resetButton;
 let timeForm;
 
-function displayTime() {
+function splitTime() {
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
+
+  return { minutes, seconds };
+}
+
+function displayTime() {
+  const { minutes, seconds } = splitTime();
   const mintuesStr = minutes > 0 ? `${minutes} m ` : '';
   const secondsStr = minutes > 0 && seconds < 10 ? `0${seconds} s` : `${seconds} s`;
   timeSpan.textContent = `${mintuesStr}${secondsStr}`;
@@ -151,12 +157,13 @@ function creteForm() {
   timeForm = document.createElement('form');
   timeForm.setAttribute('name', 'set-time');
   timeContainer.append(timeForm);
+  const { minutes, seconds } = splitTime();
 
   const inputMinutes = document.createElement('input');
   inputMinutes.setAttribute('id', 'time-minutes');
   inputMinutes.setAttribute('type', 'number');
   inputMinutes.setAttribute('name', 'minutes');
-  inputMinutes.setAttribute('value', '0');
+  inputMinutes.setAttribute('value', minutes);
   inputMinutes.setAttribute('min', '0');
 
   const labelMinutes = document.createElement('label');
@@ -173,7 +180,7 @@ function creteForm() {
   inputSeconds.setAttribute('id', 'time-seconds');
   inputSeconds.setAttribute('type', 'number');
   inputSeconds.setAttribute('name', 'seconds');
-  inputSeconds.setAttribute('value', '0');
+  inputSeconds.setAttribute('value', seconds);
   inputSeconds.setAttribute('min', '0');
 
   const labelSeconds = document.createElement('label');
