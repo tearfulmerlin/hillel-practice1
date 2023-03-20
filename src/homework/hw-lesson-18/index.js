@@ -11,14 +11,14 @@
 // eslint-disable-next-line no-unused-vars
 const inputName = document.getElementById('nameInput');
 // eslint-disable-next-line no-unused-vars
-function getFocus(e) {
+function handleFocus(e) {
   const textSpan = document.createElement('span');
   textSpan.innerText = 'focused!';
   textSpan.id = 'spanFocus';
   e.target.insertAdjacentElement('afterend', textSpan);
 }
 
-inputName.onfocus = getFocus;
+inputName.onfocus = handleFocus;
 
 function getBlur() {
   const span = document.querySelector('#spanFocus');
@@ -111,7 +111,7 @@ const usedNumbers = [];
 
 for (let i = 1; i <= 10; i++) {
   let randomNumber;
-  
+
   do {
     randomNumber = Math.floor(Math.random() * 10) + 1;
 
