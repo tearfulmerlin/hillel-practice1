@@ -74,18 +74,21 @@ promptBtns.innerText = 'Введите свой адрес';
 redirectBtns.innerText = 'Нажмите для перенаправления';
 
 let url = '';
-const temp = url.split('');
 
 promptBtns.onclick = function getPrompt() {
   url = prompt('Ваш адрес');
-  if (url !== null && !url.includes('https://')) temp.unshift('https://'); url = temp.join('');
-
+  if (url !== null && !url.startsWith('http://') && !url.startsWith('https://')) {
+    url = 'https://' + url;
+  }
   redirectBtns.innerText = `Перенаправить на ${url}`;
 };
 
 redirectBtns.onclick = function getRedirect() {
-  // eslint-disable-next-line no-unused-expressions, no-restricted-globals
-  (url === '' || url === null) ? (redirectBtns.innerText = 'Извините, вы должны сначала ввести адресс') : (location.href = url);
+  if (url === '') {
+    alert('Пожалуйста, нажмите на первую кнопку');
+  } else {
+    location.href = url;
+  }
 };
 
 parentBtns.insertAdjacentElement('beforeend', promptBtns);
