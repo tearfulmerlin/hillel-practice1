@@ -1,0 +1,8 @@
+.container {
+  gap: 5px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.container div {
+  font-size: 14px;
+}

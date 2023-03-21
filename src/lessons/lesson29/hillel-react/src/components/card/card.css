@@ -1,0 +1,7 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 250px;
+  border: 1px solid rgba(52, 52, 52, 0.084);
+}
