@@ -3,11 +3,23 @@ let store = [
   { title: 'remove', id: 2, done: false },
 ];
 
+function storeLength(arr) {
+  let count = 0;
+  for (let i = 0; i < arr.length; i += 1) {
+    if (arr[i].done === false || !arr[i].done) {
+      count += 1;
+    }
+  }
+
+  return count;
+}
 
 const input = document.querySelector('input');
 const list = document.querySelector('ul');
+const countControl = document.getElementById('item-left');
 
 function renderItems(data) {
+  countControl.innerText = `${storeLength(data)}`;
   list.innerHTML = '';
 
   data.forEach((item) => {
@@ -29,17 +41,19 @@ function generateId() {
 
 input.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
-    const item = { title: event.target.value, id: generateId() };
-
-    event.target.value = '';
-    store.push(item);
-    renderItems(store);
+    if ((event.target.value).length > 0) {
+      const item = { title: event.target.value, id: generateId() };
+      event.target.value = '';
+      store.push(item);
+      renderItems(store);
+    }
   }
 });
 
 list.addEventListener('click', (event) => {
   if (event.target.tagName === 'BUTTON') {
     store = store.filter((item) => item.id !== +event.target.id);
+    storeLength(store);
     renderItems(store);
   } else if (event.target.tagName === 'LI') {
     store = store.map((item) => (item.id === +event.target.firstElementChild.id
@@ -48,7 +62,7 @@ list.addEventListener('click', (event) => {
         done: !item.done,
       }
       : item));
-
+    storeLength(store);
     renderItems(store);
   }
 });
