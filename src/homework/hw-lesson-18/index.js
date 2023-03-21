@@ -76,12 +76,27 @@ button2.addEventListener('click', () => {
 
 const imagesContainer = document.getElementById('imagesContainer');
 
-// Function to display a random image from the given folder
-function displayRandomImage() {
+// Function to display all images in random order
+function displayRandomImages() {
   const images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg'];
-  const randomIndex = Math.floor(Math.random() * images.length);
-  const image = images[randomIndex];
-  imagesContainer.innerHTML = `<img src='./images/${image}'>`;
+  const shuffledImages = shuffle(images); // shuffle the array of images
+
+  let imagesHTML = '';
+  for (let i = 0; i < shuffledImages.length; i++) {
+    const image = shuffledImages[i];
+    imagesHTML += `<img src='./images/${image}'>`;
+  }
+
+  imagesContainer.innerHTML = imagesHTML;
 }
 
-displayRandomImage();
+// Helper function to shuffle an array
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+displayRandomImages();
