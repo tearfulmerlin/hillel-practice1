@@ -32,9 +32,15 @@
 		<input type="password" id="password" name="password" required><br><br>
 		
 		<label for="languages">Languages:</label>
-		<input type="text" id="languages" name="languages"><br><br>
+		<select id="languages" name="languages[]">
+		  <option value="english">English</option>
+		  <option value="spanish">Spanish</option>
+		  <option value="french">French</option>
+		  <option value="german">German</option>
+		  <option value="mandarin">Mandarin</option>
+		</select>		
 		
-		<button type="button" onclick="saveData()">Save</button>
+		<button type="button" onclick="saveData()" type="submit">Save</button>
 	</form>
 
 	<table id="data-table" style="display:none;">

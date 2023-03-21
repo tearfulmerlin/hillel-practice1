@@ -19,7 +19,7 @@ function saveData() {
   const city = document.getElementById('city').value;
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
-  const languages = document.getElementById('languages').value;
+  const languages = Array.from(document.getElementById('languages').selectedOptions, option => option.value);
 
   const table = document.getElementById('data-table');
   const row = table.insertRow(-1);
