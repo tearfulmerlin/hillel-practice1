@@ -80,45 +80,54 @@
 <body>
 
     <form action="#">
-
-        User name: <input id="name" type="text">
-
+        <label for="name">User name:</label>
+        <input id="name" type="text">
+      
         <br>
-
-        Date of birth: <input id="date" type="date">
-
+      
+        <label for="date">Date of birth:</label>
+        <input id="date" type="date">
+      
         <br>
-
-        Sex(m/f): <input name="gender" type="radio" id="male" value="Male"> Male
-        <input name="gender" type="radio" id="female" value="Female"> Female
-
+      
+        <label>Sex(m/f):</label>
+        <input name="gender" type="radio" id="male" value="Male">
+        <label for="male">Male</label>
+        <input name="gender" type="radio" id="female" value="Female">
+        <label for="female">Female</label>
+      
         <br>
-
-        City: <input id="city" type="text">
-
+      
+        <label for="city">City:</label>
+        <input id="city" type="text">
+      
         <br>
-
-        Email:<input id="email" type="email">
-
+      
+        <label for="email">Email:</label>
+        <input id="email" type="email">
+      
         <br>
-
-        Password:<input id="password" type="password">
-
+      
+        <label for="password">Password:</label>
+        <input id="password" type="password">
+      
         <br>
-
-        Languages: <input type="checkbox" name="language" id="en" value="en">en
-        <input type="checkbox" name="language" id="ru" value="ru">ru
-        <input type="checkbox" name="language" id="ua" value="ua">ua
-
+      
+        <label>Languages:</label>
+        <input type="checkbox" name="language" id="en" value="en">
+        <label for="en">en</label>
+        <input type="checkbox" name="language" id="ru" value="ru">
+        <label for="ru">ru</label>
+        <input type="checkbox" name="language" id="ua" value="ua">
+        <label for="ua">ua</label>
+      
         <br>
-
-        Save u info: <input type="submit" id="button">
-        Reset <input type="reset" id="reset">
-
-    </form>
-
-    <div class="result">
-
+      
+        <input type="submit" id="button" value="Save u info">
+        <input type="reset" id="reset" value="Reset">
+      </form>
+      
+      <div class="result">
         <div id="block-name"></div>
         <hr>
         <div id="block-date"></div>
@@ -132,9 +141,7 @@
         <div id="block-password"></div>
         <hr>
         <div id="block-language"></div>
-
-    </div>
-
+      </div>
 </body>
 
 </html>
