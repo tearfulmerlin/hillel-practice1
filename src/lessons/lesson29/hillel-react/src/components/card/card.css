@@ -4,4 +4,7 @@
   align-items: center;
   max-width: 250px;
   border: 1px solid rgba(52, 52, 52, 0.084);
+  border-radius: 8px;;
+  box-shadow: 0 0 3px 0 rgb(94, 94, 94);
+  overflow: hidden;
 }

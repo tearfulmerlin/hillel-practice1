@@ -1,8 +1,8 @@
-.container {
+.container.ingredients {
   gap: 5px;
   justify-content: center;
   flex-wrap: wrap;
 }
-.container div {
+.container.ingredients div {
   font-size: 14px;
 }

@@ -3,7 +3,7 @@ import './ingredients.css';
 
 export default function Ingredients({ data }) {
   return (
-    <div className='container'>
+    <div className='container ingredients'>
       {data.map((item) => (
         <div key={item}>{item}</div>
       ))}
