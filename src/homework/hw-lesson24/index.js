@@ -86,6 +86,7 @@ input.addEventListener('input', () => {
 });
 
 input.addEventListener('focus', function () {
+  stopCountdown();
   this.select();
   output.style.cssText = 'color: #cccccc;';
   cursorElement.className = 'cursor';
