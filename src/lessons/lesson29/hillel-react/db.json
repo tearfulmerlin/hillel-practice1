@@ -1,0 +1,167 @@
+{
+  "products": [
+    {
+      "imgSrc": "https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Ftekhas-300dpi-min.webp&w=640&q=75",
+      "title": "Піца Техас",
+      "ingredients": [
+        "Кукурудза",
+        "Ковбаски баварські",
+        "Соус Барбекю",
+        "Моцарела",
+        "Гриби",
+        "Цибуля"
+      ],
+      "sizes": [
+        "стандарт",
+        "велика",
+        "екстравелика"
+      ],
+      "doe": [
+        "пухке",
+        " тонке"
+      ],
+      "bort": [
+        "філадельфія",
+        "хот-дог"
+      ],
+      "price": 231
+    },
+    {
+      "imgSrc": "https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Ftekhas-300dpi-min.webp&w=640&q=75",
+      "title": "Піца Техас2",
+      "ingredients": [
+        "Кукурудза",
+        "Ковбаски баварські",
+        "Соус Барбекю",
+        "Моцарела",
+        "Гриби",
+        "Цибуля"
+      ],
+      "sizes": [
+        "стандарт",
+        "велика",
+        "екстравелика"
+      ],
+      "doe": [
+        "пухке",
+        " тонке"
+      ],
+      "bort": [
+        "філадельфія",
+        "хот-дог"
+      ],
+      "price": 231
+    },
+    {
+      "imgSrc": "https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Ftekhas-300dpi-min.webp&w=640&q=75",
+      "title": "Піца Техас3",
+      "ingredients": [
+        "Кукурудза",
+        "Ковбаски баварські",
+        "Соус Барбекю",
+        "Моцарела",
+        "Гриби",
+        "Цибуля"
+      ],
+      "sizes": [
+        "стандарт",
+        "велика",
+        "екстравелика"
+      ],
+      "doe": [
+        "пухке",
+        " тонке"
+      ],
+      "bort": [
+        "філадельфія",
+        "хот-дог"
+      ],
+      "price": 231
+    },
+    {
+      "imgSrc": "https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Ftekhas-300dpi-min.webp&w=640&q=75",
+      "title": "Піца Техас4",
+      "ingredients": [
+        "Кукурудза",
+        "Ковбаски баварські",
+        "Соус Барбекю",
+        "Моцарела",
+        "Гриби",
+        "Цибуля"
+      ],
+      "sizes": [
+        "стандарт",
+        "велика",
+        "екстравелика"
+      ],
+      "doe": [
+        "пухке",
+        " тонке"
+      ],
+      "bort": [
+        "філадельфія",
+        "хот-дог"
+      ],
+      "price": 231
+    },
+    {
+      "imgSrc": "https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Ftekhas-300dpi-min.webp&w=640&q=75",
+      "title": "Піца Техас5",
+      "ingredients": [
+        "Кукурудза",
+        "Ковбаски баварські",
+        "Соус Барбекю",
+        "Моцарела",
+        "Гриби",
+        "Цибуля"
+      ],
+      "sizes": [
+        "стандарт",
+        "велика",
+        "екстравелика"
+      ],
+      "doe": [
+        "пухке",
+        " тонке"
+      ],
+      "bort": [
+        "філадельфія",
+        "хот-дог"
+      ],
+      "price": 231
+    },
+    {
+      "imgSrc": "https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Ftekhas-300dpi-min.webp&w=640&q=75",
+      "title": "Піца Техас6",
+      "ingredients": [
+        "Кукурудза",
+        "Ковбаски баварські",
+        "Соус Барбекю",
+        "Моцарела",
+        "Гриби",
+        "Цибуля"
+      ],
+      "sizes": [
+        "стандарт",
+        "велика",
+        "екстравелика"
+      ],
+      "doe": [
+        "пухке",
+        " тонке"
+      ],
+      "bort": [
+        "філадельфія",
+        "хот-дог"
+      ],
+      "price": 231
+    }
+  ],
+  "orders": [
+    {
+      "id": "2023-03-25T11:18:11.172Z",
+      "quantity": "123",
+      "additions": "123"
+    }
+  ]
+}
