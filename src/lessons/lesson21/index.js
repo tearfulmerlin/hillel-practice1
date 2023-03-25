@@ -18,8 +18,8 @@ const input = document.querySelector('input');
 const list = document.querySelector('ul');
 const countControl = document.getElementById('item-left');
 
-function renderItems(data) {
-  countControl.innerText = `${storeLength(data)}`;
+function renderItems(data, actiTask = data) {
+  countControl.innerText = `${storeLength(actiTask)}`;
   list.innerHTML = '';
 
   data.forEach((item) => {
@@ -41,12 +41,10 @@ function generateId() {
 
 input.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
-    if ((event.target.value).length > 0) {
-      const item = { title: event.target.value, id: generateId() };
-      event.target.value = '';
-      store.push(item);
-      renderItems(store);
-    }
+    const item = { title: event.target.value, id: generateId() };
+    event.target.value = '';
+    store.push(item);
+    renderItems(store);
   }
 });
 
@@ -76,8 +74,9 @@ document.querySelector('#controls').addEventListener('click', (event) => {
     renderItems(filtred);
   }
   if (event.target.id === 'completed') {
+    const activTask = store;
     const filtred = store.filter((item) => item.done);
-    renderItems(filtred);
+    renderItems(filtred, activTask);
   }
   if (event.target.id === 'clear') {
     store = store.filter((item) => !item.done);
