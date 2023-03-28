@@ -15,7 +15,11 @@
 */
 
 function reverseString(str) {
-  // write code here
+  if (typeof (str) === 'string') {
+    return str.split('').reverse().join('');
+  }
+
+  return null;
 }
 
 module.exports = reverseString;
