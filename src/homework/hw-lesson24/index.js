@@ -79,12 +79,13 @@ document.querySelectorAll('input.only-num')
 
     el.addEventListener('focus', function () {
       currInput = +this.getAttribute('data-pos');
+      this.placeholder = this.value;
       this.value = '';
     });
 
     el.addEventListener('blur', function () {
       const input = this;
-      const num = input.value;
+      const num = input.value === '' ? input.placeholder : input.value;
       const arr = createMaskArray(num);
       input.value = arr;
     });
