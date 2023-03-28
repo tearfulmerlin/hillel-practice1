@@ -61,16 +61,15 @@ class Hamburgers {
     this.#toping = toping;
   }
 
-  get calories() {
+  get calculate() {
     return this.#size.calories + this.#toping.calories;
   }
 
   get price() {
     return (
-      this.#size.price +
-      this.#toping.price +
-      (this.#additive === undefined ? 0 : this.#additive.price)
-    );
+      this.#size.price
+      + this.#toping.price
+      + (this.#additive === undefined ? 0 : this.#additive.price));
   }
 
   set change_toping(toping) {
@@ -103,20 +102,16 @@ class Hamburgers {
     }
   }
 
-  get_bill() {
-    console.log(
-      `You bought ${this.#size.title} hamburger with ${
-        this.#toping.title
-      } toping!`,
-    );
+  calculatePrice() {
+    console.log(`You bought ${this.#size.title} hamburger with ${this.#toping.title} toping!`);
     if (this.additive) {
       console.log(`Additive: ${this.#additive.title}`);
     }
-    console.log(`It costs ${this.price} tubricks. Calories per serving ${this.calories}\n\n\n`);
+    console.log(`It costs ${this.price} tubricks. Calories per serving ${this.calculate}\n\n\n`);
   }
 }
 
 const ham = new Hamburgers(Hamburgers.SIZE.BIG, Hamburgers.TOPING.SALAD);
-ham.get_bill();
+ham.calculatePrice();
 ham.change_additivie = Hamburgers.ADDITIVES.MAYO;
-ham.get_bill();
+ham.calculatePrice();

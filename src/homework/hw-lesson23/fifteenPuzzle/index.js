@@ -77,8 +77,9 @@ class Game {
         temp.push(this.arrayField[i][j]);
       }
     }
-    let isWin = true;
 
+
+    let isWin = true;
     for (let i = 0; i < temp.length - 2; i++) {
       if (temp[i + 1] - temp[i] !== 1 || temp.at(-1) !== 0) {
         isWin = false;
@@ -87,7 +88,7 @@ class Game {
 
     setTimeout(() => {
       document.querySelectorAll(`.${this.gameField} *`).forEach((el) => {
-        document.documentElement.style.setProperty('--plate-color', `${isWin ? plateColor : plateWinColor}`);
+        document.documentElement.style.setProperty('--plate-color', `${isWin ? plateWinColor : plateColor}`);
       });
     }, 300);
   }
