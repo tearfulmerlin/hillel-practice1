@@ -1,81 +1,47 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useContext, useState } from 'react';
 import './App.css';
 import Card from 'components/card';
+import List from 'components/list';
 import NewProduct from 'components/new-product/new-product';
-// import { apiProducts } from './pizzas-api-data';
-import { useOnlineStatus } from 'hooks/useOnlineStatus';
+import withTitle, { withData } from './hocs';
+import usePizzaData from 'hooks/usePizzaData';
+import { CartContext } from './context';
 
-let renderCount = 0;
 
 function App() {
-  const [products, setProducts] = useState([]);
-  const [counter2, setCounter2] = useState(0);
-  
-  const addProduct = useCallback((data) => {
-    // passing callback to setState to avoid state butching
-    setProducts((state) => [
-      ...state,
-      data
-    ]);
-   
-    // setProducts((state) => [
-    //   ...state,
-    //   data
-    // ]);
+  const WithTitle = withTitle(NewProduct, 'New product')
+  const ListWithData = withData(List, Card, usePizzaData);
 
-    // state butching
-    setCounter2(1);
-    console.log(counter2)
-    setCounter2(2);
-    console.log(counter2)
-  }, [counter2, setProducts]);
+  const [cart, setCart] = useState(
+    [
+      {
+        name: 'texas',
+        price: '150',
+      }
+    ]
+  );
 
-    
-  // alternative way to set products without callback
-  // const addProduct = useCallback((data) => {
-  //   setProducts([
-  //     ...products,
-  //     data,
-  //   ]);
-  //   setProducts([
-  //     ...products,
-  //     data,
-  //   ]);
-  // }, [products, setProducts])
+  const addToCart = (item) => {
+    setCart((prevState) => [...prevState, item]);
+  }
 
-  useEffect(() => {
-    setTimeout(async () => {
-      const data = await fetch('http://localhost:3000/products');
-      const parsed = await data.json();
 
-      console.log({data, parsed});
-      setProducts(parsed)
-      // setProducts(apiProducts)
-    }, 1000)
-  }, []);
-
-  console.log(renderCount++)
 
   return (
     <>
-      <button onClick={() => setCounter2(counter2 + 1)}>click</button>
-      <NewProduct addProduct={addProduct} />
-      <div className='container pizzas'>
-        {products.map((item) => <Card key={item.title} data={item} />)}
-      </div>
+      <Router.Provider>
+        <div>Items in the cart: {cart.length}</div>
+        <WithTitle addProduct={() => {}} />
+        <CartContext.Provider value={{ cart, addToCart }}>
+          <OtherContext.Provider value={{ cart, addToCart }}>
+            <div className='container pizzas'>
+              <ListWithData />
+            </div>
+          </OtherContext.Provider>
+        </CartContext.Provider>
+      </Router.Provider>
     </>
   )
-  // const online = useOnlineStatus();
-
-  // return online ? (
-  //   <>
-  //     <button onClick={() => setCounter2(counter2 + 1)}>click</button>
-  //     <NewProduct addProduct={addProduct} />
-  //     <div className='container pizzas'>
-  //       {products.map((item) => <Card key={item.title} data={item} />)}
-  //     </div>
-  //   </>
-  // ) : (<h1>You're offline</h1>)
 }
 
 export default App;

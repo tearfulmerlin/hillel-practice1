@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Image from '../image';
 import Title from '../title';
 import Ingredients from '../ingredients';
 import './card.css';
-import { useOnlineStatus } from 'hooks/useOnlineStatus';
-import useCounter from 'hooks/useCounter';
-import OrderForm from 'components/order-form/order-form';
+import { CartContext as CartCont } from 'context';
 
 export default function Card({
   data: {
@@ -15,27 +13,34 @@ export default function Card({
     sizes,
     doe,
     bort,
-    price,
+    price = 150,
+    colors,
+    defaultColor
   }
 }) {
-  const online = useOnlineStatus();
-  const { count, setCount } = useCounter(online);
+  const [color, setColor] = useState(defaultColor || colors?.[0]);
+
+  const { cart, addToCart } = useContext(CartCont);
 
   return (
     <div className='card'>
+      <span>cart {cart.length}</span>
       <Image src={imgSrc} alt={title} className="pizza-img" />
       <Title text={title} />
       <Ingredients  data={ingredients} />
+      {/* <Colors colors={props.colors} setSelected={setColor}/> */}
+      {
+        colors.map(
+          ({id, value = '#0000FF', title = 'blue'}) => <span key={id} onClick={() => setColor(id)}>{title}<span/>
+        )
+      }
       {/* <Size />
       <Doe />
       <Bort />
       <Price/>
       <Button text="В кошик"/> 
     */}
-    <button text="В кошик" disabled={!online}>{online ? 'В кошик' : 'Відсутній інтернет'}</button>
-    <button  onClick={() => setCount(count + 1)} disabled={!online}>{'Збільшити'}</button>
-    <div>{count}</div>
-    <OrderForm />
+    <button onClick={() => addToCart({title, price, color})}>В кошик</button>
     </div>
   )
 }
