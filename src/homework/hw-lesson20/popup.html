@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./popup.js" defer></script>
+    <title>
+        Form
+    </title>
+
+    <style>
+        body {
+            background-color: rgb(188, 234, 234);
+        }
+
+        ::-webkit-scrollbar {
+            width: 15px;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(37, 94, 110, 0.3);
+            border-radius: 10px;
+            background: #ffffff;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: #2a2c2e;
+        }
+
+        #name,
+        #date,
+        #city,
+        #email,
+        #password,
+        #button,
+        #reset {
+
+            display: block;
+            width: 300px;
+            height: 40px;
+            padding: 0.375rem 0.75rem;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #bdbdbd;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        #en,
+        #ru,
+        #ua,
+        #male,
+        #female {
+            display: inline-block;
+            position: relative;
+            width: 15px;
+            height: 15px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .result {
+            border: 1px solid gray;
+            margin-top: 50px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <form action="#">
+        <label for="name">User name:</label>
+        <input id="name" type="text">
+      
+        <br>
+      
+        <label for="date">Date of birth:</label>
+        <input id="date" type="date">
+      
+        <br>
+      
+        <label>Sex(m/f):</label>
+        <input name="gender" type="radio" id="male" value="Male">
+        <label for="male">Male</label>
+        <input name="gender" type="radio" id="female" value="Female">
+        <label for="female">Female</label>
+      
+        <br>
+      
+        <label for="city">City:</label>
+        <input id="city" type="text">
+      
+        <br>
+      
+        <label for="email">Email:</label>
+        <input id="email" type="email">
+      
+        <br>
+      
+        <label for="password">Password:</label>
+        <input id="password" type="password">
+      
+        <br>
+      
+        <label>Languages:</label>
+        <input type="checkbox" name="language" id="en" value="en">
+        <label for="en">en</label>
+        <input type="checkbox" name="language" id="ru" value="ru">
+        <label for="ru">ru</label>
+        <input type="checkbox" name="language" id="ua" value="ua">
+        <label for="ua">ua</label>
+      
+        <br>
+      
+        <input type="submit" id="button" value="Save u info">
+        <input type="reset" id="reset" value="Reset">
+      </form>
+      
+      <div class="result">
+        <div id="block-name"></div>
+        <hr>
+        <div id="block-date"></div>
+        <hr>
+        <div id="block-sex"></div>
+        <hr>
+        <div id="block-city"></div>
+        <hr>
+        <div id="block-email"></div>
+        <hr>
+        <div id="block-password"></div>
+        <hr>
+        <div id="block-language"></div>
+      </div>
+</body>
+
+</html>
