@@ -1,46 +1,29 @@
-import { useContext, useState } from 'react';
+import { useState, useEffect } from 'react';
+import store from './store/store'
+import { Provider, useSelector } from 'react-redux';
 import './App.css';
 import Card from 'components/card';
-import List from 'components/list';
-import NewProduct from 'components/new-product/new-product';
-import withTitle, { withData } from './hocs';
-import usePizzaData from 'hooks/usePizzaData';
-import { CartContext } from './context';
-
+import { apiProducts } from './pizzas-api-data';
+import Cart from 'components/cart';
 
 function App() {
-  const WithTitle = withTitle(NewProduct, 'New product')
-  const ListWithData = withData(List, Card, usePizzaData);
+  const [products, setProducts] = useState([]);
+    
 
-  const [cart, setCart] = useState(
-    [
-      {
-        name: 'texas',
-        price: '150',
-      }
-    ]
-  );
+  useEffect(() => {
+    setTimeout(async () => {
 
-  const addToCart = (item) => {
-    setCart((prevState) => [...prevState, item]);
-  }
-
-
+      setProducts(apiProducts)
+    }, 1000)
+  }, []);
 
   return (
-    <>
-      <Router.Provider>
-        <div>Items in the cart: {cart.length}</div>
-        <WithTitle addProduct={() => {}} />
-        <CartContext.Provider value={{ cart, addToCart }}>
-          <OtherContext.Provider value={{ cart, addToCart }}>
-            <div className='container pizzas'>
-              <ListWithData />
-            </div>
-          </OtherContext.Provider>
-        </CartContext.Provider>
-      </Router.Provider>
-    </>
+    <Provider store={store}>
+      <Cart />
+      <div className='container pizzas'>
+        {products.map((item) => <Card key={item.title} data={item} />)}
+      </div>
+    </Provider>
   )
 }
 

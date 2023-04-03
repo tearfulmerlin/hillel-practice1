@@ -3,10 +3,16 @@ import Image from '../image';
 import Title from '../title';
 import Ingredients from '../ingredients';
 import './card.css';
-import { CartContext as CartCont } from 'context';
+// import { CartContext as CartCont } from 'context';
+import { useDispatch } from 'react-redux';
+import { add, remove } from '../../store/cartSlice';
+
 
 export default function Card({
-  data: {
+  data
+}) {
+
+const {
     imgSrc,
     title,
     ingredients,
@@ -16,31 +22,24 @@ export default function Card({
     price = 150,
     colors,
     defaultColor
-  }
-}) {
-  const [color, setColor] = useState(defaultColor || colors?.[0]);
-
-  const { cart, addToCart } = useContext(CartCont);
+} = data;
+const dispatch = useDispatch();
 
   return (
     <div className='card'>
-      <span>cart {cart.length}</span>
+
       <Image src={imgSrc} alt={title} className="pizza-img" />
       <Title text={title} />
       <Ingredients  data={ingredients} />
       {/* <Colors colors={props.colors} setSelected={setColor}/> */}
-      {
-        colors.map(
-          ({id, value = '#0000FF', title = 'blue'}) => <span key={id} onClick={() => setColor(id)}>{title}<span/>
-        )
-      }
       {/* <Size />
       <Doe />
       <Bort />
       <Price/>
       <Button text="В кошик"/> 
     */}
-    <button onClick={() => addToCart({title, price, color})}>В кошик</button>
+    <button onClick={() => dispatch(add({ payload: data }))}> add to cart </button>
+    <button onClick={() => dispatch(remove({ payload: data }))}> remove from cart </button>
     </div>
   )
 }
