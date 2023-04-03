@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.pagination a.active {
+  background-color: #c0c0c0;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.list {
+  font-size: 20px;
+  list-style: none;
+}
+
+.vehicle-item,
+.resident-item,
+.planet-item {
+  padding-top: 10px;
+}
+
+.resident-item:hover,
+.planet-item:hover {
+  color: #696969;
+  cursor: pointer;
+}
+
+.empty-data {
+  font-size: 25px;
+  color: #ff0000;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: block;
+}
