@@ -1,17 +1,12 @@
-import { useState, useEffect } from 'react';
+import useSWR from 'swr';
 
-export default function usePizzaData() {
-  const [data, setData] = useState([]);
-  // const [isLoading, setLoading] = useState(true);
+export default function usePizzaData(id) {
+  const fetcher = async () => {
+    const response = await fetch(`http://localhost:3000/products/${id}`);
+    const parsed = await response.json();
 
-  useEffect(() => {
-    (async () => {
-      const data = await fetch('http://localhost:3000/products');
-      const parsed = await data.json();
+    return parsed;
+  }
 
-      setData(parsed)
-    })();
-  }, []);
-
-  return { data };
+  return useSWR(() => `products/${id}`, fetcher, { fallbackData: {} });
 }

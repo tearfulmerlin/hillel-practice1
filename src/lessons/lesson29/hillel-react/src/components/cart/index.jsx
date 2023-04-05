@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector,connect } from 'react-redux';
+import { useSelector, connect } from 'react-redux';
 
 
 // export default function Cart() {
@@ -22,8 +22,8 @@ function Cart({ cart, add, userId }) {
     )
   }
 
-  const mapStateToProps = (state, componentProps) => ({
-    cart: state.cart[componentProps.userId], 
+  const mapStateToProps = (state) => ({
+    cart: state.cart, 
   })
 
   const addAction = (payload) => ({

@@ -6,6 +6,7 @@ import './card.css';
 // import { CartContext as CartCont } from 'context';
 import { useDispatch } from 'react-redux';
 import { add, remove } from '../../store/cartSlice';
+import { Link } from 'react-router-dom';
 
 
 export default function Card({
@@ -13,6 +14,7 @@ export default function Card({
 }) {
 
 const {
+    id,
     imgSrc,
     title,
     ingredients,
@@ -28,7 +30,9 @@ const dispatch = useDispatch();
   return (
     <div className='card'>
 
-      <Image src={imgSrc} alt={title} className="pizza-img" />
+      <Link to={`/pizza/${id}`}>
+        <Image src={imgSrc} alt={title} className="pizza-img" />
+      </Link>
       <Title text={title} />
       <Ingredients  data={ingredients} />
       {/* <Colors colors={props.colors} setSelected={setColor}/> */}

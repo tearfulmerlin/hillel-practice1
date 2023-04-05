@@ -1,6 +1,7 @@
 {
   "products": [
     {
+      "id": 1,
       "imgSrc": "https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Ftekhas-300dpi-min.webp&w=640&q=75",
       "title": "Піца Техас",
       "ingredients": [
@@ -27,6 +28,7 @@
       "price": 231
     },
     {
+      "id": 2,
       "imgSrc": "https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Ftekhas-300dpi-min.webp&w=640&q=75",
       "title": "Піца Техас2",
       "ingredients": [
@@ -53,6 +55,7 @@
       "price": 231
     },
     {
+      "id": 3,
       "imgSrc": "https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Ftekhas-300dpi-min.webp&w=640&q=75",
       "title": "Піца Техас3",
       "ingredients": [
@@ -79,6 +82,7 @@
       "price": 231
     },
     {
+      "id": 4,
       "imgSrc": "https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Ftekhas-300dpi-min.webp&w=640&q=75",
       "title": "Піца Техас4",
       "ingredients": [
@@ -105,6 +109,7 @@
       "price": 231
     },
     {
+      "id": 5,
       "imgSrc": "https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Ftekhas-300dpi-min.webp&w=640&q=75",
       "title": "Піца Техас5",
       "ingredients": [
@@ -131,6 +136,7 @@
       "price": 231
     },
     {
+      "id": 6,
       "imgSrc": "https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Ftekhas-300dpi-min.webp&w=640&q=75",
       "title": "Піца Техас6",
       "ingredients": [
