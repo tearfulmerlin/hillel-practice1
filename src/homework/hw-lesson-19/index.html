@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,6 +20,7 @@
       border: 1px solid;
       padding: 0 5px;
     }
+
     .col h3 {
       margin: 0;
     }
@@ -27,17 +29,53 @@
     .trade-mark,
     .model {
       flex-direction: column;
-      padding: 0px 10px;
     }
 
     .products div,
     .trade-mark div,
     .model div {
-      padding:5px 0;
+      padding: 5px 0;
+    }
+
+
+    ul {
+      list-style: none;
+      margin-block-start: 0;
+      margin-block-end: 0;
+      padding-inline-start: 0;
+      margin: 0 -5px;
+    }
+
+    li:first-child {
+      border-top: 1px solid #000000;
+    }
+
+    li {
+      border-bottom: 1px solid #000000;
+      background-color: #006400;
+      padding: 10px;
+      text-align: center;
+    }
+
+    li:hover {
+      background-color: #008000
+    }
+
+    .active {
+      background-color: #228B22
+    }
+
+    .selected {
+      background-color: #8B0000;
+    }
+
+    .selected:hover {
+      background-color: #B22222;
     }
 
   </style>
 </head>
+
 <body>
   <h1>Tech shop</h1>
   <div class="shop">
@@ -49,13 +87,16 @@
     <div class="col">
       <h3>Trade marks</h3>
       <div class="trade-mark">
+      </div>
     </div>
-  </div>
     <div class="col">
       <h3>Models</h3>
-      <div class="model"></div>
+      <div class="model">
+      </div>
     </div>
   </div>
-  <script type="module" src="./index.js"></script>
+  <!-- <script type="module" src="./index.js"></script> -->
+  <script type="module" src="./original_index.js"></script>
 </body>
+
 </html>
