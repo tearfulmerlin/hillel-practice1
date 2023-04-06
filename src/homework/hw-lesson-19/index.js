@@ -1,22 +1,10 @@
-// eslint-disable-next-line import/extensions
 import assortment from './assortment.js';
-
-/**
- *
- * Дано 3 блока:
- * В лівій частині сторінки - перелік категорій.
- * При клику на категорію виводиться в средний блок список торгових марок цієї категорії.
- * Клік на торгову мароку - моделі торгової марки у правому блоці.
- * При клику на модель виводиться повідомлення, що товар куплений
- * і повернення в початковий стан (коли відображється тільки список категорій)
- *
- */
 
 function getTable(col, list) {
   const category = col.querySelector('div');
   category.innerHTML = '';
 
-  for (const e of list) {
+  list.forEach((e) => {
     const div = document.createElement('div');
 
     div.innerText = e.title.toUpperCase();
@@ -28,41 +16,51 @@ function getTable(col, list) {
 
       this.classList.add('active');
 
-      const select = list.find((product) => product.title === this.textContent.toLowerCase());
-      getTable(this.parentElement.parentElement.nextElementSibling, select.children);
+      const { children } = list.find((product) => product.title === this.textContent.toLowerCase());
+      getTable(this.parentElement.parentElement.nextElementSibling, children);
     }
-  }
+  });
 
   const model = col.querySelector('.model');
 
-  for (const product of model.children) {
+  Array.from(model.children).forEach((product) => {
     product.onclick = function () {
-
       const mark = document.querySelector('.trade-mark .active');
       const resultBuy = document.querySelector('.prod');
-      resultBuy.innerHTML = `You buy: ${mark.textContent} ${this.textContent}!`;
+      const productName = `${mark.textContent} ${this.textContent}`;
+
+      const productEl = document.createElement('div');
+      productEl.classList.add('product');
+      productEl.innerText = productName;
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.classList.add('delete-product');
+      deleteBtn.innerText = 'Delete';
+
+      deleteBtn.onclick = function () {
+        productEl.remove();
+      };
+
+      resultBuy.appendChild(productEl);
+      productEl.appendChild(deleteBtn);
 
       getClear(document.querySelector('.col').nextElementSibling);
       deleteClasses(document.querySelector('.products'));
     }
-  }
+  });
 }
 
 function deleteClasses(parent) {
-  for (const e of parent.children) {
+  Array.from(parent.children).forEach((e) => {
     e.classList.remove('active');
-  }
+  });
 }
 
 function getClear(col) {
-  if (col !== null) {
-    const div = col.querySelector('div').innerHTML = '';
-
+  if (col) {
+    col.querySelector('div').innerHTML = '';
     getClear(col.nextElementSibling);
   }
 }
-
-const removeRes = () => document.getElementById('res').remove();
-document.querySelector('.delete').addEventListener('click', removeRes);
 
 getTable(document.querySelector('.col'), assortment);
