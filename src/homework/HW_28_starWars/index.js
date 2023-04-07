@@ -1,10 +1,10 @@
 function starWars() {
   const pageContentSection = $(".container");
   let pageIndex = 1;
+  let nextPageButton;
 
   async function fetchData(url) {
     const response = await fetch(url);
-
     return response.json();
   }
 
@@ -103,6 +103,7 @@ function starWars() {
       mainContent = $("<div>").addClass("content");
       pageContentSection.append(mainContent);
     }
+
     const ul = $("<ul>").addClass("list");
     mainContent.empty().append(ul);
 
@@ -116,30 +117,49 @@ function starWars() {
       ul.append(li);
     }
 
-    if (pageIndex === 1) {
-      const nextPageButton = $("<button>Next</button>").addClass("next-button");
-
+    if (pageIndex === 1 && nextPageButton === undefined) {
+      nextPageButton = $("<button>Next</button>").addClass("next-button");
       mainContent.append(nextPageButton);
-
-      nextPageButton.on("click", async () => {
+      nextPageButton.on("click", () => {
         pageIndex++;
-
-        const planetsData = await fetchData(
-          `https://swapi.dev/api/planets/?page=${pageIndex}`
-        );
-
-        navigatePlanets(planetsData);
+        startingData();
       });
-    } else {
-      showReturnButton();
+    } else if (pageIndex > 1 && nextPageButton === undefined) {
+      const buttonsContainer = $("<div>").addClass("buttons-container");
+      const previousPageButton = $("<button>Previous</button>").addClass(
+        "previous-button"
+      );
+      nextPageButton = $("<button>Next</button>").addClass("next-button");
+
+      buttonsContainer.append(previousPageButton);
+      buttonsContainer.append(nextPageButton);
+
+      mainContent.append(buttonsContainer);
+
+      nextPageButton.on("click", () => {
+        pageIndex++;
+        startingData();
+      });
+
+      previousPageButton.on("click", () => {
+        pageIndex--;
+        startingData();
+      });
     }
   }
 
   async function startingData() {
-    pageIndex = 1;
-    const planetsData = await fetchData("https://swapi.dev/api/planets/");
+    renderTitle("Star Wars Planets");
+
+    const planetsData = await fetchData(
+      `https://swapi.dev/api/planets/?page=${pageIndex}`
+    );
 
     navigatePlanets(planetsData);
+
+    if (pageIndex > 1) {
+      showReturnButton();
+    }
   }
 
   startingData();
