@@ -9,7 +9,7 @@ let timeLeft = 300;
 
 document.title = '5:00 - Countdown Timer'
 
-function startTimer() {
+const startTimer = () => {
     timerRunning = true;
     countdown = setInterval(() => {
         timeLeft--;
@@ -26,45 +26,50 @@ function startTimer() {
             timerRunning = false;
         }
     }, 1000);
-}
+};
 
-function stopTimer() {
+const stopTimer = () => {
     timerRunning = false;
     clearInterval(countdown);
-}
+};
 
-function resetTimer() {
+const resetTimer = () => {
     timerRunning = false;
     clearInterval(countdown);
     timeLeft = 300;
     document.title = 'Countdown Timer';
     timerDisplay.textContent = '05:00';
-}
+};
 
-function editTimer() {
-    timerDisplay.innerHTML = '<input type="text" id="editTimerInput" />';
-    const editTimerInput = document.querySelector('#editTimerInput');
-    editTimerInput.value = `${Math.floor(timeLeft / 60)}:${timeLeft % 60 < 10 ? '0' : ''}${timeLeft % 60}`;
-    editTimerInput.focus();
+const editTimer = () => {
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = `${Math.floor(timeLeft / 60)}:${timeLeft % 60 < 10 ? '0' : ''}${timeLeft % 60}`;
+    timerDisplay.textContent = '';
+    timerDisplay.appendChild(input);
+    input.focus();
 
-    editTimerInput.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            const [newMinutes, newSeconds] = editTimerInput.value.split(':');
-            const newTime = (parseInt(newMinutes) * 60) + parseInt(newSeconds);
-            timeLeft = newTime;
-            startTimer();
-        }
-    });
-
-    editTimerInput.addEventListener('blur', function () {
-        const [newMinutes, newSeconds] = editTimerInput.value.split(':');
+    input.addEventListener('change', (e) => {
+        const [newMinutes, newSeconds] = e.target.value.split(':');
         const newTime = (parseInt(newMinutes) * 60) + parseInt(newSeconds);
         timeLeft = newTime;
-        timerDisplay.innerHTML = `${Math.floor(timeLeft / 60)}:${timeLeft % 60 < 10 ? '0' : ''}${timeLeft % 60}`;
+        startTimer();
     });
-}
+
+    input.addEventListener('blur', () => {
+        const [newMinutes, newSeconds] = input.value.split(':');
+        const newTime = (parseInt(newMinutes) * 60) + parseInt(newSeconds);
+        timeLeft = newTime;
+        timerDisplay.textContent = `${Math.floor(timeLeft / 60)}:${timeLeft % 60 < 10 ? '0' : ''}${timeLeft % 60}`;
+    });
+};
 
 startButton.addEventListener('click', startTimer);
 stopButton.addEventListener('click', stopTimer);
 resetButton.addEventListener('click', resetTimer);
-timerDisplay.addEventListener('click', editTimer);
+
+timerDisplay.addEventListener('click', () => {
+    if (!timerRunning) {
+        editTimer();
+    }
+});
