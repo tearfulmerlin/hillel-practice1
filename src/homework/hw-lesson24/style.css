@@ -1,0 +1,53 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 50px;
+}
+
+#timer {
+  font-size: 72px;
+  margin-top: 50px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#edit {
+  font-size: 24px;
+  margin-top: 20px;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  width: 100px;
+  text-align: center;
+  outline: none;
+}
+
+#edit:focus {
+  border-bottom: 2px solid #4CAF50;
+}
+
+.tab-title {
+  font-size: 24px;
+  font-weight: bold;
+}
