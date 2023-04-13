@@ -66,4 +66,3 @@ class Timer {
 }
 
 const timerElement = new Timer('.start', '.stop', '.clear', '.time');
-console.log(timerElement);
