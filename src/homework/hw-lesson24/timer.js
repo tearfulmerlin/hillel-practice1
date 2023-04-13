@@ -1,5 +1,7 @@
 class Timer {
-  #seconds = 0;
+  timeSet;
+
+  #mSeconds = 0;
 
   #startButton;
 
@@ -11,12 +13,32 @@ class Timer {
 
   #interval;
 
-  constructor(buttonStartClass, buttonStopClass, buttonClearClass, timerFieldClass) {
+
+  constructor(
+    buttonStartClass,
+    buttonStopClass,
+    buttonClearClass,
+    timerFieldClass,
+    secSetFielId,
+  ) {
     this.#startButton = document.querySelector(buttonStartClass);
     this.#stopButton = document.querySelector(buttonStopClass);
     this.#clearButton = document.querySelector(buttonClearClass);
     this.#timerField = document.querySelector(timerFieldClass);
+    this.timeSet = document.getElementById(secSetFielId);
     this.setEventHandlers();
+    this.render();
+  }
+
+  #setStartTyme() {
+    const arrTime = this.timeSet.value.split(':');
+    this.#mSeconds = (+arrTime[0] * 3600 + +arrTime[1] * 60 + +arrTime[2]) * 1000;
+  }
+
+  #decrementTimer() {
+    if (this.#mSeconds > 0) {
+      this.#mSeconds -= 100;
+    }
     this.render();
   }
 
@@ -24,12 +46,10 @@ class Timer {
     if (this.#interval) {
       clearInterval(this.#interval);
     }
-    this.#interval = setInterval(() => this.#incrementTimer(), 1000);
-  }
-
-  #incrementTimer() {
-    this.#seconds += 1;
-    this.render();
+    if (!this.#mSeconds) {
+      this.#setStartTyme();
+    }
+    this.#interval = setInterval(() => this.#decrementTimer(), 100);
   }
 
   #stopTimer() {
@@ -38,26 +58,28 @@ class Timer {
 
   #clearTimer() {
     clearInterval(this.#interval);
-    this.#seconds = 0;
+    this.#setStartTyme();
     this.render();
   }
 
   setEventHandlers() {
-    this.#startButton.addEventListener('click', this.#startTimer());
+    this.#startButton.addEventListener('click', () => this.#startTimer());
     this.#stopButton.addEventListener('click', () => this.#stopTimer());
     this.#clearButton.addEventListener('click', () => this.#clearTimer());
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  #zeroPad(num, places) {
-    return String(num).padStart(places, '0');
+  static zeroPad(num) {
+    const formatter = new Intl.NumberFormat('en-GB', { minimumIntegerDigits: 2, maximumFractionDigits: 0, roundingMode: 'floor' });
+
+    return formatter.format(num);
   }
 
   #formatTimeString() {
-    const formattedMinutes = this.#zeroPad(Math.floor((this.#seconds % 3600) / 60), 2);
-    const formattedSeconds = this.#zeroPad(this.#seconds % 60, 2);
+    const formattedMinutes = Timer.zeroPad(Math.floor((this.#mSeconds / 1000) % 3600) / 60);
+    const formattedSeconds = Timer.zeroPad((this.#mSeconds / 1000) % 60);
+    const formattedMseconds = Timer.zeroPad((this.#mSeconds / 100) % 10);
 
-    return `${formattedMinutes}:${formattedSeconds}`;
+    return `${formattedMinutes}:${formattedSeconds}:${formattedMseconds}`;
   }
 
   render() {
@@ -65,4 +87,4 @@ class Timer {
   }
 }
 
-const timerElement = new Timer('.start', '.stop', '.clear', '.time');
+const timerElement = new Timer('.timerStart', '.timerStop', '.timerClear', '.timerTime', 'timerSet');
