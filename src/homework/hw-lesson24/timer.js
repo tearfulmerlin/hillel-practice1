@@ -39,6 +39,9 @@ class Timer {
     if (this.#mSeconds > 0) {
       this.#mSeconds -= 100;
     }
+    if (this.#mSeconds < 0) {
+      this.#stopTimer();
+    }
     this.render();
   }
 
@@ -46,9 +49,7 @@ class Timer {
     if (this.#interval) {
       clearInterval(this.#interval);
     }
-    if (!this.#mSeconds) {
-      this.#setStartTyme();
-    }
+    this.#setStartTyme();
     this.#interval = setInterval(() => this.#decrementTimer(), 100);
   }
 
