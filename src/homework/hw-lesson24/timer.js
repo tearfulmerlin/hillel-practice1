@@ -32,7 +32,9 @@ class Timer {
 
   #setStartTyme() {
     const arrTime = this.timeSet.value.split(':');
+    console.log(arrTime);
     this.#mSeconds = (+arrTime[0] * 3600 + +arrTime[1] * 60 + +arrTime[2]) * 1000;
+    console.log('oll sec', this.#mSeconds);
   }
 
   #decrementTimer() {
@@ -75,11 +77,13 @@ class Timer {
   }
 
   #formatTimeString() {
-    const formattedMinutes = Timer.zeroPad(Math.floor((this.#mSeconds / 1000) % 3600) / 60);
+    const formattedhours = Timer.zeroPad(this.#mSeconds / 3600000);
+    console.log(formattedhours);
+    const formattedMinutes = Timer.zeroPad(((this.#mSeconds / 1000) % 3600) / 60);
     const formattedSeconds = Timer.zeroPad((this.#mSeconds / 1000) % 60);
     const formattedMseconds = Timer.zeroPad((this.#mSeconds / 100) % 10);
 
-    return `${formattedMinutes}:${formattedSeconds}:${formattedMseconds}`;
+    return `${formattedhours}:${formattedMinutes}:${formattedSeconds}:${formattedMseconds}`;
   }
 
   render() {
