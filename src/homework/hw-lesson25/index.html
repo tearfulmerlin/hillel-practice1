@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="planets"></div>
+    <div id="pagination"></div>
+    <div id="residents"></div>
+    <div id="vehicles"></div>
+
+    <script>
+      // Data API
+      async function getData(page) {
+        const url = page
+          ? `https://swapi.dev/api/planets/?page=${page}`
+          : "https://swapi.dev/api/planets/";
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+      }
+
+      async function getResidentData(residentUrl) {
+        const residentData = await fetch(residentUrl).then((response) =>
+          response.json()
+        );
+        const { name, vehicles, homeworld } = residentData;
+        return { name, vehicles, homeworld };
+      }
+
+      async function getVehicleData(vehicleUrl) {
+        const vehicleData = await fetch(vehicleUrl).then((response) =>
+          response.json()
+        );
+        const { name, max_atmosphering_speed, cost_in_credits } = vehicleData;
+        return { name, max_atmosphering_speed, cost_in_credits };
+      }
+
+      // Other
+      const planetsContainer = document.getElementById("planets");
+      const paginationContainer = document.getElementById("pagination");
+      const residentsContainer = document.getElementById("residents");
+      const vehiclesContainer = document.getElementById("vehicles");
+
+      // Pagination
+      async function createPagination(count, pageSize, currentPage) {
+        paginationContainer.innerHTML = "";
+        const totalPages = Math.ceil(count / pageSize);
+        for (let i = 1; i <= totalPages; i++) {
+          const pageButton = document.createElement("button");
+          pageButton.innerText = i;
+          pageButton.addEventListener("click", async () => {
+            await showPlanets(i);
+          });
+          if (i === currentPage) {
+            pageButton.disabled = true;
+          }
+          paginationContainer.appendChild(pageButton);
+        }
+      }
+
+      // Show Planets
+      async function showPlanets(page) {
+        planetsContainer.innerHTML = "";
+        residentsContainer.innerHTML = "";
+        vehiclesContainer.innerHTML = "";
+
+        const data = await getData(page);
+        const { count, results } = data;
+        createPagination(count, results.length, page);
+
+        for (let i = 0; i < results.length; i++) {
+          const planet = results[i];
+          const planetLink = document.createElement("a");
+          planetLink.innerText = `${planet.name} | Population - ${planet.population}`;
+          planetLink.addEventListener("click", async () => {
+            await showResidents(planet.residents);
+          });
+
+          const planetItem = document.createElement("li");
+          planetItem.appendChild(planetLink);
+          planetsContainer.appendChild(planetItem);
+        }
+      }
+
+      async function showResidents(residentsUrls) {
+        planetsContainer.innerHTML = "";
+        residentsContainer.innerHTML = "";
+        vehiclesContainer.innerHTML = "";
+
+        for (let i = 0; i < residentsUrls.length; i++) {
+          const residentUrl = residentsUrls[i];
+          const { name, vehicles, homeworld } = await getResidentData(residentUrl);
+
+          const residentLink = document.createElement("a");
+          residentLink.innerText = `${name} | Vehicles Count - ${vehicles.length} `;
+          residentLink.addEventListener("click", async () => {
+            await showVehicles(vehicles);
+          });
+
+          const residentItem = document.createElement("li");
+          residentItem.appendChild(residentLink);
+          residentsContainer.appendChild(residentItem);
+        }
+      }
+
+      async function showVehicles(vehicleUrls) {
+        planetsContainer.innerHTML = "";
+        residentsContainer.innerHTML = "";
+        vehiclesContainer.innerHTML = "";
+
+        const showPlanetsButton = document.createElement("button");
+        showPlanetsButton.innerText = "Show Planets";
+        showPlanetsButton.addEventListener("click", async () => {
+          await showPlanets(1);
+        });
+        vehiclesContainer.appendChild(showPlanetsButton);
+
+        for (let i = 0; i < vehicleUrls.length; i++) {
+          const vehicleUrl = vehicleUrls[i];
+          const { name, max_atmosphering_speed, cost_in_credits } = await getVehicleData(
+            vehicleUrl
+          );
+
+          const vehicleLink = document.createElement("a");
+          vehicleLink.innerText = `${name} | Max Speed - ${max_atmosphering_speed} | Cost - ${cost_in_credits}`;
+
+          const vehicleItem = document.createElement("li");
+          vehicleItem.appendChild(vehicleLink);
+          vehiclesContainer.appendChild(vehicleItem);
+        }
+      }
+
+      // Initialize
+      showPlanets(1);
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+  }
+  
+  #planets, #residents, #vehicles {
+    margin: 20px auto;
+    max-width: 800px;
+  }
+  
+  #planets a, #residents a, #vehicles a {
+    color: #ffc107;
+    text-decoration: none;
+  }
+  
+  #planets a:hover, #residents a:hover, #vehicles a:hover {
+    color: #f8c94a;
+  }
+  
+  #pagination button {
+    background-color: #ffc107;
+    border: none;
+    border-radius: 50%;
+    color: #000;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+    padding: 10px;
+    text-align: center;
+    width: 40px;
+  }
+  
+  #pagination button:hover {
+    background-color: #f8c94a;
+    color: #000;
+  }
+  
+  #residents h2, #vehicles h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  #residents ul, #vehicles ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+  
+  #residents li, #vehicles li {
+    margin-bottom: 10px;
+  }
+  
+  #residents li:last-child, #vehicles li:last-child {
+    margin-bottom: 0;
+  }
+  
+  #vehicles button {
+    background-color: #ffc107;
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    display: block;
+  }
+  
+  #vehicles button:hover {
+    background-color: #f8c94a;
+    color: #000;
+  }
+  
